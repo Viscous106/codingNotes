@@ -479,3 +479,14 @@ if age<18:
     raise Exception('You are underage')#now an error will raise every time an age under 18 is entered
 '''
 
+##Class and Objects:
+class Student:
+    roll_no = None
+    name     = None
+
+s0 = Student()
+s0.roll_no=10613
+s0.name='Yash Virulkar'
+print(s0.roll_no,s0.name)
+
+
