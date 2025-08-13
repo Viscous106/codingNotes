@@ -453,7 +453,7 @@ print(sort([1,4,5,3,2]))
 
 
 ######Exception Handeling:
-#Zero Division error:
+'''
 a=int(input())
 b=int(input())#If input is 0 it gives Zerodivision error
 try:
@@ -470,3 +470,12 @@ except:
 finally:#Even if error occurs above the code will break fr but this block i.e. the finally block always gets excecute
     f.close()
     print('Finally block got executed')
+'''
+
+#######How to raise an exception:
+'''
+age=int(input())
+if age<18:
+    raise Exception('You are underage')#now an error will raise every time an age under 18 is entered
+'''
+
