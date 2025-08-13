@@ -438,3 +438,35 @@ def sort(L):
     return [m]+sort(L) #this is recursion
 print(sort([1,4,5,3,2]))
 '''
+###Reminder to make notes for binary search :
+#Also use recursion:
+
+
+
+
+
+
+
+
+
+
+
+
+######Exception Handeling:
+#Zero Division error:
+a=int(input())
+b=int(input())#If input is 0 it gives Zerodivision error
+try:
+    f=open('demo.txt','r')
+    c=a/b
+    print(c)
+    print(d)#It gives the NameError
+except ZeroDivisionError:
+    print("Denominator can't be 0")
+except NameError:
+    print("Sorry the variable is not present")
+except:
+    print('Something went wrong!!')
+finally:#Even if error occurs above the code will break fr but this block i.e. the finally block always gets excecute
+    f.close()
+    print('Finally block got executed')
