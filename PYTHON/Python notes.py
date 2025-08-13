@@ -379,7 +379,7 @@ print(M3)
 '''
 #m2 using numpy:
 
-import numpy as np
+#import numpy as np
 '''
 M1=np.array([[1,2,3],[4,5,6],[7,8,9]])
 M2=np.array([[1,2,1],[6,2,3],[4,2,1]])
@@ -415,8 +415,26 @@ def row_inp():
     return c
 print(row_inp())
 '''
-
+'''
 ###lambda function:
 #used for def fxn of just one lines
 add = lambda x, y: x + y
 print(add(int(input()), int(input())))  # Output: 5
+'''
+#####Recursion
+'''
+#This sorts out a list:
+def mini(L):
+    mini=L[0]
+    for i in L  :
+        if (i<mini):
+            mini=i
+    return mini
+def sort(L):
+    if L==[] or  len(L)==1:
+        return L
+    m=mini(L)
+    L.remove(m)
+    return [m]+sort(L) #this is recursion
+print(sort([1,4,5,3,2]))
+'''
