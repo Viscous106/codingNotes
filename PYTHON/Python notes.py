@@ -480,6 +480,7 @@ if age<18:
 '''
 
 ##Class and Objects:
+'''
 class Student:
     roll_no = None
     name     = None
@@ -488,5 +489,25 @@ s0 = Student()
 s0.roll_no=10613
 s0.name='Yash Virulkar'
 print(s0.roll_no,s0.name)
+'''
+#Better way to write class oriented 
+
+class Student:
+    fullname="anonymous"#In case both obj and class attr are present obj attr is given preff . if only when obj attr is absent the class attr executes
+    collegeName='IITM' #Class attr i.e. common for all
+    def __init__(self,roll_no,fullname):#We have to use __init__ only#IT is also called as constructor
+        count=0#It belong to Student
+        self.roll_no=roll_no #Obj attr (specific for the obj)
+        self.name=fullname
+    def display(self):
+        print("Name:",self.name)
+        print("Roll no:",self.roll_no)
+        print("college Name:",self.collegeName)
+s0 = Student('10613','Yash Virulkar')
+s0.display()
+
+s1=Student('10100','Nikhil')
+s1.display()
 
 
+###Static Method:
