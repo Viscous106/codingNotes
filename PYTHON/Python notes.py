@@ -590,3 +590,15 @@ print(car1.name,car1.start())
 print(car2.name,car2.start())
 '''
 
+#there is a @classmethod used to change directly the class attr#for details chatgpt
+
+###dunder function:
+#ex:use __add__ to make a fxn for add complex num
+
+##intro to numpy:
+
+import numpy as np
+a=np.array(0)
+b=np.array([0,1,2])
+print(a,a.ndim)#ndim gives dimension of matrix
+print(b,b.ndim)
