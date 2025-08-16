@@ -491,7 +491,7 @@ s0.name='Yash Virulkar'
 print(s0.roll_no,s0.name)
 '''
 #Better way to write class oriented 
-
+'''
 class Student:
     fullname="anonymous"#In case both obj and class attr are present obj attr is given preff . if only when obj attr is absent the class attr executes
     collegeName='IITM' #Class attr i.e. common for all
@@ -509,5 +509,36 @@ s0.display()
 s1=Student('10100','Nikhil')
 s1.display()
 
-
+'''
 ###Static Method:
+#This method is used in case you dont want to use self 
+#Used of class only not obj
+'''
+class Lol:
+    @staticmethod #this is a decorator used to tell compilor that we are using
+    def laugh():
+        print('I am laughing out my stomach')
+'''
+
+
+###ABSTRACTION:
+#show only the neccessary stuf and hide useless 
+#Def:Hiding the implementation etail of a class and showing the essential features to the user
+'''
+class car:
+    def __init__(self):
+        self.acc=False
+        self.brake=False
+        self.clutch=True
+    def start(self):
+        self.acc=True
+        self.clutch=True
+        print('Car started')
+car0 = car()
+car0.start()#Here output has no mention of the brake oor acc behind the scene
+
+'''
+
+###Encapsulation:
+#Def :Wrapping data and function into a single unit object 
+
