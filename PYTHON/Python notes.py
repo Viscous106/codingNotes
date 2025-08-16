@@ -541,4 +541,22 @@ car0.start()#Here output has no mention of the brake oor acc behind the scene
 
 ###Encapsulation:
 #Def :Wrapping data and function into a single unit object 
-
+class Account:
+    def __init__(self,bal,acc):
+        self.bal=bal
+        self.acc=acc
+    def detail(self):
+        print('Account Num:',self.acc)
+        print('Balance:',self.bal)
+    def debit(self,deb):
+        self.deb=deb
+        print('The amount debited is',self.deb)
+        print("The amount after debit is:", (self.bal-self.deb))
+    def credit(self,cre):
+        self.cre=cre
+        print('The amount credited is',self.cre)
+        print("The amount after credit is:", (self.bal-self.cre))
+acc1=Account(10000,12345)
+acc1.detail()
+acc1.debit(400)
+acc1.credit(700)
