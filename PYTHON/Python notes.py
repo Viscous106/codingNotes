@@ -541,6 +541,7 @@ car0.start()#Here output has no mention of the brake oor acc behind the scene
 
 ###Encapsulation:
 #Def :Wrapping data and function into a single unit object 
+'''
 class Account:
     def __init__(self,bal,acc):
         self.bal=bal
@@ -560,3 +561,32 @@ acc1=Account(10000,12345)
 acc1.detail()
 acc1.debit(400)
 acc1.credit(700)
+'''
+
+#del s0 #Deletes the object
+#del s0.name#deletes the obj property
+
+###For other languages the class can be made private but in python it can only be made private (like)  just add '__' before variable to make it private
+
+###Inheritance:
+#When one class derives the property & meth of another class
+'''
+class car:
+    def __init__(self):
+        self.acc=False
+        self.brake=False
+        self.clutch=False
+    def start(self):
+        self.acc=True
+        self.clutch=True
+        print('Car started')
+
+class toyotaCars(car):#all the fxns of class car are inherited now
+    def __init__(self,name):
+        self.name=name
+car1 = toyotaCars("fortuner")
+car2 = toyotaCars("prius")
+print(car1.name,car1.start())
+print(car2.name,car2.start())
+'''
+
