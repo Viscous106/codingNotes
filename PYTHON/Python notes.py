@@ -596,9 +596,22 @@ print(car2.name,car2.start())
 #ex:use __add__ to make a fxn for add complex num
 
 ##intro to numpy:
-
+'''
 import numpy as np
 a=np.array(0)
 b=np.array([0,1,2])
 print(a,a.ndim)#ndim gives dimension of matrix
 print(b,b.ndim)
+'''
+
+##intro to pandas:
+import pandas as pd
+'''
+'''
+scores = pd.read_csv('scores.csv')#it first opened scores in read mode
+print(scores)
+print(scores.shape)#rows and col details
+print(scores['Total'].max())#now it opened total coloumn and then find max of all of them
+print(scores['Total'].mean())
+print(scores['Total'].sort_values())
+print(scores['Total'].sort_values(ascending=False))
