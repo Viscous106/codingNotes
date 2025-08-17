@@ -607,7 +607,6 @@ print(b,b.ndim)
 ##intro to pandas:
 import pandas as pd
 '''
-'''
 scores = pd.read_csv('scores.csv')#it first opened scores in read mode
 print(scores)
 print(scores.shape)#rows and col details
@@ -615,3 +614,26 @@ print(scores['Total'].max())#now it opened total coloumn and then find max of al
 print(scores['Total'].mean())
 print(scores['Total'].sort_values())
 print(scores['Total'].sort_values(ascending=False))
+print(scores.head())#first 5
+print(scores.tail())#last 5
+#for row access
+print(scores[scores['Name']=='Nisha'])#filtering
+#multi level filtering
+print(scores[scores['Gender']=='M']['Total'].max())
+print(scores[scores['Gender']=='F']['Total'].max())
+#pandas use & inplace of and
+'''
+###intro to matplotlib
+#To use graph ploting
+import matplotlib.pyplot as mat
+import numpy as np
+
+x=np.array([1,3,5,2,4])
+y=np.array([9,3,5,2,1])
+lab=['apple','banana','coconut','grapes','gauva']
+#mat.scatter(x,y)#scater chart
+#mat.bar(x,y)#bar graph
+#mat.barh(x,y)#horizontal bar graph
+#mat.hist(x)#histogram  
+#mat.pie(x,labels=lab)#pie chart
+mat.show()
