@@ -625,6 +625,7 @@ print(scores[scores['Gender']=='F']['Total'].max())
 '''
 ###intro to matplotlib
 #To use graph ploting
+'''
 import matplotlib.pyplot as mat
 import numpy as np
 
@@ -637,3 +638,4 @@ lab=['apple','banana','coconut','grapes','gauva']
 #mat.hist(x)#histogram  
 #mat.pie(x,labels=lab)#pie chart
 mat.show()
+'''
