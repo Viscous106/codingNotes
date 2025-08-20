@@ -69,3 +69,5 @@ FZ(z)=1-(1-FX(z)(1-FY(z)))
 #refer this:
 '''/home/viscous/#Viscous/codingNotes/statsNotesPythonStyle/PMF E[X.png'''
 
+#property:
+'''E[aX+bY]=aE[X]+bE[Y]'''
