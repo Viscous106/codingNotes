@@ -1,5 +1,10 @@
 ###Python notes###
 
+###For notes  in exams:
+'''
+help(str)#shows doc of str
+'''
+
 ###types of data
 a1,a2,a3,a4,b1,b2,c1,c2,d1,d2,e1,e2,f,g=3,4.5,4,5,'yash','virulkar',{1,2,3,4},{3,6},True,False,[1,2,4],[2,6],'0123456789','----python----'
 alpha='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
@@ -14,18 +19,16 @@ print('addition',a1+a2,'subtraction',a1-a2,'multiplication',a1*a2,'division',a1/
 ###relational operators
 '''
 print('a1>a2',a1>a2,'a2>a1',a2>a1,'a2>=a1',a2>=a1,'a1=a2',a1==a2,'a1!=a2',a1!=a2,'a1*1.5=a2',(a1*1.5)==a2,sep='\n')
-circular swap of a1, a2, a3
 '''
 '''
-a1, a3, a4 = a3, a4, a1
 ###circular swap of a1, a2, a3
+a1, a3, a4 = a3, a4, a1
 print(a1,a3,a4)
 '''
 ###logical operators
 '''
 print('d1 and d2',d1 and d2,'d1 or d2',d1 or d2,'not d1',not d1,sep='\n')
 '''
-
 ###operation on strings
 #taking individual letters
 '''
@@ -117,14 +120,20 @@ print(random.sample([1,2,3,4,5,6,7,8,9,10],3))#random sample of 3 from the list
 '''
 ###coin toss
 '''
+import random
 a=random.random()
-if a<0.5:
-    print('head')
-elif a>0.5:
-    print('tail')
-else:
-    print('draw')
+while a!=0.5:
+    print(a)
+    if a<0.4:
+        print('head')
+    elif a>0.6:
+        print('tail')
+    else:
+        print('draw')
+        break
+    a=random.random()
 '''
+
 
 ###import calander
 '''
