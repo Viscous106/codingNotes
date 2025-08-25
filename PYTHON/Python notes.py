@@ -172,6 +172,7 @@ print('factorial of the number is:',fact)
 '''
 ###for loop 
 #sum of first n natural numbers
+####use recursion for ease
 '''
 sum=0
 for i in range((int(input('Enter a number:')))+1):   # for natural num +1 as it starts with 0 as we know int starts from 0 
