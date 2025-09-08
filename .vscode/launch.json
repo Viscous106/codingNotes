@@ -2,6 +2,13 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "java",
+      "name": "javaNotes",
+      "request": "launch",
+      "mainClass": "javaNotes",
+      "projectName": "codingNotes_96282395"
+    },
+    {
       "name": "C/C++ Runner: Debug Session",
       "type": "cppdbg",
       "request": "launch",

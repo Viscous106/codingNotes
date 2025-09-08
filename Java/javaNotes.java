@@ -339,8 +339,12 @@ class javaNotes {
 }
 */
 
-/* 
-import java.util.*;
+
+/*
+ import java.util.*;
 public class javaNotes {
-    }
- } */
+        public static void main(String[] args) {
+        }       
+}
+*/
+
