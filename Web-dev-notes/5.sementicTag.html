@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- order of pref for css is inline > internal > external. For internal and external whichever  is writen at the bottom is given preference.. -->
+    <!-- this is for external CSS -->
+    <link rel="stylesheet" href="./script.css" />
+    <style>
+      /* Internal CSS */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        line-height: 1.6;
+      }
+      header,
+      nav,
+      main,
+      aside,
+      footer {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 10px;
+        background-color: #f9f9f9;
+      }
+      h1, h2 {
+        color: #333;
+      }
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+      ul li {
+        margin: 5px 0;
+      }
+      a {
+        text-decoration: none;
+        color: #007BFF;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Semantic HTML tags -->
+    <header>
+      <!-- Used for to type things in the top or title of the page -->
+      <!-- this is an inline style css -->
+      <h1 style="background-color: aqua;">This is header</h1>
+    </header>
+    <nav>
+      <div class="brand">
+        <a href="1.index.html">MyWebsite</a>
+      </div>
+      <div class="nav-links">
+        <a href="http://127.0.0.1:5500/Web-dev-notes/5.sementicTag.html" class="active">Home</a>
+        <a href="https://www.linkedin.com/in/yash-virulkar-338418329" target="_blank" class="cta-button">Contact</a>
+      </div>
+    </nav>
+    <span>
+      <!-- Used for inline elements -->
+
+      This is a span element.
+      <strong>This text is bold.</strong>
+      <em>This text is italicized.</em>
+      <small>This text is small.</small>
+      <mark>This text is highlighted.</mark>
+      <del>This text is deleted.</del>
+      <ins>This text is inserted.</ins>
+      <sub>This text is subscript.</sub>
+      <sup>This text is superscript.</sup>
+      <aside>This is an aside element.</aside>
+      <time datetime="2024-06-01">June 1, 2024</time>
+      <code>This is a code element.</code>
+      <var>This is a variable element.</var>
+      <s>This text is strikethrough.</s>
+      <u>This text is underlined.</u>
+      <q>This is a quotation.</q>
+      <abbr title="Abbreviation">abbr</abbr>
+      <cite>This is a citation.</cite>
+      <dfn>This is a definition.</dfn>
+      <b>This text is bold without extra importance.</b>
+      <i>This text is italicized without extra importance.</i>
+      <bdo dir="rtl">This text is displayed right-to-left.</bdo>
+      <wbr />This is a word break opportunity.
+    </span>
+    <form>
+      <!-- Used for forms -->
+      <label for="name" aria-placeholder="Enter your name:">Name:</label>
+      <input type="text" id="name" name="name" />
+      <br />
+      <label for="email" aria-placeholder="Enter your email:">Email:</label>
+      <input type="email" id="email" name="email" />
+      <br />
+      <label for="password" aria-placeholder="Enter your password:">Password:</label>
+      <input type="password" id="password" name="password" />
+      <br />
+      <label for="message" aria-placeholder="Enter your message:">Message:</label>
+      <textarea id="animatedBox" name="message"></textarea>
+      <br />
+      <select name="options" id="options">
+        <option value="option1">Option 1</option>
+        <option value="option2">Option 2</option>
+        <option value="option3">Option 3</option>
+      </select>
+      <br />
+      <input type="checkbox" id="subscribe" name="subscribe" />
+      <label for="subscribe">Subscribe to newsletter</label>
+      <br />
+      <label for="age">Age:</label>
+      <input type="number" id="age" name="age" min="0" max="120" />
+      <input type="submit" value="Submit" />
+      <button type="button" aria-label="Click Me!">Click Me!</button>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/HcOc7P5BMi4?si=ccaeVlMaSZbNs6NE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <fieldset>
+        <legend>Personal Information</legend>
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" />
+        <br />
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" />
+      </fieldset>
+    </form>
+
+    <main>
+      <!-- Used for the main content of the page -->
+      <article>
+        <h2>Article Title</h2>
+        <p>This is an article about semantic HTML tags.</p>
+      </article>
+      <section>
+        <h2>Section Title</h2>
+        <p>This section contains related content.</p>
+      </section>
+      <div id="box1">
+        <h1>Div Element</h1>
+      </div>
+      <div id="box2">
+        <p>This is a generic container for grouping content.</p>
+      </div>
+      <div id="container">
+        <p>This is another generic container for grouping content.</p>
+        <div id="nestedBox1">
+          <p>This is a nested div element.</p>
+        </div>
+        <div id="nestedBox2">
+          <p>This is another nested div element.</p>
+        </div>
+        <div id="nestedBox3">
+          <p>This is yet another nested div element.</p>  
+        </div>
+        </div>
+    </main>
+    <aside>
+      <!-- Used for content that is related to the main content -->
+      <h2>Related Links</h2>
+      <ul>
+        <li><a href="#link1">Link 1</a></li>
+        <li><a href="#link2">Link 2</a></li>
+      </ul>
+    </aside>
+    <footer>
+      <!-- Used for the footer of the page  -->
+      <div class="footer-content">
+        <p>Contact us at: <a href="mailto:info@example.com">info@example.com</a></p>
+        <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

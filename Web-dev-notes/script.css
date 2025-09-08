@@ -1,0 +1,299 @@
+/* Universal Selector */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* Button Styles */
+button {
+  background-color: cadetblue;
+  color: rgb(255, 255, 255);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: darkcyan;
+}
+
+/* Id Selector */
+#uniqueElement {
+  color: crimson;
+}
+/* Class Selector */
+.highlight {
+  background-color: yellow;
+}
+/* Element Selector */
+p {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+}
+/* Grouping Selector */
+h1, h2, h3 {
+  font-family: 'Arial', sans-serif;
+  margin-bottom: 10px;
+}
+
+/* Child Selector */
+ul > li {
+  list-style-type: square;
+  margin-left: 20px;
+}
+/* Attribute Selector */
+input[type="text"] {
+  border: 1px solid #ccc;
+  padding: 8px;
+  border-radius: 4px;
+}
+/* Text Properties */
+h1{
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: darkslateblue;
+    margin-bottom: 20px;
+}
+h1, h2, h3 {
+  font-family: 'Arial', sans-serif;/*arial has priority over sans-serif because it is written before if browser dont have arial then san will be used*/
+  margin-bottom: 10px;
+}
+p {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+}
+
+/*Box Model Properties*/
+.container {
+  width: 80%;
+  margin: 0 auto; /* Center the container */
+  padding: 20px 10px 15px 25px; /* Top, Right, Bottom, Left */
+  border: 1px dotted #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+  border-radius: 40px;
+}
+body{
+    background-color: rgb(2, 166, 172);
+    
+}
+header, main, footer {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+#box1, #box2 {
+  border: 2px solid #000000;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: #e8f5e9;
+  /* display: inline-block; //Display as inline-block to allow width and height */
+}
+#box1 {
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  background-color: #f5b9b9;
+  position: relative;
+  top: 5px; /* Moves the box down */
+  left: 200px; /* Moves the box to the right */
+  width: 300px; /* Sets a fixed width */
+  height: 150px; /* Sets a fixed height */
+  border-radius: 10px; /* Rounds the corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a shadow effect */
+  transition: transform 0.3s; /* Smooth transition for hover effect */
+}
+#box2 {
+  font-style: italic;
+  color: #aa3737;
+}
+.footer-content {
+  text-align: center;
+  font-size: 2em;/*em user em means 2 times the size of the parent element*/
+  font-size: 3rem;/*rem user rem means 3 times the size of the root element*/
+  color: #555;
+  margin-top: 0.1%;/*percentage user*/
+  background-color: #85e4cf;
+}
+.footer-content a {
+  color: #007bff;
+  text-decoration: none;
+}s
+.footer-content a:hover {
+  text-decoration: underline;
+}
+/* Positioning Properties
+static for default
+relative for moving from original position
+absolute for moving from nearest positioned ancestor
+fixed for moving from viewport or browser window
+sticky for sticking in a specific position while scrolling
+*/
+/*z-index is used to set the priority order..*/
+
+/*Flexbox: */
+#container{
+  display: flex;
+  flex-direction: row; /* Align items in a row (horizontal) */
+  justify-content: space-around; /* Distribute space around items */
+  align-items: center; /* Center items vertically */
+  gap: 20px; /* Space between items */
+  border: #333 solid 5px;
+  background-color: #aaf0ea;
+}
+#nestedBox1 {
+  background-color: lightcoral;
+  padding: 20px;
+  border-radius: 10px;
+  flex: 1; /* Each nested box takes equal space */
+  text-align: center;
+  color: white;
+  font-weight: bold;
+}
+#nestedBox2 {
+  background-color: lightseagreen;
+  padding: 20px;
+  border-radius: 10px;
+  flex: 1; /* Each nested box takes equal space */
+  text-align: center;
+  color: white;
+  font-weight: bold;
+}
+#nestedBox3 {
+  background-color: lightskyblue;
+  padding: 20px;
+  border-radius: 10px;
+  flex: 1; /* Each nested box takes equal space */
+  text-align: center;
+  color: white;
+  font-weight: bold;
+}
+
+/* Professional Navigation Bar Styles */
+nav {
+  display: flex;
+  justify-content: space-between; /* Pushes brand to the left and links to the right */
+  align-items: horizontal-flex-;
+  background-color: #fff; /* White background */
+  padding: 15px 30px;
+  border-bottom: 1px solid #eee; /* Subtle border at the bottom */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+}
+
+/* Brand/Logo Styling */
+nav .brand a {
+  font-size: 1.5em;
+  font-weight: bold,initial;
+  color: #333;
+  background-color: #e28090;
+  text-decoration: none;
+}
+
+/* Navigation Links Container */
+nav .nav-links {
+  display: flex;
+  align-items: center;
+}
+
+/* Navigation Link Styling */
+nav .nav-links a {
+  color: #555;
+  text-decoration: none;
+  padding: 8px 15px;
+  margin: 0 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Hover effect for links */
+nav .nav-links a.active:hover {
+  background-color: #91e0cd;
+  color: white;
+}
+
+/* Active link style */
+nav .nav-links a.active {
+  background-color: #000000;
+  color: white;
+}
+
+/* Call-to-action button style */
+nav .nav-links .cta-button {
+  background-color: #000000;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+nav .nav-links .cta-button:hover {
+  background-color: #91e0cd;
+  color: white;
+}
+
+/*Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  nav .nav-links {
+    flex-direction: column;
+    width: 100%;
+  }
+  nav .nav-links a {
+    margin: 5px 0;
+    width: 100%;
+    text-align: center; /* Center text for better appearance */
+  }
+  nav .nav-links .cta-button {
+    width: 100%;
+    text-align: center; /* Center text for better appearance */
+  }
+}
+
+/*Transitions*/
+#name{
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+#name:hover {
+  background-color: #45a049;
+  transform: scale(1.05); /* Slightly enlarge the element */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+}
+/*Animations*/  
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes identifier {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0); }  
+}
+#animatedBox {
+  width: 100px;
+  height: 100px;
+  background-color: coral;
+  animation: fadeIn 2s ease-in-out;
+  margin: 20px auto;
+  border-radius: 10px;
+  animation-iteration-count: infinite;
+}
