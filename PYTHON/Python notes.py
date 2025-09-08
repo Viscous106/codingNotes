@@ -493,7 +493,7 @@ if age<18:
 '''
 class Student:
     roll_no = None
-    name     = None
+    name = None
 
 s0 = Student()
 s0.roll_no=10613
