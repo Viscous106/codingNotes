@@ -1,3 +1,14 @@
+/* Priority order */
+/* 
+1. !important
+2. Inline styles
+3. Id selectors
+4. Class selectors
+5. Element selectors
+6. Universal selector
+ */
+
+
 /* Universal Selector */
 * {
   margin: 0;
