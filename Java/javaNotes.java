@@ -340,10 +340,45 @@ class javaNotes {
 */
 
 
+/*
+ * import java.util.*;
+ public class javaNotes {
+         public static void main(String[] args) {
+            Scanner sc=new Scanner(System.in);
+            int a= sc.nextInt();
+            int b= 1;
+            int c;
+            while (a>=b){
+                c=b;
+                while(c!=0){
+                        System.out.print('*');
+                        c--;}
+                b++;
+                System.out.println();                
+        }
+    }
+}
 
-// import java.util.*;
-// public class javaNotes {
-//         public static void main(String[] args) {
-//         }       
-// }
+ 
+import java.util.*;
+public class javaNotes {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int num = sc.nextInt();
+        int reversed = 0;
+        int temp = num;
 
+        while (temp != 0) {
+            int digit = temp % 10;
+            reversed = reversed * 10 + digit;
+            temp /= 10;
+        }
+
+        int doubled = reversed * 2;
+        System.out.println("Original number: " + num);
+        System.out.println("Reversed number: " + reversed);
+        System.out.println("Doubled value: " + doubled);
+}
+}
+
+*/
