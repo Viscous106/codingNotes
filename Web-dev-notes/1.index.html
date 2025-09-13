@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- saved from url=(0064)file:///home/viscous/%23viscous/codingNotes/Web%20Dev/index.html -->
 <html lang="en">
 
 <head>
@@ -16,9 +15,13 @@
             color: aqua;
             
         }
-            /* if the same thing is styled in ext css and int css then the cascading principle 
+        span{
+            background-color: aqua;
+        }
+        /* if the same thing is styled in ext css and int css then the cascading principle 
         works whichever is defined at latest works */
     </style>
+    <script src="Script.js"></script>
 </head>
 
 <body>
@@ -33,12 +36,14 @@
         <!--Button-->
         <!-- this is inline css where i used style-->
          <!-- inline css doesnt follow cascading -->
-        <br><button type="button" style="color: cadetblue; text-align:center;">Button
+        <br><button type="button" style="color: cadetblue; text-align:center;">Button</button>
     </header>
-    <p>C<sub>this is subscript</sub>
-    O<sup>this is superscript</sup>
-    </p>
-        <br>
+
+    <span style="background-color:aquamarine;">
+        C<sub>this is subscript</sub>    
+        O<sup>this is superscript</sup>
+    </span>
+    <br>
     <title>Lists</title>
     <!--UNordered list-->
     <div>
@@ -69,18 +74,7 @@
         <tbody>
             <tr>
                 <td>Yash</td>
-                <td>100</td>
-                <td>97</td>
-            </tr>
-            <tr>
-                <td>Nikhil</td>
-                <td>99</td>
-                <td>99</td>
-            </tr>
-        </tbody>
-    </table>
 
 
 </body>
-<script src="Script.js"></script>
 </html>
