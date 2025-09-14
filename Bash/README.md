@@ -34,3 +34,5 @@
 #grep 'str' filename   Searchs for str in file
 #grep -v 'str' filename Search for all line which dont have str
 #command1|comand2      Outputof 1st became input for second .This is pipe command
+
+**alias** **name**=**'command'** # now you can use name as a vairable for ussing the command 		   anywhere below in the script.
