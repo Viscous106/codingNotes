@@ -46,7 +46,7 @@ class javaNotes {
         //////////input string:
                 Scanner in = new Scanner(System.in);
                 System.out.println("Enter a text:");
-                //how to take string output
+                //how to take string input
                 String input0=in.next();//it takes input till space
                 String input1=in.nextLine();//it takes input till end of line
                 System.out.print("you have entered "+input1);
@@ -65,8 +65,7 @@ class javaNotes {
                 // arr[1]=60;
                 // arr[2]=30;
                 // arr[3]=40;
-                // arr[4]=50;
-                
+                // arr[4]=50;                
                 
                 //Meth 2
                 int[] arr = {10, 60, 30, 40, 50};//declaration and initialization of arraay
@@ -89,6 +88,7 @@ class javaNotes {
                 arr[2][0]=70;
                 arr[2][1]=80;
                 arr[2][2]=90;
+                 
                 //Meth 2
                 // int[][] arr = {{10,20,30},{40,50,60},{70,80,90}};//declaration and initialization of 2D array
                 System.out.println(Arrays.deepToString(arr));//prints the 2D array
@@ -341,7 +341,7 @@ class javaNotes {
 
 
 /*
- * import java.util.*;
+import java.util.*;
  public class javaNotes {
          public static void main(String[] args) {
             Scanner sc=new Scanner(System.in);
