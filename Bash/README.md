@@ -35,4 +35,18 @@
 #grep -v 'str' filename Search for all line which dont have str
 #command1|comand2      Outputof 1st became input for second .This is pipe command
 
-**alias** **name**=**'command'** # now you can use name as a vairable for ussing the command 		   anywhere below in the script.
+**#alias** **name**=**'command'**    now you can use name as a vairable for ussing the command 		   				   				    anywhere below in the script.
+
+**#source** ~/.bashrc    save and apply
+
+#df       info on file systems
+#free    use to show the memory 	free space availble
+
+#kill    used to kill processess.
+
+#curl -O link     downloads a file as remote file
+
+#wget       used to download files in any system
+#zip [archive.zip] [folder location]    make a zip file
+#unzip [archieve.zip]   unzip a zip file
+#tar same as zip but foe .tar file

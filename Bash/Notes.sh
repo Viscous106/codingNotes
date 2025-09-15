@@ -8,10 +8,8 @@ Multi line comment
 '
 
 : '
-echo "hello world!!" ##Print Statement
-'
 
-: '
+echo "hello world!!" ##Print Statement
 
 ###Conditionals:
 a=10
