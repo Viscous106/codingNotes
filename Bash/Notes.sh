@@ -11,18 +11,6 @@
 ###Print Statement:
     echo "hello world!!"
 
-###Intro to functions:
-
-    fxn(){
-        local var="loc.."
-        echo $var
-    }
-    fxn #Calling Fxn 
-
-###Sum of two variable:
-    #Concatenation:
-        
- 
 ###Types of Data types:
     #String:
         str="KO!!"
@@ -80,7 +68,6 @@
                 echo "Number is between 1 and 9"
             fi
         fi
-'
 ###Intro to Loops:
     #For Loop:
         for i in {1..6}; do
@@ -108,8 +95,20 @@
             echo "Outer loop $i, Inner loop $j"
         done
     done
+'
+###Intro to functions:
 
+    fxn(){
+        local var="local"
+        echo $var
+    }
+    fxn #Calling Fxn 
 
+    greet() {
+        local name=$1
+        echo "Hello, $name!"
+    }
+    greet "Alice"
     
 
 
