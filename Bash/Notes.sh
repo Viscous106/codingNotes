@@ -31,25 +31,25 @@
             echo "Sum: $sum, Difference: $difference, Product: $product, Quotient: $quotient"   
     #Arrays:
         fruit=("apple","banana")
-    #Associative arrays or dictionary:
         declare -A colors
         colors[apple]="red"
         colors[banana]="yellow"
         echo ${colors[apple]}
-    #Operators:
-        -eq = is ==
-        -ne != is !=
-        -lt or < is <
-        -le is <=
-        -gt or > is >
-        -ge is >=
-        % modulus
-        && logical AND
-        || logical OR
-        -e: Checks if a file exists
-        -d: Checks if a directory exists
-        -f: Checks if a file is a regular file
-        -s: Checks if a file is not empty
+        echo ${fruit[0]}
+###Operators:
+    -eq = is ==
+    -ne != is !=
+    -lt or < is <
+    -le is <=
+    -gt or > is >
+    -ge is >=
+    % modulus
+    && logical AND
+    || logical OR
+    -e: Checks if a file exists
+    -d: Checks if a directory exists
+    -f: Checks if a file is a regular file
+    -s: Checks if a file is not empty
 
 ###Conditionals:
     #IfElseelif:
@@ -95,27 +95,27 @@
             echo "Outer loop $i, Inner loop $j"
         done
     done
-'
+
 ###Intro to functions:
 
     fxn(){
-        local var="local"
+        var="local"
         echo $var
     }
     fxn #Calling Fxn 
 
     greet() {
-        local name=$1
+        name=$1
         echo "Hello, $name!"
     }
     greet "Alice"
     
     add() {
-        local sum=$(($1 + $2))
+        sum=$(($1 + $2))
         echo $sum
     }
     result=$(add 5 3)
     echo "The sum is $result"
 
-
-
+'
+###

@@ -50,3 +50,10 @@
 #zip [archive.zip] [folder location]    make a zip file
 #unzip [archieve.zip]   unzip a zip file
 #tar same as zip but foe .tar file
+
+#* * * * * command_to_execute     where * * * * * is for ex: 0 0 * * * for 00:00
+**5.Minute** : 0-59
+**4.Hour** : 0-23
+**3.Day of Month** : 1-31
+**2.Month** : 1-12
+**1.Day of Week** : 0-7 (0 and 7 are Sunday)
