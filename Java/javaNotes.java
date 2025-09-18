@@ -1,7 +1,8 @@
-/*
+
 import java.util.*;
 import java.util.Arrays;
 import java.util.maths;
+/*
 class javaNotes {
         public static void main(String[] args) {
 
@@ -382,3 +383,9 @@ public class javaNotes {
 }
 
 */
+
+public class javaNotes {
+        public static void main(String[] args) {
+                             
+        }
+}

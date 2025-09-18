@@ -15,6 +15,7 @@
     n=null;//null
     u=undefined;//undefined
  
-////
+////Operation on int:
+    
 
 */
