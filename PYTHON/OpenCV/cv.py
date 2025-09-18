@@ -35,4 +35,4 @@ img=cv.imread("/home/viscous/#Viscous/Wallpaper/PNG/Pokemon 4k wallpaper.jpg")#r
 cv.imshow('Cat',img)
 
 def rescaleframe(frame,scale=0.75):
-    width = 
+    return 0
