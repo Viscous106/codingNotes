@@ -70,6 +70,4 @@ int main() {
         string b="Linux";
         string c=a+" "+b;
         cout<<c<<"\n";
-
-
 }
