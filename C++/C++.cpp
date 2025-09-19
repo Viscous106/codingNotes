@@ -1,4 +1,5 @@
 #include <iostream>//Header file
+#include <cmath>
 using namespace std;
 
 /*
@@ -60,14 +61,41 @@ int main() {
         bool e;
         cin>>e;
         cout<<"a="<<a<<"\n"<<"b="<<b<<"\n"<<"c="<<c<<"\n"<<"d="<<d<<"\n"<<"e="<<e<<"\n";
-
-    
-}
-*/
-int main() {
+        char greeting2[] = "Hello";  // C-Style String (an array of characters)
+        cout << greeting2[]
+        //To take a line input:
+            string fullName;
+            cout << "Type your full name: ";
+            getline (cin, fullName);
+            cout << "Your name is: " << fullName;
+            // Type your full name: John Doe
+            // Your name is: John Doe
+        
     //Concatination:
         string a="Arch";
         string b="Linux";
         string c=a+" "+b;
         cout<<c<<"\n";
+    //Length of a string:
+        string txt="ArchLinux";
+        cout << txt.length();
+    //Prints nth element off string:
+        cout << txt[2]
+    //How to type special charecters:
+        string txt = "We are the so-called \"Vikings\" from the north.";
+        /n  new line
+        /t  tab
+    //MAX & MIN:
+    cout << max(5, 10);
+    cout << min(5, 10);
+    // Include the cmath library
+        //#include <cmath>
+        cout << sqrt(64);
+        cout << round(2.6);
+        cout << log(2);
+
+}
+*/
+int main() {
+    
 }
