@@ -385,25 +385,14 @@ public class javaNotes {
 import java.util.*;
 import  java.lang.Math;
 public class javaNotes {
-        public static void main(String[] args) {
-                int a=Armstrong(153);
-                System.out.println(a);
-        }
+        
+}
 
 //Armstrong num
-public static int Armstrong(int num){
-        int temp = num;
-        int sum = 0;
-        while(temp!=0){
-                sum+=(int)(Math.pow((temp%10),3));
-                temp/=10;
-        }
-        if(num==sum){
-                return 1;
-        }
-        else{
-                return 0;
-        
-        }
-        }
+public class Solution {
+    public int solve(int A) {
+        //factorial
+        int fact=1;
+        int num=A;
+}
 }       
