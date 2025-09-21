@@ -641,7 +641,7 @@ import numpy as np
 
 x=np.array([1,3,5,2,4])
 y=np.array([9,3,5,2,1])
-lab=['apple','banana','coconut','grapes','gauva']
+lab=['apple','banana','coconut','grapes','gauva']z
 #mat.scatter(x,y)#scater chart
 #mat.bar(x,y)#bar graph
 #mat.barh(x,y)#horizontal bar graph
