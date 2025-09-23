@@ -339,60 +339,24 @@ class javaNotes {
 }
 */
 
-
-/*
-import java.util.*;
- public class javaNotes {
-         public static void main(String[] args) {
-            Scanner sc=new Scanner(System.in);
-            int a= sc.nextInt();
-            int b= 1;
-            int c;
-            while (a>=b){
-                c=b;
-                while(c!=0){
-                        System.out.print('*');
-                        c--;}
-                b++;
-                System.out.println();                
-        }
-    }
-}
-
- 
+/* */
 import java.util.*;
 public class javaNotes {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int num = sc.nextInt();
-        int reversed = 0;
-        int temp = num;
-
-        while (temp != 0) {
-            int digit = temp % 10;
-            reversed = reversed * 10 + digit;
-            temp /= 10;
-        }
-
-        int doubled = reversed * 2;
-        System.out.println("Original number: " + num);
-        System.out.println("Reversed number: " + reversed);
-        System.out.println("Doubled value: " + doubled);
-}
-}
-
-*/
-import java.util.*;
-import  java.lang.Math;
-public class javaNotes {
+        System.out.print("Enter an uppercase character to convert to lowercase: ");
         
-}
+        // Read the first character of the input string
+        char uppercaseChar = sc.next().charAt(0);
 
-//Armstrong num
-public class Solution {
-    public int solve(int A) {
-        //factorial
-        int fact=1;
-        int num=A;
+        // ASCII value of 'a' is 97 and 'A' is 65. The difference is 32.
+        // So, to convert an uppercase letter to lowercase, we add 32 to its ASCII value.
+        if (uppercaseChar >= 'A' && uppercaseChar <= 'Z') {
+            char lowercaseChar = (char) (uppercaseChar + 32);
+            System.out.println("The lowercase character is: " + lowercaseChar);
+        } else {
+            System.out.println("Input is not an uppercase letter.");
+        }
+        sc.close();
+    }
 }
-}       

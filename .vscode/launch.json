@@ -2,6 +2,13 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "AsciiToFile",
+            "request": "launch",
+            "mainClass": "AsciiToFile",
+            "projectName": "codingNotes_96282395"
+        },
+        {
             "name": "(gdb) Attach",
             "type": "cppdbg",
             "request": "attach",

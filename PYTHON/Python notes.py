@@ -649,3 +649,15 @@ lab=['apple','banana','coconut','grapes','gauva']z
 #mat.pie(x,labels=lab)#pie chart
 mat.show()
 '''
+
+class Solution:
+    def firstBadVersion(self, n: int) -> int:
+        def BS(a,b):
+            mid=(a+b)//2
+            if(a==b):
+                return(a)
+            if(isBadVersion(mid)):
+                return (BS(a,mid))
+            else:
+                return (BS(mid+1,b))
+        return (BS(0,n))
