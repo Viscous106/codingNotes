@@ -74,6 +74,9 @@ class javaNotes {
                 System.out.println(arr.length);//length of array
                 Arrays.sort(arr);
                 System.out.println(Arrays.toString(arr));//prints the sorted array
+
+                ////To take arr input use for loop.
+                int n=arr.length;///To find length of array
                 
         //////////2d array:
                 
@@ -339,7 +342,7 @@ class javaNotes {
 }
 */
 
-/* */
+/*
 import java.util.*;
 public class javaNotes {
     public static void main(String[] args) {
@@ -359,4 +362,18 @@ public class javaNotes {
         }
         sc.close();
     }
+}
+*/
+
+import java.util.*;
+public class javaNotes{
+   public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int x = sc.nextInt();
+        int[] arr = new int[x];
+        for (int i=0;i<x;i++){
+                arr[i]=sc.nextInt();
+        }
+        System.out.println(arr);
+   }
 }
