@@ -379,5 +379,6 @@ public class javaNotes{
             }
         }
         System.out.println(Arrays.deepToString(arr));
+        sc.close();
    }
 }
