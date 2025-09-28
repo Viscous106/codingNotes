@@ -366,14 +366,18 @@ public class javaNotes {
 */
 
 import java.util.*;
+import java.util.Arrays;
 public class javaNotes{
    public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
         int x = sc.nextInt();
-        int[] arr = new int[x];
+        int y = sc.nextInt();
+        int[][] arr = new int[x][y];
         for (int i=0;i<x;i++){
-                arr[i]=sc.nextInt();
+            for (int j=0;j<y;j++){
+                arr[i][j]=sc.nextInt();
+            }
         }
-        System.out.println(arr);
+        System.out.println(Arrays.deepToString(arr));
    }
 }
