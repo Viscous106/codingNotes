@@ -1,41 +1,8 @@
-#! /bin/bash
 
-# ./filePath  use this to run the file 
-
-# Single line comment
-: '
-    Multi line comment
-'
-
-: '
-###Print Statement:
-    echo "hello world!!"
 
 ###Types of Data types:
-    #String:
-        str="KO!!"
-        #Concatenation:
-            str1="Hi "
-            str2="Hello"
-            echo "$str1$str2"
     
-    #NUMbers:
-        num=15
-        #Num Operations:
-            num1=5
-            num2=10
-            sum=$((num1 + num2))
-            difference=$((num2 - num1))
-            product=$((num1 * num2))
-            quotient=$((num2 / num1))
-            echo "Sum: $sum, Difference: $difference, Product: $product, Quotient: $quotient"   
-    #Arrays:
-        fruit=("apple","banana")
-        declare -A colors
-        colors[apple]="red"
-        colors[banana]="yellow"
-        echo ${colors[apple]}
-        echo ${fruit[0]}
+        
 ###Operators:
     -eq = is ==
     -ne != is !=
