@@ -1,11 +1,8 @@
-# 
-    Git commands for terminal:
+# Git commands for terminal:
 
 ## 1.How to login in github:
 
-git config --global user.name "Your Name"
-
-git config --global user.email "you@example.com"
+## config --global user.email "you@example.com"
 
 ## 2.Creting a repo:
 
@@ -22,7 +19,6 @@ git commit -m "message"     # commit staged changes
 git log                     # view commit history
 git log --oneline           # compact log
 
-
 ## 4.Dealing with branches:
 
 git branch                  # list branches
@@ -31,12 +27,11 @@ git branch `<name>`           # create branch
 
 git switch `<name>`           #  switch to branch
 
-git merge <branch>          # merge into current branch
+git merge `<branch>`          # merge into current branch
 
-git branch -d <name>        # delete branch (safe)
+git branch -d `<name>`        # delete branch (safe)
 
 git branch -D `<name>`        # force delete branch
-
 
 ## 5.Remote Repos:
 
@@ -47,12 +42,11 @@ git push                            # push commits
 git pull                            # fetch + merge changes
 git fetch                           # only fetch (no merge)
 
-
 ## 6.ctrl+Z:
 
-git restore <file>                  # discard changes in file
+git restore `<file>`                  # discard changes in file
 
-git restore --staged <file>         # unstage file
+git restore --staged `<file>`         # unstage file
 
 git reset --soft HEAD~1             # undo commit, keep changes staged
 

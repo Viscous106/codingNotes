@@ -23,7 +23,7 @@ def classify_image(model, image):
     try:
         processed_image = preprocess_image(image)
         predictions = model.predict(processed_image)
-        decoded_predictions = decode_predictions(predictions, top=3)[0]
+        decoded_predictions = decode_predictions(predictions, top=5)[0]
         
         return decoded_predictions
     except Exception as e:

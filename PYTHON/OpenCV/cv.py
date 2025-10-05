@@ -29,10 +29,3 @@ while True:
 vdo.release()#releases the video.
 cv.destroyAllWindows()#closes all the windows.
 '''
-
-###Resizing and Rescaling Frames:
-img=cv.imread("/home/viscous/#Viscous/Wallpaper/PNG/Pokemon 4k wallpaper.jpg")#reads the image.
-cv.imshow('Cat',img)
-
-def rescaleframe(frame,scale=0.75):
-    return 0
