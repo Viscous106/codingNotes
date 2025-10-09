@@ -3,6 +3,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "Main",
+            "projectName": "codingNotes_96282395"
+        },
+        {
+            "type": "java",
             "name": "AsciiToFile",
             "request": "launch",
             "mainClass": "AsciiToFile",

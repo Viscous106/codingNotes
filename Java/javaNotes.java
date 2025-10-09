@@ -338,47 +338,7 @@ class javaNotes {
                 else if(a%5==0){
                     System.out.print("Buzz");
                 }
+                 
         }
 }
 */
-
-/*
-import java.util.*;
-public class javaNotes {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter an uppercase character to convert to lowercase: ");
-        
-        // Read the first character of the input string
-        char uppercaseChar = sc.next().charAt(0);
-
-        // ASCII value of 'a' is 97 and 'A' is 65. The difference is 32.
-        // So, to convert an uppercase letter to lowercase, we add 32 to its ASCII value.
-        if (uppercaseChar >= 'A' && uppercaseChar <= 'Z') {
-            char lowercaseChar = (char) (uppercaseChar + 32);
-            System.out.println("The lowercase character is: " + lowercaseChar);
-        } else {
-            System.out.println("Input is not an uppercase letter.");
-        }
-        sc.close();
-    }
-}
-*/
-
-import java.util.*;
-import java.util.Arrays;
-public class javaNotes{
-   public static void main(String[] args) {
-        Scanner sc=new Scanner(System.in);
-        int x = sc.nextInt();
-        int y = sc.nextInt();
-        int[][] arr = new int[x][y];
-        for (int i=0;i<x;i++){
-            for (int j=0;j<y;j++){
-                arr[i][j]=sc.nextInt();
-            }
-        }
-        System.out.println(Arrays.deepToString(arr));
-        sc.close();
-   }
-}
