@@ -324,7 +324,7 @@ class javaNotes {
                 //but it can be achieved using interfaces
                 
 
-            //////Fizz-Buzz:
+        ////////Fizz-Buzz:
                 Scanner sc=new Scanner(System.in);
                 int a= sc.nextInt();
                 if (a%3==0){
@@ -338,7 +338,20 @@ class javaNotes {
                 else if(a%5==0){
                     System.out.print("Buzz");
                 }
-                 
+        ////////Arraylist:
+                ArrayList<String> fruits = new ArrayList<>();
+                fruits.add("Apple");
+                fruits.add("Banana");
+                fruits.add("Orange");
+                System.out.println(fruits);
+                fruits.remove("Banana");
+                String A = fruits.get(0);
+                fruits.add(2,"Mango");//Adds at index 2
+                fruits.set(0,"Kiwi");//Updates index 0
+                fruits.remove(1);//Removes element at index 1
+                System.out.println(fruits);
+                System.out.println(A);
+                
         }
 }
 */
