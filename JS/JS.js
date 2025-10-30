@@ -25,6 +25,7 @@
     else {
         console.log('You are not an adult');
     }
+    
 ////function:
     function checkAge(age) {
         if (age > 18) {
@@ -38,14 +39,11 @@
         }
     }
 
-
 ////Arrow function:
     const square = (x) => {
         return x * x;
     };
     console.log(square(5)); // 25
-
-
 
 ////class:
     class Person {
@@ -148,8 +146,8 @@
 /////Ternary operator:
     //Prompt runs only in browser environment
     const age = prompt("Please enter your age:");
-    let access = (age >= 18) ? 'granted' : 'denied';
-    console.log(`Access ${access}`);
+    letprevess = (age >= 18) ? 'granted' : 'denied';
+    console.log(prevess $prevess}`);
 
 
 /////String methods:
@@ -184,6 +182,40 @@
     //Output:
     //He said, "Hello!"
     //Welcome to JS.
-*/
 
-////
+////Methods:
+    //higher order function example:
+    //callback function example:
+    let arr=[1,2,3,4,5];
+    //arr.forEach(val,idx,arr)
+    arr.forEach(function sq(element) {
+        console.log(element * 2);
+    });
+    let sq = (a)=> a*a;
+
+////map method://same as forEach but this method return a new arr but forEach changes in existing one:
+    let squaredArr = arr.map(sq);
+    console.log(squaredArr);//[1,4,9,16,25]
+
+////filter method:
+    let evenArr = arr.filter(function isEven(element) {
+        return element % 2 === 0;
+    });
+    console.log(evenArr);//[2,4]
+    
+////reduce method:
+    let arr = [1, 2, 3, 4, 5];
+    let max = arr.reduce((prev, curr) => {
+        return prev > curr ? prev : curr;
+    });
+    
+    console.log(max);//15
+
+////find method:
+    let found = arr.find((element) => {
+        return element > 3;
+    });
+    console.log(found);//4
+
+    */
+
