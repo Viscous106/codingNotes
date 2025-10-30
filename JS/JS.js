@@ -37,6 +37,16 @@
             console.log('You are not an adult');
         }
     }
+
+
+////Arrow function:
+    const square = (x) => {
+        return x * x;
+    };
+    console.log(square(5)); // 25
+
+
+
 ////class:
     class Person {
         constructor(name, age) {//This is basically self.name in python type
@@ -56,16 +66,37 @@
             }
         }
     }
+
 ////Array(List):
+    //Str are immutable but lists are mutable
     const fruits = ['apple', 'banana', 'orange'];
     console.log(fruits[0]); // apple
     fruits.push('grape');
     console.log(fruits.length); // 4
     fruits.pop();//remove last element
-    fruits.pop();
     console.log(fruits); // 2
     fruits.shift(); // remove first element
     console.log(fruits); // 1
+    fruits.unshift('mango'); // add element at the beginning
+    console.log(fruits); // 3
+    console.log(fruits.indexOf('banana')); // 1
+    console.log(fruits.slice(0, 2)); // ['mango', 'banana']
+    console.log(fruits.join(', ')); // 'mango, banana, orange'
+    condole.log(fruits.toString()); // convert array to string
+    
+
+////Loop through array:
+    const numbers = [1, 2, 3, 4, 5];
+    for (let i in numbers) {
+        console.log(i);//prints index 0,1,2,3,4 
+    }
+    
+    const numbers = [1, 2, 3, 4, 5];
+        for (let i of numbers) {
+            console.log(i);//prints values 1,2,3,4,5
+        }
+
+
 ////Object(Dictionary):
     const person = {
         name: 'John',
@@ -100,12 +131,59 @@
         console.log(j); // 0, 1, 2
         j++;
     }
-////Arrow function:
-    const square = (x) => {
-        return x * x;
-    };
-    console.log(square(5)); // 25
-    
-*/ 
+////for-of loop:
+    //iterating over array
+    const colors = ['red', 'green', 'blue'];
+    for(let color of colors){
+        console.log(color);}
+    }
+////for-in loop:
+    //iterating over object
+    const car = {make: 'Toyota', model: 'Camry', year: 2020};
+    for(let key in car){
+        console.log(`${key}: ${car[key]}`);
+    }
 
-/////DOM Manipulation:
+
+/////Ternary operator:
+    //Prompt runs only in browser environment
+    const age = prompt("Please enter your age:");
+    let access = (age >= 18) ? 'granted' : 'denied';
+    console.log(`Access ${access}`);
+
+
+/////String methods:
+    //Creating a string
+    let str = "Hello, World!";
+    let str1 = str.toUpperCase(); // Convert to uppercase
+    let str2 = str.toLowerCase(); // Convert to lowercase
+    let str3 = str.slice(0, 5); // Extract substring
+    let str4 = str.replace("World", "JS"); // Replace substring
+    let str5 = str.split(", "); // Split string into array
+    let str6 = str.charAt(0); // Get character at index 0
+    let str7 = str.indexOf("World"); // Find index of substring
+    let str8 = str.concat(" Welcome to JavaScript."); // Concatenate strings
+    let str9 = str.trim(); // Remove whitespace from both ends
+    console.log(str1); // "HELLO, WORLD!"
+    console.log(str2); // "hello, world!"
+    console.log(str3); // "Hello"
+    console.log(str4); // "Hello, JS!"
+    console.log(str5); // ["Hello", "World!"]
+    console.log(str6); // "H"
+    console.log(str7); // 7
+    console.log(str8); // "Hello, World! Welcome to JavaScript."
+    console.log(str9); // "Hello, World!"
+    //Template literals:
+    let name = "Alice";
+    let greeting = `Hello, ${name}! Welcome to JS.`;//use of template literals
+    console.log(greeting); // "Hello, Alice! Welcome to JS."
+
+    //escape characters
+    let text = "He said, \"Hello!\"\nWelcome to JS.";
+    console.log(text);
+    //Output:
+    //He said, "Hello!"
+    //Welcome to JS.
+*/
+
+////
