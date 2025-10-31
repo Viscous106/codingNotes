@@ -9,7 +9,7 @@ cv2.imshow("Tokyo", img)##Displays the image in a window
 
 '''
 #Reading and displaying Videos
-x = "./docs/Videos/My_girl.mp4"#video path
+#x = "./docs/Videos/My_girl.mp4"#video path
 #x = 0 ##For webcam input1st webcam 1 for 2nd and so on
 
 vdo = cv2.VideoCapture(x)
@@ -26,6 +26,8 @@ except Exception as e:
 finally:
     vdo.release()##Releases the video capture object
 '''
+
+
 
 
 

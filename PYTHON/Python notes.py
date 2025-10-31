@@ -5,10 +5,13 @@
 help(str)#shows doc of str
 '''
 
+'''
 ###types of data
 a1,a2,a3,a4,b1,b2,c1,c2,d1,d2,e1,e2,f,g=3,4.5,4,5,'yash','virulkar',{1,2,3,4},{3,6},True,False,[1,2,4],[2,6],'0123456789','----python----'
 alpha='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 num='0123456789'
+'''
+
 '''
 print(a1,type(a1),a2,type(a2),b1,type(b1),b2,type(b2),c1,type(c1),c2,type(c2),d1,type(d1),d2,type(d2),e1,type(e1),e2,type(e2),f,type(f),g,type(g),sep='\n')
 '''
@@ -605,14 +608,7 @@ print(car2.name,car2.start())
 ###dunder function:
 #ex:use __add__ to make a fxn for add complex num
 
-##intro to numpy:
-'''
-import numpy as np
-a=np.array(0)
-b=np.array([0,1,2])
-print(a,a.ndim)#ndim gives dimension of matrix
-print(b,b.ndim)
-'''
+
 
 ##intro to pandas:
 import pandas as pd
@@ -650,14 +646,32 @@ lab=['apple','banana','coconut','grapes','gauva']z
 mat.show()
 '''
 
-class Solution:
-    def firstBadVersion(self, n: int) -> int:
-        def BS(a,b):
-            mid=(a+b)//2
-            if(a==b):
-                return(a)
-            if(isBadVersion(mid)):
-                return (BS(a,mid))
-            else:
-                return (BS(mid+1,b))
-        return (BS(0,n))
+##intro to numpy:
+import numpy as np
+##List vs Numpy array
+
+#numpys are faster and take less memory than lists
+#numpy uses only the space needed unlikr list which uses full 4 bytes
+
+#dot product of two arraysand some basic methods
+a=np.array([1,3,5])
+b=np.array([1,2,4],dtype=np.int16)#specifying the datatype
+c=[1,3,5]
+d=[1,2,4]
+e=np.array([[1,2,3],[4,5,6],[7,8,9]])
+#print(c*d)#error as it does not know how to multiply two lists
+print(a*b)#it multiplies element wise
+print(a.ndim)#gives dimension of array
+print(e.shape)#gives shape of array
+print(b.dtype)#gives datatype of array
+print(e.dtype)#gives datatype of array
+print(np.dot(a,b))#dot product
+print(np.sqrt(a))#square root of each element
+print(np.sum(a))#sum of all elements
+print(np.mean(a))#mean of all elements
+print(np.std(a))#standard deviation of all elements
+print(np.var(a))#variance of all elements
+print(e[0])#first row of 2D array
+print(e[:,0])#first column of 2D array
+print(e[0,1:2:1])#first row, column 1 to 2 with step 1
+#[start:stop:step]
