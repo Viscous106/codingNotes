@@ -255,28 +255,6 @@ class javaNotes {
                         int sum = add(10, 20);
                         System.out.println("The sum is "+sum);
                 }
-        
-        ///////////OOPS:
-
-                class Person{
-                        //attributes//plane declaration of variable
-                        String name;
-                        int age;
-
-                        //constructor
-                        Person(String name, int age){
-                                this.name = name;
-                                this.age = age;
-                        }
-
-                        //function to display person details:
-                        void display(){
-                                System.out.println("Name: "+name);
-                                System.out.println("Age: "+age);
-                        }
-                }
-                Person p1 = new Person("John", 25);//object creation
-                p1.display();//function call
 
         ///////////function overloading:
         /// if it is int then it will call int add function
@@ -352,6 +330,57 @@ class javaNotes {
                 System.out.println(fruits);
                 System.out.println(A);
                 
+
+////////OOPS:
+        class Person{
+                        //attributes//plane declaration of variable
+                        String name;
+                        int roll;
+                        int age;
+                        double cgr;
+                        String college;
+
+                        //constructor
+                        Person(String name, int age,int roll,double cgr){
+                                this.name = name;
+                                this.college = "SST";
+                                this.roll = roll;
+                                this.age = age;
+                                this.cgr = cgr;
+                        }
+
+                        //function to display person details:
+                        void display(){
+                                System.out.println("Name: "+name);
+                                System.out.println("Age: "+age);
+                                System.out.println("Roll: "+roll);
+                                System.out.println("CGR: "+cgr);
+                                System.out.println("Colledge:"+college);
+                        }
+                }
+                Person p1 = new Person("John", 25,1013,8.9);//object creation
+                p1.display();//function call
+
+        //Shallow Copy vs Deep Copy:
+                class Student{
+                        String name;
+                        int roll;
+                        Student(String name, int roll){
+                                this.name = name;
+                                this.roll = roll;
+                        }
+                }
+                Student s1 = new Student("Alice", 101);
+                
+                //Shallow Copy
+                Student s2 = s1;
+                s2.name = "Bob";
+                System.out.println(s1.name);//prints Bob
+
+                //Deep Copy
+                Student s3 = new Student(s1.name, s1.roll);
+                s3.name = "Charlie";
+                System.out.println(s1.name);//prints Bob
         }
 }
 */
