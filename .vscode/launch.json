@@ -3,6 +3,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "javaNotes",
+            "request": "launch",
+            "mainClass": "javaNotes",
+            "projectName": "codingNotes_88bc748c"
+        },
+        {
+            "type": "java",
             "name": "Main",
             "request": "launch",
             "mainClass": "Main",
