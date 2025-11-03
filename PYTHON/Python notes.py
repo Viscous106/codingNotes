@@ -675,3 +675,4 @@ print(e[0])#first row of 2D array
 print(e[:,0])#first column of 2D array
 print(e[0,1:2:1])#first row, column 1 to 2 with step 1
 #[start:stop:step]
+#start from 20min
