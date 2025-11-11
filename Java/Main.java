@@ -384,3 +384,47 @@ class javaNotes {
         }
 }
 */
+        class Vehicle {
+                public int numGears;
+                public int numTyres;
+                public int Topspeed;
+                public void startEngine(){
+                        System.out.println("Engine Started");
+                }        
+                public void stopEngine(){
+                        System.out.println("Engine Stopped");
+                }
+                public void info() {
+                System.out.println("No of Gears: " + numGears);
+                System.out.println("No of Tyres: " + numTyres);
+                System.out.println("TopSpeed: " + Topspeed);
+                }
+        }
+
+        class car extends Vehicle {
+                numGears = 6;
+                numTyres = 4;
+                Topspeed = 300;
+                boolean isConvertible;
+                void openTrunk(){
+                        if(isConvertible){
+                                System.out.println("Trunk Opened");
+                        }
+                }
+        }
+
+        class bike extends Vehicle {
+                numGears = 6;
+                numTyres = 4;
+                Topspeed = 300;
+                boolean hasHelmetSpace;
+                void kickstart(){
+                }
+        }
+public class Main {
+        public static void main(String[] args) { 
+        car c = new car();
+        c.startEngine();
+        c.numGears=4;
+  }
+}
