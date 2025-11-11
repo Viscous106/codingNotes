@@ -217,5 +217,101 @@
     });
     console.log(found);//4
 
-    */
 
+////console.dir() method:
+    console.dir(window);//full window funx object
+    console.dir(document);//document object or the dom structure
+    console.log(document);//html version of the dom structure
+    ////bacially there is a prebuilt window object in JS that represents the browser window.i.e. windows.console.log  is the original console .log is the alias.
+
+////DOM:
+    ////how to make dynamic changes to a webpage using DOM methods:
+        document.body.style.backgroundColor = "lightblue";//change background color of body
+
+    ////Selection with id:
+        let id = document.getElementById("myElement");//gets element with id myElement
+        id.innerHTML = "Content changed using DOM!";//change content of element with id myElement
+    ////Selection with class name:
+        let className = document.getElementsByClassName("myClass");//gets elements with class name myClass
+        className[0].innerHTML = "First element with class myClass changed!";//change content of first element with class name myClass
+    ////Selection with tag name:
+        let tagName = document.getElementsByTagName("p");//gets all paragraph elements
+        tagName[0].innerHTML = "First paragraph changed!";//change content of first paragraph element
+    ////forgot all these methods and use query selector only
+
+    ////Selection with query selector:
+        let queryId = document.querySelector("#myElement");//gets element with id myElement
+        queryId.innerHTML = "Content changed using query selector!";//change content of element with id myElement
+
+        let queryClass = document.querySelector(".myClass");//gets first element with class name myClass
+        queryClass.innerHTML = "First element with class myClass changed using query selector!";//change content of first element with class name myClass
+
+        let queryTag = document.querySelector("p");//gets first paragraph element
+        queryTag.innerHTML = "First paragraph changed using query selector!";//change content of first paragraph element
+
+    ////Selection with query selector all:
+        let queryAllId = document.querySelectorAll("#myElement");//gets all elements with id myElement
+        queryAllId[0].innerHTML = "Content changed using query selector all!";//change content of element with id myElement
+
+        let queryAllClass = document.querySelectorAll(".myClass");//gets all elements with class name myClass
+        queryAllClass[0].innerHTML = "First element with class myClass changed using query selector all!";//change content of first element with class name myClass
+
+        let queryAllTag = document.querySelectorAll("p");//gets all paragraph elements
+        queryAllTag[0].innerHTML = "First paragraph changed using query selector all!";//change content of first paragraph element  
+
+////DOM Manipulation:
+    ////tagName method://returns tag for the element nodes
+        console.log(queryAllId[0].tagName);//prints the tag name of the element with id myElement
+        queryAllId[0].tagName = "DIV";//changes the tag name of the element with id myElement to DIV
+    ////innerText://returns the text content of the element and its children
+        console.log(queryAllClass[0].innerText);//prints the text content of the first element with class name myClass
+        queryAllClass[0].innerText = "Changed using innerText";//changes the text content of the first element with class name myClass    
+    ////innerHTML://returns the HTML content of the element and its children
+        console.log(queryAllTag[0].innerHTML);//prints the HTML content of the first paragraph element
+        queryAllTag[0].innerHTML = "<b>Changed using innerHTML</b>";//changes the HTML content of the first paragraph element
+    ////textContent://returns the text content of the element and its children, including hidden elements
+        console.log(queryAllTag[0].textContent);//prints the text content of the first paragraph element including hidden elements 
+        queryAllTag[0].textContent = "Changed using textContent";//changes the text content of the first paragraph element including hidden elements
+    ////getAttribute://gets the value of an attribute on the specified element
+        let img = document.querySelector("img");//gets the first image element
+        console.log(img.getAttribute("src"));//prints the value of the src attribute of the image element    
+    ////setAttribute://sets the value of an attribute on the specified element
+        img.setAttribute("alt", "Image changed using setAttribute");//sets the value of the alt attribute of the image element
+    ////style://returns the style attribute of the element
+        console.log(img.style);//prints the style attribute of the image element
+        img.style.border = "2px solid black";//sets the border style of the image element
+
+////INSERTING or DELETING ELEMENTS:
+    ///node.append()//adds a node to the end of the list of children of a specified parent node.
+        let newDiv = document.createElement("div");//creates a new div element
+        newDiv.innerHTML = "This is a new div added using append()";//sets the innerHTML of the new div element
+        document.body.append(newDiv);//adds the new div element to the end of the body element
+    ///node.prepend()//adds a node to the beginning of the list of children of a specified parent node.
+        let anotherDiv = document.createElement("div");//creates a new div element
+        anotherDiv.innerHTML = "This is another div added using prepend()";//sets the innerHTML of the new div element
+        document.body.prepend(anotherDiv);//adds the new div element to the beginning of the body element
+    ///node.insertBefore(newNode, referenceNode)//inserts a node before a reference node as a child of a specified parent node.
+        let beforeDiv = document.createElement("div");//creates a new div element
+        beforeDiv.innerHTML = "This is a div added using insertBefore()";//sets the innerHTML of the new div element
+        let referenceNode = document.querySelector("h3");//gets the h3 element as the reference node
+        document.body.insertBefore(beforeDiv, referenceNode);//inserts the new div element before the h3 element
+    ///node.after(referenceNode)//inserts a node after a reference node as a child of a specified parent node.
+        let afterDiv = document.createElement("div");//creates a new div element
+        afterDiv.innerHTML = "This is a div added using after()";//sets the innerHTML of the new div element
+        referenceNode.after(afterDiv);//inserts the new div element after the h3 element
+    ///node.remove()//removes a node from the DOM.
+        anotherDiv.remove();//removes the anotherDiv element from the DOM
+    ////appendChild()://adds a node to the end of the list of children of a specified parent node.
+        let childDiv = document.createElement("div");//creates a new div element
+        childDiv.innerHTML = "This is a child div added using appendChild()";//sets the innerHTML of the new div element
+        document.body.appendChild(childDiv);//adds the new div element to the end of the body element
+    ////removeChild()://removes a node from the DOM.
+        document.body.removeChild(childDiv);//removes the childDiv element from the DOM
+*/
+
+////EVENTS:
+    //Adding an event listener to a button
+        let button = document.createElement("button");//creates a new button element
+        button.innerHTML = "Click Me";//sets the innerHTML of the button element
+        document.body.appendChild(button);//adds the button element to the end of the body element
+    
