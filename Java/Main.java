@@ -384,6 +384,8 @@ class javaNotes {
         }
 }
 */
+
+/*
         class Vehicle {
                 public int numGears;
                 public int numTyres;
@@ -428,3 +430,5 @@ public class Main {
         c.numGears=4;
   }
 }
+*/
+
