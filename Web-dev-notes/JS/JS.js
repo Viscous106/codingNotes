@@ -330,3 +330,8 @@
             alert("button double clicked using ondblclick event!");//shows an alert when the button is double clicked
         };
 ////EVENT LISTENERS:
+    ////click event listener:
+        button.addEventListener("click", () => {
+            console.log("Button clicked using addEventListener!");//logs a message to the console when the button is clicked
+            alert("button clicked using addEventListener!");//shows an alert when the button is clicked
+        });
