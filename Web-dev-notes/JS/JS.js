@@ -354,6 +354,4 @@
             console.log("Button clicked using addEventListener!");//logs a message to the console when the button is clicked
             alert("button clicked using addEventListener!");//shows an alert when the button is clicked
         });
-    
-
 */
