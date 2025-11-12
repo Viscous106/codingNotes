@@ -310,8 +310,23 @@
 */
 
 ////EVENTS:
-    //Adding an event listener to a button
+    ////Adding a button
         let button = document.createElement("button");//creates a new button element
         button.innerHTML = "Click Me";//sets the innerHTML of the button element
         document.body.appendChild(button);//adds the button element to the end of the body element
+        let button2 = document.createElement("button");//creates a new button element
+        button2.innerHTML = "Click Me twice";//sets the innerHTML of the button element
+        document.body.appendChild(button2);//adds the button element to the end of the body element
     
+    
+    ////onclick event:
+        button.onclick = () => {
+            console.log("Button clicked using onclick event!");//logs a message to the console when the button is clicked
+            alert("button clicked using onclick event!");//shows an alert when the button is clicked
+        };
+    ////dblclick event:
+        button2.ondblclick = () => {
+            console.log("Button double clicked using ondblclick event!");//logs a message to the console when the button is double clicked
+            alert("button double clicked using ondblclick event!");//shows an alert when the button is double clicked
+        };
+////EVENT LISTENERS:
