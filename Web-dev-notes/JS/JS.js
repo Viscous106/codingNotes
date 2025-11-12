@@ -307,7 +307,6 @@
         document.body.appendChild(childDiv);//adds the new div element to the end of the body element
     ////removeChild()://removes a node from the DOM.
         document.body.removeChild(childDiv);//removes the childDiv element from the DOM
-*/
 
 ////EVENTS:
     ////Adding a button
@@ -329,9 +328,32 @@
             console.log("Button double clicked using ondblclick event!");//logs a message to the console when the button is double clicked
             alert("button double clicked using ondblclick event!");//shows an alert when the button is double clicked
         };
+
+////Dark and Light mode:
+    let darkModeButton = document.createElement("button");//creates a new button element
+    darkModeButton.innerHTML = "Toggle Dark/Light Mode";//sets the innerHTML of the button element
+    document.body.appendChild(darkModeButton);//adds the button element to the end of the body element
+    
+    let currMode = "light";//initial mode is light mode
+    darkModeButton.onclick = () => {
+        if(currMode === "light"){
+            document.body.style.backgroundColor = "black";//change background color to black
+            document.body.style.color = "white";//change text color to white
+            currMode = "dark";//update current mode to dark mode
+        }
+        else{
+            document.body.style.backgroundColor = "white";//change background color to white
+            document.body.style.color = "black";//change text color to black
+            currMode = "light";//update current mode to light mode
+        }
+    };
+
 ////EVENT LISTENERS:
     ////click event listener:
         button.addEventListener("click", () => {
             console.log("Button clicked using addEventListener!");//logs a message to the console when the button is clicked
             alert("button clicked using addEventListener!");//shows an alert when the button is clicked
         });
+    
+
+*/
