@@ -9,4 +9,7 @@ Step2: django-admin startproject Project-name
 > python manage.py runserver
 
 ## How to make frontend or add frontend to the project:
-### First of all make a dir in the main folder then connect the directory to the settings.py Templates section now add the fortend portion in templates and then connect them via views.py and urls.py
+
+```
+First of all make a dir in the main folder then connect the directory to the settings.py Templates section now add the fortend portion in templates and then connect them via views.py and urls.py
+```
