@@ -9,4 +9,11 @@ python manage.py startapp appname
 
 ```
 
+# how to run DJANGO setup:
+
+'''
+python manage.py runserver
+'''
+
+> Blockquote
 
