@@ -124,14 +124,18 @@ When this template is rendered, `{{ name }}` will be replaced with "Viscous".
 
 ## How to add css in the frontend:
 1.Make a diff dir called static
-2.```
+2.
+```
 import os in settings.py
 ```
+
 3.Add this:
+
 ```
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 ```
+
 4.Add css files in static folder and in html connect them with 
 
 ```
