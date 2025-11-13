@@ -4,7 +4,11 @@ from django.http import HttpResponse
 # Create your views here.
 #you have to add all these files in frontEnd folder that you have to create in main dProject folder and connect the folder with settings.py
 def index(request):
-    return render(request, 'index.html')
+    dictionary={
+        'name': 'Viscous',
+        'age': 18
+    }
+    return render(request, 'index.html', dictionary)
 def home(request):
     return render(request, 'home.html')
 def about(request):
