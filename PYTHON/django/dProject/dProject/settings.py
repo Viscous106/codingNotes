@@ -54,7 +54,7 @@ ROOT_URLCONF = 'dProject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],  # create a folder in main dir named templates
+        'DIRS': [BASE_DIR / 'frontEnd'],  # create a folder in main dir named templates
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
