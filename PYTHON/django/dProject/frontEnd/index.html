@@ -4,7 +4,21 @@
 </h1>
 
 <!-- How to store info in backend -->
-<form method="" action="counter" >
+<!-- counter in action denotes connection to counterfunction -->
+<!-- Get vs post : Get is used to send data via URL, Post is used to send data securely -->
+
+<!-- Get Method -->
+ <h1>Using GET Method</h1>
+<form method="GET" action="counter" >
+    <input type="text" name="name" placeholder="Enter your name"><br>
+    <input type="text" name="age" placeholder="Enter your age"><br>
+    <input type="submit" value="Submit"/>
+</form>
+
+<h1>Using POST Method</h1>
+<!-- Post Method -->
+<form method="POST" action="counter" >
+    {% csrf_token %}
     <input type="text" name="name" placeholder="Enter your name"><br>
     <input type="text" name="age" placeholder="Enter your age"><br>
     <input type="submit" value="Submit"/>
