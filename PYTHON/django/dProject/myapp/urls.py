@@ -10,7 +10,7 @@ urlpatterns = [
     path('contact/', views.contact, name='contact'),#Contact page
     
     #html via https:
-    path('', views.index1, name='index1'),#index1 URL
+    path('index1/', views.index1, name='index1'),#index1 URL
     path('home1/', views.home1, name='home1'),#Home1 page
     path('about1/', views.about1, name='about1'),#About1 page
     path('contact1/', views.contact1, name='contact1'),#Contact1 page\
