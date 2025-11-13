@@ -135,5 +135,8 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 4.Add css files in static folder and in html connect them with 
 
 ```
+{% load static %}
+
 <link rel="stylesheet href="{% static 'style.css' }">
 ```
+
