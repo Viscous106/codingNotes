@@ -702,5 +702,3 @@ else:
 #source myenv/bin/activate (for linux)
 '''
 
-
-
