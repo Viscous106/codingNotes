@@ -121,7 +121,6 @@ def index(request):
 ```
 
 When this template is rendered, `{{ name }}` will be replaced with "Viscous".
-<<<<<<< HEAD
 
 ## How to add css in the frontend:
 1.Make a diff dir called static
@@ -137,9 +136,6 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 ```
 {% load static %}
-
-<link rel="stylesheet href="{% static 'style.css' }">
+<link rel="stylesheet" href="{% static 'style.css' %}">
 ```
 
-=======
->>>>>>> 66512feb553cc4469f05277ff7c20192954ed55a
