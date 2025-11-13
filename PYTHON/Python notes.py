@@ -696,8 +696,11 @@ else:
     print("Invalid credentials. Please try again.")
 '''
 
-###Intro to django:
+###making virtual envirnment using .venv:
 '''
+#python -m venv myenv
+#source myenv/bin/activate (for linux)
 '''
 
- 
+
+
