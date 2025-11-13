@@ -629,6 +629,7 @@ print(scores[scores['Gender']=='M']['Total'].max())
 print(scores[scores['Gender']=='F']['Total'].max())
 #pandas use & inplace of and
 '''
+
 ###intro to matplotlib
 #To use graph ploting
 '''
@@ -647,6 +648,7 @@ mat.show()
 '''
 
 ##intro to numpy:
+'''
 import numpy as np
 ##List vs Numpy array
 
@@ -676,3 +678,26 @@ print(e[:,0])#first column of 2D array
 print(e[0,1:2:1])#first row, column 1 to 2 with step 1
 #[start:stop:step]
 #start from 20min
+'''
+
+
+###Creating a simple login and signup system:
+'''
+username = input("Enter your username: ")
+password = input("Enter your password: ")
+print("Signup successful!You can now login.")
+
+username2 = input("Enter your username to login: ")
+password2 = input("Enter your password to login: ")
+
+if username == username2 and password == password2:
+    print("Login successful! Welcome back,", username)
+else:
+    print("Invalid credentials. Please try again.")
+'''
+
+###Intro to django:
+'''
+'''
+
+ 
