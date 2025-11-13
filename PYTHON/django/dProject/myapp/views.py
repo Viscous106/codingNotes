@@ -15,8 +15,14 @@ def about(request):
     return render(request, 'about.html')
 def contact(request):
     return render(request, 'contact.html')
-
-
+def counter(request):
+    name = request.GET['name']  # 'text' is the name attribute of the input field in your HTML form
+    age = request.GET['age']
+    content = {
+        'name': name,
+        'age': age
+    }
+    return render(request, 'counter.html',content)
 
 
 

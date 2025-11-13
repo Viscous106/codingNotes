@@ -13,3 +13,19 @@ Step2: django-admin startproject Project-name
 ```
 First of all make a dir in the main folder then connect the directory to the settings.py Templates section now add the fortend portion in templates and then connect them via views.py and urls.py
 ```
+
+## How to store html inputed data using get:
+```
+make a url in urls.py where you can make a get endoint
+connect  it to a normal function and add the variable via html method get
+```
+```
+def counter(request):
+    name = request.GET['name']  # 'text' is the name attribute of the input field in your HTML form
+    age = request.GET['age']
+    content = {
+        'name': name,
+        'age': age
+    }
+    return render(request, 'counter.html',content)
+```
