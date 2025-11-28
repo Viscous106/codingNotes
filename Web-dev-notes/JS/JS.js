@@ -355,3 +355,19 @@
             alert("button clicked using addEventListener!");//shows an alert when the button is clicked
         });
 */
+////OOPS:
+    //clases:
+        class Car{
+            start(){
+                console.log("start");
+            }
+            stop(){
+                console.log("stop");
+            }
+            setBrand(brand){
+                this.brand = brand;
+            }
+        } 
+        let ford =new Car();
+        ford.setBrand("ford");
+        console.log(ford.start());
