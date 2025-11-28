@@ -354,7 +354,6 @@
             console.log("Button clicked using addEventListener!");//logs a message to the console when the button is clicked
             alert("button clicked using addEventListener!");//shows an alert when the button is clicked
         });
-*/
 ////OOPS:
     //clases:
         class Car{
@@ -371,3 +370,60 @@
         let ford =new Car();
         ford.setBrand("ford");
         console.log(ford.start());
+
+    //constructor:
+        class Car{
+            constructor(brand){
+                console.log('car created');
+                this.brand=brand;
+            }
+            start(){
+                console.log("started",this.brand);
+            }
+        } 
+        let ford =new Car("ford");
+        console.log(ford.start());
+    
+    //inheritence:
+            //method overriding:IF  CHILD AND PARENT HAVE SAME METHOD NAME THEN CHILD ONE WILL BE CALLED
+        class Car{
+            constructor(brand){
+                console.log('car created');
+                this.brand=brand;
+            }
+            start(){
+                console.log("started",this.brand);
+            }
+        } 
+        class Toyota extends Car{
+
+        }
+        let ford =("ford");
+        console.log(ford.start());
+*/
+
+        
+
+    //super keyword:
+        class Car{
+            constructor(brand){
+                console.log('car created');
+                this.brand=brand;
+            }
+            start(){
+                console.log("started",this.brand);
+            }
+        } 
+        class Toyota extends Car{
+            constructor(brand,model){
+                super(brand);//calls parent constructor
+                this.model=model;
+            }
+            showDetails(){
+                console.log(`Car brand is ${this.brand} and model is ${this.model}`);
+                super.start();//calls parent method
+            }
+        }
+        let toyota = new Toyota("Toyota","Camry");
+        toyota.start();
+        toyota.showDetails();
