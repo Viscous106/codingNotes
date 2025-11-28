@@ -400,9 +400,7 @@
         }
         let ford =("ford");
         console.log(ford.start());
-*/
 
-        
 
     //super keyword:
         class Car{
@@ -427,3 +425,60 @@
         let toyota = new Toyota("Toyota","Camry");
         toyota.start();
         toyota.showDetails();
+*/
+
+        
+////async JS and Promises:
+    //synchronous JS:
+        console.log("Task 1");
+        console.log("Task 2");
+        console.log("Task 3");
+    //asynchronous JS using setTimeout:
+        console.log("Task 1");
+        setTimeout(() => {
+            console.log("Task 2");
+        }, 2000); // 2 seconds delay
+        console.log("Task 3");
+    //callbacks hell:
+        //nested callbacks making code hard to read and maintain
+        function task1(callback) {
+            console.log("Task 1");
+            callback();
+        }
+        function task2(callback) {
+            setTimeout(() => {
+                console.log("Task 2");
+                callback();
+            }, 2000);
+        }
+        function task3() {
+            console.log("Task 3");
+        }
+        task1(() => {
+            task2(() => {
+                task3();
+            });
+        });
+    //Promises:
+        //to avoid callback hell and make code more readable
+        function task1() {
+            return new Promise((resolve, reject) => {
+                console.log("Task 1");
+                resolve();
+            });
+        }
+        function task2() {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    console.log("Task 2");
+                    resolve();
+                }, 2000);
+            });
+        }
+        function task3() {
+            console.log("Task 3");
+        }
+        task1()
+            .then(() => task2())
+            .then(() => task3())
+            .catch((error) => console.log(error));
