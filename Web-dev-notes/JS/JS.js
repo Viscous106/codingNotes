@@ -523,5 +523,13 @@ console.log(finalVal);
 
 //fetching api:
 const URL = "https://cat-fact.herokuapp.com/facts";
-let promise = fetch(URL);
-console.log(promise);
+const getFacts = async () => {
+	try {
+		let response = await fetch(URL);
+		let data = await response.json();
+		console.log(data);
+	} catch (error) {
+		console.log("Error fetching data:", error);
+	}
+};
+getFacts();
