@@ -1,11 +1,10 @@
 public class lc {
 	public static void main(String[] args) {
-		String A = "abscdabcdcabc";
-		String B = "abac";
-		int minWindow(String A, String B){
-			return 0;
+		ArrayList<Integer> list = new ArrayList<>();
+		for (int i = 0; i < 256; i++) {
+			list.add(i);
 		}
-		System.out.println(minWindow(A, B));
+		System.out.println(list);
 	}
 }
 
