@@ -163,82 +163,96 @@ These methods control the default behavior and propagation of events.
 -   **`Event.stopPropagation()`**: Prevents further propagation of the current event in the capturing and bubbling phases.
     -   **Example**: If a button inside a `div` is clicked, and both have click listeners, `stopPropagation()` on the button's click will prevent the `div`'s click listener from firing.
 
-## 4. Event Propagation
 
-Events in the DOM have three phases:
-
-### Capturing Phase
-
--   The event starts from the `window` object and travels down the DOM tree to the target element.
--   Listeners attached with `{ capture: true }` or `true` as the third argument to `addEventListener` will execute during this phase.
-
-### Target Phase
-
--   The event reaches the actual target element.
--   Listeners on the target element execute.
-
-### Bubbling Phase
-
--   The event bubbles up from the target element back to the `window` object.
--   Listeners attached with `{ capture: false }` (default) or no third argument to `addEventListener` will execute during this phase.
-
-## 5. Event Delegation
-
-### Concept & Need
-
-Event delegation is a technique where you attach a single event listener to a parent element, rather than attaching separate listeners to each child element.
-
--   **Concept**: Instead of putting listeners on many individual elements, you put one listener on their common ancestor. When an event happens on a child element, it bubbles up to the parent, and the parent's listener catches it.
--   **Need**:
-    -   **Performance**: Reduces the number of event listeners, which can improve performance, especially with many dynamic elements.
-    -   **Dynamic Elements**: Allows handling events on elements that are added to the DOM after the initial page load without re-attaching listeners.
-
-### Using `event.target` for Delegation
-
-Inside the delegated event listener, you use `event.target` to identify which specific child element triggered the event.
-
-```javascript
-document.getElementById('parent-list').addEventListener('click', function(event) {
-    if (event.target.tagName === 'LI') { // Check if the clicked element is a list item
-        console.log('List item clicked:', event.target.textContent);
-    }
-});
-```
-
-### Common Use Cases (lists, menus, dynamic elements)
-
--   **Lists**: Handling clicks on individual items in a `ul` or `ol`.
--   **Menus/Navigation**: Managing clicks on menu items where items might be added or removed dynamically.
--   **Tables**: Responding to clicks on individual cells or rows.
--   **Any dynamic content**: Grids, card layouts, etc., where elements are frequently added or removed.
 
 ## 6. Local Storage
 
+
+
 Local Storage allows web applications to store data persistently in the browser, with no expiration date. The data is stored as key/value pairs.
+
+
 
 ### `setItem`, `getItem`, `removeItem`, `clear`
 
+
+
 -   **`localStorage.setItem(key, value)`**: Stores a key-value pair. Both `key` and `value` must be strings.
+
     -   **Example**: `localStorage.setItem('username', 'JohnDoe');`
+
 -   **`localStorage.getItem(key)`**: Retrieves the value associated with the given key.
+
     -   **Example**: `let username = localStorage.getItem('username');` (returns `'JohnDoe'` or `null` if not found).
+
 -   **`localStorage.removeItem(key)`**: Removes the key-value pair with the specified key.
+
     -   **Example**: `localStorage.removeItem('username');`
+
 -   **`localStorage.clear()`**: Removes all key-value pairs from local storage for the current domain.
+
     -   **Example**: `localStorage.clear();`
+
+
 
 ### Storing Objects using JSON
 
+
+
 Local Storage only stores strings. To store JavaScript objects, you need to convert them to JSON strings before storing and parse them back when retrieving.
 
+
+
 -   **Storing an object**:
+
     ```javascript
+
     const userSettings = { theme: 'dark', notifications: true };
+
     localStorage.setItem('userSettings', JSON.stringify(userSettings));
+
     ```
+
 -   **Retrieving an object**:
+
     ```javascript
+
     const storedSettings = localStorage.getItem('userSettings');
+
     const userSettings = storedSettings ? JSON.parse(storedSettings) : null;
+
     console.log(userSettings.theme); // 'dark'
+
     ```
+
+
+
+## Method only guide
+
+-   `getElementById`
+-   `getElementsByClassName`
+-   `getElementsByTagName`
+-   `querySelector`
+-   `querySelectorAll`
+-   `createElement`
+-   `append`
+-   `prepend`
+-   `appendChild`
+-   `insertBefore`
+-   `remove`
+-   `removeChild`
+-   `classList.add`
+-   `classList.remove`
+-   `classList.toggle`
+-   `setAttribute`
+-   `getAttribute`
+-   `dataset`
+-   `addEventListener`
+-   `preventDefault`
+-   `stopPropagation`
+-   `localStorage.setItem`
+-   `localStorage.getItem`
+-   `localStorage.removeItem`
+-   `localStorage.clear`
+-   `JSON.stringify`
+-   `JSON.parse`
