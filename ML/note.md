@@ -463,3 +463,76 @@ In many applications, especially for dimensionality reduction and noise reductio
 `A ≈ A_k = U_k Σ_k Vᵀ_k`
 
 Where `U_k` contains the first `k` columns of `U`, `Σ_k` is the `k x k` diagonal matrix with the first `k` singular values, and `V_k` contains the first `k` columns of `V`. This approximation captures the most significant information in `A` while reducing its complexity.
+
+# Principal Component Analysis (PCA)
+
+Principal Component Analysis (PCA) is a powerful and widely used dimensionality reduction technique in machine learning and statistics. Its primary goal is to transform a high-dimensional dataset into a lower-dimensional one while retaining as much of the original variance (information) as possible.
+
+## 1. What is PCA?
+
+PCA is an unsupervised linear transformation technique that identifies the directions (principal components) along which the variance of the data is maximized. It projects the data onto a new set of orthogonal axes, ordered by the amount of variance they capture. The first principal component captures the most variance, the second captures the second most (and is orthogonal to the first), and so on.
+
+*   **Goal:**
+    *   Reduce the number of features (dimensions) in a dataset.
+    *   Visualize high-dimensional data.
+    *   Remove noise from data.
+    *   Improve the performance of subsequent machine learning algorithms.
+
+## 2. How PCA Works (Intuition and Steps)
+
+PCA works by finding the eigenvectors and eigenvalues of the covariance matrix of the data (or by using Singular Value Decomposition).
+
+### Intuition:
+Imagine a scatter plot of data points forming an elongated cloud. PCA finds the main axis of this cloud (the direction of most variance) and then the next main axis perpendicular to the first, and so on. These axes are the principal components.
+
+### Steps:
+
+1.  **Standardize the Data:** PCA is affected by scale, so it's crucial to standardize the data (mean = 0, variance = 1) before applying PCA.
+    *   For each feature, subtract its mean and divide by its standard deviation.
+
+2.  **Compute the Covariance Matrix:** Calculate the covariance matrix of the standardized data. The covariance matrix describes the relationships between pairs of features.
+    *   For a dataset with `n` features, the covariance matrix will be `n x n`. It's a symmetric matrix, which is important because symmetric matrices are orthogonally diagonalizable (as discussed in "Orthogonally Diagonalizable Matrices").
+
+3.  **Calculate Eigenvectors and Eigenvalues:**
+    *   Find the eigenvectors and corresponding eigenvalues of the covariance matrix.
+    *   **Eigenvectors** represent the principal components (the directions of maximum variance).
+    *   **Eigenvalues** represent the magnitude of variance along each principal component. A larger eigenvalue means more variance is captured by its corresponding eigenvector.
+
+4.  **Sort Principal Components:** Order the eigenvectors by their eigenvalues in descending order. The eigenvector with the largest eigenvalue is the first principal component, the one with the second largest is the second, and so on.
+
+5.  **Choose Number of Principal Components:** Decide how many principal components to keep. This is a crucial step for dimensionality reduction.
+    *   You can choose based on a desired percentage of explained variance (e.g., keep components that explain 95% of the total variance).
+    *   Alternatively, use a "scree plot" to visually identify an "elbow" where the explained variance drops off significantly.
+
+6.  **Project Data onto New Subspace:** Form a projection matrix (also called a feature vector or eigenvector matrix) from the chosen top `k` eigenvectors. Multiply the original standardized data by this projection matrix to transform the data into the new lower-dimensional space.
+
+    `New_Data = Original_Standardized_Data ⋅ Projection_Matrix`
+
+    The `New_Data` will have `k` dimensions, corresponding to the `k` principal components.
+
+## 3. PCA using Singular Value Decomposition (SVD)
+
+PCA can also be efficiently performed using SVD. For a centered data matrix `X` (where each column has zero mean):
+
+1.  Perform SVD on `X`: `X = UΣVᵀ`.
+2.  The columns of `V` (right singular vectors) are the principal components.
+3.  The singular values in `Σ` (squared) are proportional to the eigenvalues of the covariance matrix, and thus indicate the variance explained by each component.
+
+This method often offers better numerical stability than directly computing eigenvectors of the covariance matrix.
+
+## 4. Advantages of PCA
+
+*   **Dimensionality Reduction:** Reduces complexity, storage space, and computational time.
+*   **Noise Reduction:** By focusing on directions with high variance, PCA often discards dimensions that primarily contain noise.
+*   **Improved Model Performance:** Can help prevent overfitting and improve the generalization ability of models by removing irrelevant features.
+*   **Visualization:** Allows for visualizing high-dimensional data by projecting it onto 2 or 3 principal components.
+*   **Feature Extraction:** Creates new, uncorrelated features (principal components) that can be more informative than the original features.
+
+## 5. Limitations of PCA
+
+*   **Loss of Information:** By reducing dimensions, some information is inevitably lost.
+*   **Interpretability:** The new principal components are linear combinations of the original features, which can make them harder to interpret than the original features.
+*   **Linearity Assumption:** PCA is a linear transformation. If the data has a non-linear underlying structure, PCA might not be the most effective method (kernel PCA or other non-linear techniques might be better).
+*   **Scale Dependent:** Highly sensitive to the scaling of the features; hence, standardization is crucial.
+
+---
