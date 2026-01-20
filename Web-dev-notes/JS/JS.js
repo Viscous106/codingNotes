@@ -424,4 +424,108 @@
 	let toyota2 = new Toyota2("Toyota","Camry");
 	toyota2.start();
 	toyota2.showDetails();
+////async JS and Promises:
+    //synchronous JS:
+	console.log("Task 1");
+	console.log("Task 2");
+	console.log("Task 3");
+    //asynchronous JS using setTimeout:
+	console.log("Task 1");
+	setTimeout(() => {
+	    console.log("Task 2");
+	}, 2000); // 2 seconds delay
+	console.log("Task 3");
+    //callbacks hell:
+	//nested callbacks making code hard to read and maintain
+	function task1(callback) {
+	    console.log("Task 1");
+	    callback();
+	}
+	function task2(callback) {
+	    setTimeout(() => {
+		console.log("Task 2");
+		callback();
+	    }, 2000);
+	}
+	function task3() {
+	    console.log("Task 3");
+	}
+	task1(() => {
+	    task2(() => {
+		task3();
+	    });
+	});
+ 
+//Promises:
 
+//this is how promises work:
+	//basically try and except func:
+	function getData(dataID,getNextData){
+		return new Promise((resolve,reject) => {
+			setTimeout(() => {
+				console.log("data",dataID);
+				resolve("success");
+				// reject("failed");
+				if (getNextData) {
+					getNextData();
+				}
+			},2000);
+       });
+}
+let finalVal = getData(123);
+// console.log(finalVal); //This will print the promise object, not the resolved value
+
+//.then .catch:
+	const getPromise = () => {
+		return new Promise((resolve, reject) => {
+			console.log("I am a pro");
+			resolve("success");
+		});
+	};
+
+	let promise = getPromise();
+	
+	promise.then((res) => {
+		console.log("deal done",res);
+	});  
+
+	promise.catch((err) => {
+		console.log("failed",err);
+	});
+
+//Promise chain:
+	function getData2(dataID) {
+		return new Promise((resolve,reject) => {
+			setTimeout(() => {
+				console.log("data",dataID);
+				resolve("success");
+			},3000);
+		});
+	}
+	
+	getData2(1)
+		.then((res) => {
+			return getData2(2);
+		})
+		      .then((res) => {
+			return getData2(3);
+		})
+		.then((res) => {
+			console.log(res);
+		});
+
+
+
+
+//fetching api:
+const URL = "https://cat-fact.herokuapp.com/facts";
+const getFacts = async () => {
+	try {
+		let response = await fetch(URL);
+		let data = await response.json();
+		console.log(data);
+	} catch (error) {
+		console.log("Error fetching data:", error);
+	}
+};
+getFacts();
