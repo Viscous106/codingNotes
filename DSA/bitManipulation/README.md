@@ -43,11 +43,8 @@
 
 ---
 
-<<<<<<< HEAD
-## How to Count Set Bits Using Brian Kernighan's Algorithm
-=======
 ## How to Count Set Bits Using Brian Kernighan's Algorithm (leetcode problem number 191)
->>>>>>> main
+
 Brian Kernighan's algorithm is an efficient way to count the number of set bits (1s) in the binary representation of an integer. The key idea is that subtracting 1 from a number flips all the bits after the rightmost set bit, including the rightmost set bit itself. By performing n = n & (n - 1), you clear the lowest set bit in each iteration.
 
 **How it works:**
@@ -81,11 +78,7 @@ int num = 29; // Binary: 11101
 int setBits = countSetBits(num); // setBits = 4
 ```
 
-<<<<<<< HEAD
-
-=======
 ## leetcode problem that are related to Bit Manipulation:
 1. **191. Number of 1 Bits** - Count the number of 1 bits in an integer.
 2. **338. Counting Bits** - Return an array of the number of 1 bits for all numbers from 0 to n.
 3. **136. Single Number** - Find the element that appears only once in an array
->>>>>>> main
