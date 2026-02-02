@@ -18,15 +18,15 @@
 
 5. **Left Shift (<<)**  
    - Shifts bits to the left, filling with 0s.  
-   - Example: `a << n` (multiplies by 2ⁿ)
+   - Example: `a << n` (multiplies by 2ⁿ in decimal or puts a 1 at i in binary)
 
 6. **Right Shift (>>)**  
    - Shifts bits to the right, preserving the sign (sign extension).  
-   - Example: `a >> n` (divides by 2ⁿ)
+   - Example: `a >> n` (divides by 2ⁿ in decimal or removes last n bits in binary)
 
 7. **Unsigned Right Shift (>>>)**  
    - Shifts bits to the right, filling with 0s (no sign extension).  
-   - Example: `a >>> n`
+   - Example: `a >>> n` (divides by 2ⁿ in decimal for positive numbers or removes last n bits in binary)
 
 ---
 
