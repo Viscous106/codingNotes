@@ -305,3 +305,106 @@ public class Solution {
     }
 }
 ```
+
+---
+## Practice Problem: Shaggy and Distances
+**Problem:** Shaggy has an array `A` consisting of `N` elements. A pair of distinct indices is "special" if elements at those indices are equal. Find a special pair such that the distance between that pair `|i-j|` is minimum. If there is no special pair, return `-1`.
+
+**Solution:**
+```java
+public class Solution {
+    public int solve(int[] A) {
+        // Map stores: Element Value -> Its latest Index (i)
+        java.util.HashMap<Integer, Integer> map = new java.util.HashMap<>();
+        int minDistance = Integer.MAX_VALUE;
+        
+        for (int i = 0; i < A.length; i++) {
+            int currentNum = A[i];
+            
+            // If we have seen this number before, calculate the difference in indices
+            if (map.containsKey(currentNum)) {
+                int dist = i - map.get(currentNum);
+                minDistance = Math.min(minDistance, dist);
+            }
+            
+            // Always map the number to its most recent index
+            map.put(currentNum, i);
+        }
+        
+        // If minDistance was never updated, no special pair exists
+        return minDistance == Integer.MAX_VALUE ? -1 : minDistance;
+    }
+}
+```
+
+---
+## Practice Problem: First Repeating Element
+**Problem:** Given an integer array `A` of size `N`, find the first repeating element in it. We need to find the element that occurs more than once and whose index of the first occurrence is the smallest. If there is no repeating element, return `-1`.
+
+**Solution:**
+We can use a Frequency Map (HashMap) to solve this optimally.
+1. Build a frequency map by iterating through the array.
+2. Iterate through the array a second time, from left to right.
+3. The first number we encounter whose frequency in the map is `> 1` is our answer! By reading the array from left to right again, we guarantee we find the repeating element whose *first occurrence* appears earliest in the array.
+
+```java
+import java.util.HashMap;
+
+public class Solution {
+    public int solve(int[] A) {
+        // Step 1: Build the Frequency Map
+        HashMap<Integer, Integer> freqMap = new HashMap<>();
+        
+        for (int i = 0; i < A.length; i++) {
+            int num = A[i];
+            freqMap.put(num, freqMap.getOrDefault(num, 0) + 1);
+        }
+        
+        // Step 2: Traverse array again to find the FIRST element with Frequency > 1
+        for (int i = 0; i < A.length; i++) {
+            int num = A[i];
+            if (freqMap.get(num) > 1) {
+                return num; // We found the first repeating element!
+            }
+        }
+        
+        // If we finish the loop and find nothing, return -1
+        return -1;
+    }
+}
+```
+
+---
+## Practice Problem: Frequency of Element Query
+**Problem:** Given an array `A` representing participants of various contests, and an array `B` containing queries (learners to check), find the frequency of each learner from array `B` in array `A` and return a list containing all these frequencies.
+
+**Solution:**
+This directly applies the logic from **Topic 2: Frequency Map**. We map every element in array `A` to how many times it appears. Then, for every query in array `B`, we simply ask the HashMap for the count in instant $O(1)$ time.
+
+```java
+import java.util.HashMap;
+
+public class Solution {
+    public int[] solve(int[] A, int[] B) {
+        // Step 1: Build the Frequency Map from Array A
+        HashMap<Integer, Integer> freqMap = new HashMap<>();
+        
+        for (int i = 0; i < A.length; i++) {
+            int num = A[i];
+            freqMap.put(num, freqMap.getOrDefault(num, 0) + 1);
+        }
+        
+        // Step 2: Prepare the answer array the exact same size as B
+        int[] result = new int[B.length];
+        
+        // Step 3: For every query in B, ask the HashMap for the frequency
+        for (int i = 0; i < B.length; i++) {
+            int query = B[i];
+            // If the query number exists, get its count. If not seen in A, it's 0.
+            result[i] = freqMap.getOrDefault(query, 0);
+        }
+        
+        return result;
+    }
+}
+```
