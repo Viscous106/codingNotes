@@ -232,4 +232,64 @@ class Solution {
         return cloneHead;
     }
 }
+
+---
+
+## 4. Doubly Linked Lists (DLL)
+
+A **Doubly Linked List** is similar to a singly linked list, but each node contains two pointers instead of one: a `next` pointer pointing to the next node and a `prev` pointer pointing to the previous node.
+- **Advantage:** Traversing in both directions (forward and backward) is possible. The node has awareness of its "past" and "future".
+
+### Key Operations
+
+**A. Inserting at the back (Tail):**
+If we maintain dummy `head` and `tail` pointers, we can insert a new node at the very end in $O(1)$ time. 
+```java
+public void insertBack(int data, Node tail) {
+    Node newNode = new Node(data);
+    Node save = tail.prev;
+    
+    newNode.prev = save;
+    newNode.next = tail;
+    
+    save.next = newNode;
+    tail.prev = newNode; 
+}
+```
+
+**B. Deleting a Specific Node in $O(1)$**
+Unlike a singly linked list where you need the 'previous' node to traverse and delete a target node, in a DLL you can safely delete any node (given its reference) in $O(1)$, because the target itself hands you the `prev` reference.
+```java
+public void deleteNode(Node target) {
+    Node prevNode = target.prev;
+    Node nextNode = target.next;
+    
+    prevNode.next = nextNode;
+    nextNode.prev = prevNode;
+    
+    // Sever ties (optional but good practice)
+    target.prev = null;
+    target.next = null;
+}
+```
+
+---
+
+## 5. Least Recently Used (LRU) Cache Design
+
+An LRU cache evicts the least recently used item when it reaches its capacity limit. Designing an efficient LRU Cache (LeetCode 146) requires both a **Doubly Linked List** and a **HashMap** to achieve $O(1)$ time complexity for all core operations.
+
+### Why HashMap + DLL?
+- **HashMap (`Map<Integer, Node>`)**: Provides $O(1)$ time complexity to instantaneously locate any node in memory by its key.
+- **Doubly Linked List**: Keeps track of the "recentness" of usage. When an item is accessed or newly inserted, we move it to the **back (tail)** of the list (making it the **Most Recently Used**). The **front (head)** of the list naturally drifts to contain the **Least Recently Used**. Because we have $O(1)$ access from the HashMap, the DLL allows us to execute the $O(1)$ node deletion and $O(1)$ `insertBack` to easily move fetched items to the MRU position.
+
+### LRU Logic Workflow
+1. **Cache Limit:** Maintain a fixed `limit` capacity and a `size` counter. Use dummy `head` and `tail` nodes to avoid edge cases.
+2. **Accessing an Element (`get`):** 
+   - **Cache Hit:** If present in the Hash Map, get the node, delete it from its current position in the DLL, and re-insert it just before the `tail` parameter (MRU). Return its value.
+   - **Cache Miss:** If absent, return `-1`.
+3. **Adding an Element (`put`):**
+   - If the element already exists (Hit): Update its value, delete it from the DLL, and re-insert it at the tail.
+   - If it's a new element and `size < limit`: Create the new node, add it to HashMap, and insert it at the tail. Increment `size`.
+   - If it's a new element and `size == limit`: Evict the LRU element (the actual data node right after the dummy `head`). Remove it from the DLL **and** delete it from the HashMap. Then, insert the new element normally at the tail and put it in the HashMap.
 ```

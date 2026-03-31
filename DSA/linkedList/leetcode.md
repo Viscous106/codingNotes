@@ -18,6 +18,18 @@
 
 *(Determine if a linked list has a cycle in it.)*
 
+142. [Linked List Cycle II](https://leetcode.com/problems/linked-list-cycle-ii/)
+
+*(Given the head of a linked list, return the node where the cycle begins. If there is no cycle, return null.)*
+
+146. [LRU Cache](https://leetcode.com/problems/lru-cache/)
+
+*(Design a data structure that follows the constraints of a Least Recently Used (LRU) cache.)*
+
+160. [Intersection of Two Linked Lists](https://leetcode.com/problems/intersection-of-two-linked-lists/)
+
+*(Given the heads of two singly linked-lists headA and headB, return the node at which the two lists intersect. If the two linked lists have no intersection at all, return null.)*
+
 206. [Reverse Linked List](https://leetcode.com/problems/reverse-linked-list/)
 
 *(Reverse a singly linked list and return the reversed list.)*
