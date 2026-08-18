@@ -1,24 +1,19 @@
 import express from "express"
 
+import { getAllNotes, changeNote, updateNote, deleteNote } from "../controllers/notesController.js"
+
 const router = express.Router();
 
-router.get("/", (req, res) => {
-	res.status(200).send("you got your first response");
-})
+// pass the controller itself — don't wrap it in an arrow that never calls it
+router.get("/", getAllNotes)
 
 // first post request:
 // 201 if creation was done success.
-router.post("/", (req, res) => {
-	res.status(201).json({ message: "notes created succesfully" });
-})
+router.post("/", changeNote)
 
-router.put("/:id", (req, res) => {
-	res.status(200).json({ message: "notes updated successfully" });
-})
+router.put("/:id", updateNote)
 
-router.delete("/:id", (req, res) => {
-	res.status(200).json({ message: "notes deleted succefully" });
-})
+router.delete("/:id", deleteNote)
 
 
 export default router
