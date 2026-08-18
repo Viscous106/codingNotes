@@ -1,10 +1,17 @@
 import express from "express"
 // const express = require("express")
 
+import notesRoutes from "./routes/notesRoutes.js"
+// the .js extension is required in ESM imports
+
 const app = express() // creating a basic app 
+
+app.use("/api/notes", notesRoutes);
 
 // first get request:
 // 200 returns if it resolves safely.
+
+/*
 app.get("/api/notes", (req, res) => {
 	res.status(200).send("you got your first response");
 })
@@ -22,7 +29,7 @@ app.put("/api/notes/:id", (req, res) => {
 app.delete("/api/notes/:id", (req, res) => {
 	res.status(200).json({ message: "notes deleted succefully" });
 })
-
+*/
 app.listen(5006, () => {
 	console.log("Server started on PORT: 5006");
 })
