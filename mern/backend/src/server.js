@@ -4,7 +4,12 @@ import express from "express"
 import notesRoutes from "./routes/notesRoutes.js"
 // the .js extension is required in ESM imports
 
+// MongoDb:
+import { connectDB } from "./config/db.js"
+
 const app = express() // creating a basic app 
+
+connectDB();
 
 app.use("/api/notes", notesRoutes);
 
