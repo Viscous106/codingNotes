@@ -25,14 +25,24 @@ export async function changeNote(req, res) {
 	}
 };
 
+export async function updateNote(req, res) {
+	try {
+		const { title, content } = req.body;
+		const updatedNote = await Note.findByIdAndUpdate(req.params.id, { title, content }, { new: true });
+		if (!updatedNote) {
+			return res.status(404).json({ message: "Note not found" });
+		}
+
+		res.status(200).json({ message: "notes were updated succesfully", updatedNote });
+	}
+	catch (error) {
+		console.error("There was an error updating:", error);
+		res.status(500).json({ message: "Internal Server Error" });
+	}
+};
+
 export async function deleteNote(req, res) {
 	try { }
 	catch (error) { }
-	res.status(200).json({ message: "notes were deleted succesfully" });
-};
-
-export async function updateNote(req, res) {
-	try { }
-	catch (error) { }
-	res.status(200).json({ message: "notes were updated successfully" });
+	res.status(200).json({ message: "notes were deleted successfully" });
 }
