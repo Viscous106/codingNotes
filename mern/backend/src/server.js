@@ -1,11 +1,15 @@
-import express from "express"
+import express from "express";
 // const express = require("express")
 
-import notesRoutes from "./routes/notesRoutes.js"
+import notesRoutes from "./routes/notesRoutes.js";
 // the .js extension is required in ESM imports
 
 // MongoDb:
-import { connectDB } from "./config/db.js"
+import { connectDB } from "./config/db.js";
+
+//dotenv:
+import dotenv from "dotenv";
+dotenv.config();
 
 const app = express() // creating a basic app 
 
