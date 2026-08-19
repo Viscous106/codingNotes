@@ -8,6 +8,7 @@ const app = express() // creating a basic app
 const PORT = process.env.PORT || 5001; // || 5001 is a fallback value
 connectDB();
 
+app.use(express.json())// middle layer
 app.use("/api/notes", notesRoutes);
 
 // first get request:
