@@ -5,15 +5,16 @@ import { getAllNotes, changeNote, updateNote, deleteNote } from "../controllers/
 const router = express.Router();
 
 // pass the controller itself — don't wrap it in an arrow that never calls it
-router.get("/", getAllNotes)
+router.get("/", getAllNotes);
+
 
 // first post request:
 // 201 if creation was done success.
-router.post("/", changeNote)
+router.post("/", changeNote);
 
-router.put("/:id", updateNote)
+router.put("/:id", updateNote);
 
-router.delete("/:id", deleteNote)
+router.delete("/:id", deleteNote);
 
 
 export default router

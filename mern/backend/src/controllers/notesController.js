@@ -42,7 +42,14 @@ export async function updateNote(req, res) {
 };
 
 export async function deleteNote(req, res) {
-	try { }
-	catch (error) { }
-	res.status(200).json({ message: "notes were deleted successfully" });
+	try {
+		const deletedNote = await Note.findByIdAndDelete(req.params.id);
+		if (!deletedNote) return res.status(404).json({ message: "note not find" });
+		res.status(200).json({ message: "note were deleted successfully" });
+
+	}
+	catch (error) {
+		console.error("The note didn't get delete due to :", error);
+		res.status(500).json({ message: "Internal Server Error" });
+	}
 }
