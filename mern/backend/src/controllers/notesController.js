@@ -1,7 +1,7 @@
 import Note from "../models/Note.js"
 
 
-export async function getAllNotes(req, res) {
+export async function getAllNotes(_, res) {
 	try {
 		const notes = await Note.find().sort({ createdAt: -1 }); // sorting and giving out the newest first
 		res.status(200).json({ message: "Successfully fetched all notes", notes });
@@ -11,7 +11,7 @@ export async function getAllNotes(req, res) {
 	}
 };
 
-export async function getSpecificNote(req, res) {
+export async function getSpecificNote(_, res) {
 	try {
 		const note = await Note.findById(req.params.id);
 		if (!note) return res.status(404).json({ message: "Note not found" });
