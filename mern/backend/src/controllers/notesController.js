@@ -14,10 +14,10 @@ export async function getAllNotes(req, res) {
 export async function changeNote(req, res) {
 	try {
 		const { title, content } = req.body;
-		const newNote = new Note({ title: title, content: content });
-		await newNote.save();
+		const note = new Note({ title: title, content: content });
+		const savedNote = await note.save();
 
-		res.status(201).json({ message: "Notes created succesfully" });
+		res.status(201).json({ message: "Notes created succesfully", savedNote });
 	}
 	catch (error) {
 		console.error("There was an error while creating the note:", error);

@@ -10,10 +10,10 @@ const noteSchema = new mongoose.Schema(
 		},
 		content: {
 			type: String,
-			reqired: true
+			required: true
 		},
 	},
-	{ timeStamps: true }// createdAt ,updatedAt
+	{ timestamps: true }// createdAt ,updatedAt
 );
 
 // Model:
