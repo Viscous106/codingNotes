@@ -1,20 +1,22 @@
 import express from "express"
 
-import { getAllNotes, changeNote, updateNote, deleteNote } from "../controllers/notesController.js"
+import * as endpoints from "../controllers/notesController.js"
 
 const router = express.Router();
 
 // pass the controller itself — don't wrap it in an arrow that never calls it
-router.get("/", getAllNotes);
+router.get("/", endpoints.getAllNotes);
 
+//get specific note
+router.get("/:id", endpoints.getSpecificNote);
 
 // first post request:
 // 201 if creation was done success.
-router.post("/", changeNote);
+router.post("/", endpoints.changeNote);
 
-router.put("/:id", updateNote);
+router.put("/:id", endpoints.updateNote);
 
-router.delete("/:id", deleteNote);
+router.delete("/:id", endpoints.deleteNote);
 
 
 export default router
