@@ -1,18 +1,11 @@
-import express from "express";
-// const express = require("express")
+import express from "express";// const express = require("express")
+import notesRoutes from "./routes/notesRoutes.js";// the .js extension is required in ESM imports
+import { connectDB } from "./config/db.js";// MongoDb:
+import dotenv from "dotenv";//dotenv:
 
-import notesRoutes from "./routes/notesRoutes.js";
-// the .js extension is required in ESM imports
-
-// MongoDb:
-import { connectDB } from "./config/db.js";
-
-//dotenv:
-import dotenv from "dotenv";
 dotenv.config();
-
 const app = express() // creating a basic app 
-
+const PORT = process.env.PORT || 5001; // || 5001 is a fallback value
 connectDB();
 
 app.use("/api/notes", notesRoutes);
@@ -39,6 +32,6 @@ app.delete("/api/notes/:id", (req, res) => {
 	res.status(200).json({ message: "notes deleted succefully" });
 })
 */
-app.listen(5006, () => {
-	console.log("Server started on PORT: 5006");
+app.listen(PORT, () => {
+	console.log("Server started on PORT:", PORT);
 })
