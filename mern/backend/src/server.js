@@ -8,7 +8,12 @@ const app = express() // creating a basic app
 const PORT = process.env.PORT || 5001; // || 5001 is a fallback value
 connectDB();
 
-app.use(express.json())// middle layer
+app.use(express.json())// middle layer if this was not here then we couldnt have used the input through forms as a variable.
+app.use((_, res, next) => {
+	console.log("We are testing out the working of middle layer");
+	next();
+})
+
 app.use("/api/notes", notesRoutes);
 
 // first get request:
