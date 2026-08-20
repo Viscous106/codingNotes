@@ -1,6 +1,8 @@
 const NoteDetailPage = () => {
 	return (
-		<div>NoteDetailPage</div>
+		<div>
+			<h1>NoteDetailPage</h1>
+		</div>
 	)
 };
 

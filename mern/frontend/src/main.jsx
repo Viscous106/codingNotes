@@ -6,9 +6,10 @@ import { BrowserRouter } from 'react-router'
 
 createRoot(document.getElementById('root')).render(
 	<StrictMode>
+		{/* BrowserRouter must wrap everything that uses routing.
+		    It reads the URL bar and shares it with Routes/Link below. */}
 		<BrowserRouter>
 			<App />
 		</BrowserRouter>
-		<App />
 	</StrictMode>,
 )
