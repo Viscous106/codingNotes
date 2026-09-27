@@ -1,0 +1,5 @@
+[profile.default]
+  src = "."
+  out = "out"
+  libs = []
+  solc = "/etc/profiles/per-user/viscous/bin/solc" 
