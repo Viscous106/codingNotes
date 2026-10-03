@@ -12,4 +12,8 @@ contract SimpleStorage {
     function store(uint256 _favouriteNumber) public {
         favouriteNumber = _favouriteNumber;
     }
+
+    function update() public {
+        favouriteNumber++;
+    }
 }
