@@ -1,0 +1,10 @@
+# Foundry build output — regenerable, never commit.
+out/
+cache/
+broadcast/
+
+# Soldeer dependencies (forge soldeer install).
+dependencies/
+
+# direnv
+.direnv/

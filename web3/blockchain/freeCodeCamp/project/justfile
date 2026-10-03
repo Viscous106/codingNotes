@@ -1,0 +1,74 @@
+# Foundry task runner.
+#
+# These recipes exist to absorb the flags that are required but not guessable:
+#   --broadcast              without it, `forge create` silently does a dry run
+#   --unlocked --from ADDR   lets anvil sign, so no 66-char private key on the
+#                            command line (which wraps on paste and breaks)
+#
+# Port comes from the environment so it tracks viscous.web3.anvil.port in the
+# home-manager config rather than being duplicated here.
+
+port := env_var_or_default("WEB3_ANVIL_PORT", "8545")
+rpc  := "http://127.0.0.1:" + port
+
+# anvil's first prefunded account — the one Remix would show at the top of its
+# ACCOUNT dropdown. Public, well-known, local chain only. Never use for funds.
+acct := "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+
+# Show available recipes.
+default:
+    @just --list
+
+# Compile.
+build:
+    forge build
+
+# Run the test suite.
+test *ARGS:
+    forge test -vv {{ARGS}}
+
+# Format Solidity sources.
+fmt:
+    forge fmt
+
+# Start the local chain. Leave this running in its own terminal.
+node:
+    anvil --port {{port}}
+
+# Deploy a contract. Example: just deploy src/SimpleStorage.sol:SimpleStorage
+deploy CONTRACT:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    if ! cast chain-id --rpc-url "{{rpc}}" >/dev/null 2>&1; then
+      echo "No chain on {{rpc}} -- start one with 'just node' in another terminal." >&2
+      exit 1
+    fi
+    addr=$(forge create "{{CONTRACT}}" \
+      --rpc-url "{{rpc}}" --unlocked --from "{{acct}}" --broadcast --json \
+      | jq -r .deployedTo)
+    echo "$addr"
+    echo "  export C=$addr" >&2
+
+# Send a state-changing transaction (Remix's orange buttons).
+#   just send $C "store(uint256)" 42
+send ADDR SIG *ARGS:
+    cast send "{{ADDR}}" "{{SIG}}" {{ARGS}} \
+      --rpc-url "{{rpc}}" --unlocked --from "{{acct}}"
+
+# Read without a transaction (Remix's blue buttons). Needs a public getter.
+#   just call $C "favouriteNumber()(uint256)"
+call ADDR SIG *ARGS:
+    cast call "{{ADDR}}" "{{SIG}}" {{ARGS}} --rpc-url "{{rpc}}"
+
+# Dump a contract's storage slots — how to inspect non-public variables.
+storage ADDR:
+    cast storage "{{ADDR}}" --rpc-url "{{rpc}}"
+
+# Balance of the default account.
+balance:
+    cast balance "{{acct}}" --rpc-url "{{rpc}}" --ether
+
+# Install a dependency via soldeer (no git submodules).
+#   just add forge-std~1.9.4
+add DEP:
+    forge soldeer install {{DEP}}

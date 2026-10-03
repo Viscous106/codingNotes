@@ -1,0 +1,15 @@
+[profile.default]
+# Contracts live in src/, so `forge build` and `forge create` agree on where the
+# project root is. Keeping foundry.toml at the project root (not above it) is
+# what stops `forge create` resolving paths against an unexpected directory.
+src  = "src"
+out  = "out"
+test = "test"
+libs = ["dependencies"]
+
+# No `solc` key on purpose. The compiler comes from FOUNDRY_SOLC, which
+# flake.nix sets — so this file stays portable and contains no store paths.
+
+[fmt]
+line_length = 100
+tab_width   = 4
