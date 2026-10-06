@@ -91,8 +91,10 @@ df = pd.read_csv("../data/Week1_GA_dataset.csv")
 # .iloc (Position-based):
     df.iloc[0]                           # Very first row (position 0)
     df.iloc[-1]                          # Very last row
+    df.iloc[::2 ]                        # Even
+    df.iloc[1::2]                        # Odd
     df.iloc[0:5, 0]                      # Rows 0-4 (EXCLUSIVE of 5), first column (col 0)
     df.iloc[0:10, 2:5]                   # Sub-grid: rows 0-9, columns 2-4
 '''
 
-#
+
