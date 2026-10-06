@@ -65,7 +65,12 @@
         FOUNDRY_SOLC = "${solc.pkg}/bin/${solc.exe}";
 
         shellHook = ''
-          echo "foundry $(forge --version | head -1 | cut -d' ' -f2) | solc $("$FOUNDRY_SOLC" --version | tail -1 | cut -d' ' -f2)"
+          # Field 3, not 2: foundry 1.x prints "forge Version: 1.8.3-dev" over
+          # several lines, so f2 is the literal "Version:" label. (Pre-1.0 forge
+          # printed "forge 0.2.0 (sha date)", which is what f2 was written for.)
+          # solc reports "Version: 0.6.12+commit.27d51765.Linux.g++" — trim at
+          # the '+' so the banner shows the release, not the whole build string.
+          echo "foundry $(forge --version | head -1 | cut -d' ' -f3) | solc $("$FOUNDRY_SOLC" --version | tail -1 | cut -d' ' -f2 | cut -d+ -f1)"
         '';
       };
     };
