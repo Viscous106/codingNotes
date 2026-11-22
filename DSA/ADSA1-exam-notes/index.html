@@ -1,0 +1,1285 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ADSA-1 Exam Notes</title>
+<style>
+:root {
+  --bg:#fbfaf7; --panel:#ffffff; --ink:#1d1f24; --muted:#6b7080; --line:#e4e1da;
+  --accent:#b4441f; --accent-soft:#f6e6de; --code-bg:#f3f1ec; --ok:#2f7d4f;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:#15161a; --panel:#1c1e23; --ink:#e7e6e1; --muted:#9a9eab; --line:#2c2f36;
+    --accent:#f08a5d; --accent-soft:#3a2720; --code-bg:#111215; --ok:#6fcf97;
+  }
+}
+:root[data-theme="dark"] {
+  --bg:#15161a; --panel:#1c1e23; --ink:#e7e6e1; --muted:#9a9eab; --line:#2c2f36;
+  --accent:#f08a5d; --accent-soft:#3a2720; --code-bg:#111215; --ok:#6fcf97;
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; scroll-padding-top:16px; }
+body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.6 "Iowan Old Style","Charter","Georgia",serif; }
+code, pre { font-family:"JetBrains Mono","Fira Code",ui-monospace,monospace; font-size:.86em; }
+a { color:var(--accent); }
+.layout { display:grid; grid-template-columns:260px minmax(0,1fr); max-width:1280px; margin:0 auto; }
+nav { position:sticky; top:0; height:100vh; overflow:auto; padding:28px 20px; border-right:1px solid var(--line); font:14px/1.5 system-ui,sans-serif; }
+nav .brand { font-weight:700; font-size:15px; margin-bottom:4px; }
+nav a { display:block; color:var(--ink); text-decoration:none; padding:3px 0; }
+nav a:hover { color:var(--accent); }
+nav .lvl2 { padding-left:12px; color:var(--muted); font-size:13px; }
+nav .progress { margin:14px 0; font-size:13px; color:var(--muted); }
+nav .bar { height:6px; background:var(--line); border-radius:3px; overflow:hidden; }
+nav .bar i { display:block; height:100%; background:var(--ok); width:0; transition:width .3s; }
+nav button { margin-top:10px; font:13px system-ui; background:none; border:1px solid var(--line); color:var(--ink); border-radius:6px; padding:4px 10px; cursor:pointer; }
+main { padding:32px 40px 120px; min-width:0; }
+h1 { font-size:2.1rem; line-height:1.15; margin:0 0 6px; letter-spacing:-.01em; }
+h2 { font-size:1.55rem; margin:64px 0 4px; padding-top:8px; border-top:2px solid var(--ink); }
+h3 { font-size:1.1rem; margin:0; }
+h3.sub { margin:28px 0 8px; }
+h4 { font:600 12px system-ui,sans-serif; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin:0 0 4px; }
+.from { color:var(--muted); margin:0 0 18px; font-style:italic; }
+.exam { display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:12px; margin:22px 0; }
+.exam div { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:12px 14px; font-family:system-ui,sans-serif; }
+.exam b { display:block; font-size:1.15rem; }
+.exam span { font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; }
+.note { background:var(--accent-soft); border-left:4px solid var(--accent); padding:12px 16px; border-radius:6px; margin:18px 0; }
+.concept { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:18px 22px; }
+.concept ul { margin:8px 0 0; padding-left:20px; }
+.concept li { margin:6px 0; }
+.prob { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:18px 22px; margin:18px 0; }
+.prob header { display:flex; flex-wrap:wrap; align-items:baseline; gap:6px 12px; margin-bottom:6px; }
+.prob header h3 { flex:1 1 260px; }
+.tag { font:600 11px system-ui,sans-serif; background:var(--accent-soft); color:var(--accent); padding:2px 8px; border-radius:20px; white-space:nowrap; }
+.badge { font:600 12px system-ui,sans-serif; background:var(--line); color:var(--muted); padding:2px 8px; border-radius:20px; vertical-align:middle; }
+.ext { font:13px system-ui,sans-serif; white-space:nowrap; }
+.done { font:12px system-ui,sans-serif; color:var(--muted); cursor:pointer; white-space:nowrap; }
+.prob.is-done { opacity:.6; }
+.stmt { margin:4px 0 12px; }
+.grid2 { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+.grid2 ul { margin:0; padding-left:18px; }
+.grid2 li { margin:4px 0; }
+details { margin-top:12px; }
+summary { cursor:pointer; font:600 13px system-ui,sans-serif; color:var(--accent); }
+.cx { font-weight:400; color:var(--muted); margin-left:8px; }
+pre.code { background:var(--code-bg); border:1px solid var(--line); border-radius:8px; padding:14px 16px; overflow-x:auto; line-height:1.5; margin:10px 0 0; }
+.answer { font-size:1.1rem; }
+.answer code { background:var(--accent-soft); padding:2px 8px; border-radius:4px; }
+table { border-collapse:collapse; width:100%; font:14px/1.45 system-ui,sans-serif; margin:12px 0; }
+th, td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+th { font-size:12px; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); }
+.idx td a { text-decoration:none; font-weight:600; }
+.small { font-size:12px; } .muted { color:var(--muted); }
+.strategy li { margin:8px 0; }
+.vars { margin:26px 0 8px; }
+.var { background:var(--panel); border:1px dashed var(--line); border-radius:10px; padding:10px 16px; margin:10px 0; }
+.var details { margin-top:6px; }
+.tablewrap { overflow-x:auto; }
+@media (max-width: 860px) {
+  .layout { grid-template-columns:1fr; }
+  nav { position:static; height:auto; border-right:none; border-bottom:1px solid var(--line); padding:16px; }
+  main { padding:20px 16px 80px; }
+  .grid2 { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+<div class="layout">
+<nav>
+  <div class="brand">ADSA-1 · Exam Notes</div>
+  <div class="muted small">SST · DSA III · module 436</div>
+  <div class="progress"><span id="pcount">0</span> / <span id="ptotal">0</span> problems done<div class="bar"><i id="pbar"></i></div></div>
+  <a href="#strategy">⚡ Solve-in-one-go pointers</a>
+  <a href="#index">☰ All problems at a glance</a>
+  <a href="#recursion">1 · Recursion &amp; Backtracking</a>
+  <a href="#combi">2 · Combinatorics</a>
+  <a href="#modular">3 · Modular arithmetic &amp; Fermat</a>
+  <a href="#bst">4 · Binary Search Trees</a>
+  <button id="theme">toggle theme</button>
+</nav>
+<main>
+  <h1>Advanced DSA Assignment&nbsp;‑1: Exam Notes</h1>
+  <p class="muted">Built from the 37 assignment problems scraped from your Scaler module (classes 29 Oct – 19 Nov). Every Java solution here was compiled and tested against the problem's examples.</p>
+  <div class="exam">
+    <div><span>When</span><b>Mon 23 Nov, 7:30 PM</b></div>
+    <div><span>Duration</span><b>60 min · 1 attempt</b></div>
+    <div><span>Scope</span><b>9 classes · Recursion → BST</b></div>
+    <div><span>Scored</span><b>/100 · plagiarism-checked</b></div>
+  </div>
+  <div class="note"><b>Syllabus (your screenshot):</b> Recursion Revision · LAB 1: Recursion &amp; Ad-Hoc · Combinatorics Basics · Fermat Theorem · BST 1 · LAB 2: Maths Ad-Hoc · BST 2 · BST 3 · LAB 3: BST. <b>LCA and TreeMap/TreeSet are not in the exam</b> and are left out. Each section has: the concepts from that lecture's revision notes → every assignment problem → lecture-only items → likely variations.</div>
+
+  <section id="strategy">
+  <h2>⚡ Pointers to solve everything in one go</h2>
+  <div class="concept strategy"><ul><li><b>Read the constraints first; they tell you the complexity.</b> n ≤ 10–20 → backtracking or 2<sup>n</sup> · n ≤ 10<sup>5</sup> → O(n log n) · n ≤ 10<sup>6</sup> → O(n) · values up to 10<sup>9</sup> with a single number as input → O(√A), O(log A) or binary search on the answer.</li><li><b>When you see "mod 10<sup>9</sup>+7"</b>: use long everywhere, apply % after <i>every</i> multiplication, write <code>(x − y + MOD) % MOD</code> for subtraction, and never divide. Multiply by <code>inv = power(x, MOD−2)</code> instead.</li><li><b>Is the modulus prime?</b> If prime and larger than n → factorials + Fermat. If any m → Pascal DP. A huge exponent → reduce it <b>mod p−1</b>.</li><li><b>When you see "BST"</b>, first ask what the problem looks like on the <i>sorted inorder sequence</i> (k-th smallest, two-sum, merge, validate). Then ask whether the BST property lets you <i>prune</i> (search, range, the split point in "Distance between Nodes").</li><li><b>When you see a tree problem</b>, decide the direction: information flows <i>down</i> (pass parameters like a range or depth) or <i>up</i> (return a tuple from children, i.e. postorder).</li><li><b>Recursion output questions</b>: draw the call tree on paper and track the state (count, prints) at every call. Watch for short-circuit &amp;&amp;/||, prints after the recursive call, and nested f(f(x)). Objective questions give credit only within <b>2 attempts</b>.</li><li><b>Match the output format exactly.</b> Pascal = A × A padded with zeros · Hanoi = list of [disk, from, to] · Find Leaves = groups sorted · rank = 1-based mod 1000003 · "YES"/"NO" strings.</li><li><b>Before you submit, check edge cases</b>: single node, skewed tree (stack depth!), A = 1, B = C, values at the top of the int range (use long bounds), odd/even cases (matrix), r = n (nCr), mod = 1.</li><li><b>Scaler scoring</b>: correctness tests run first, then time-complexity tests. The first failing test stops the run, so a slow-but-correct solution still earns partial credit. Hints are free; only "Complete Solution" costs 50%.</li><li><b>Use the "Expected Output" box</b> to test your edge-case input against their reference solution before you submit.</li><li><b>60 minutes, 1 attempt.</b> Read every problem first and solve the easiest ones (template problems: inverse, search, Excel, Pascal) before the long ones.</li></ul></div>
+  </section>
+
+  <section id="index">
+  <h2>☰ All problems at a glance</h2>
+  <p class="muted">Read only the right-hand column the night before. If you can't recall the full solution from the trick, open that card.</p>
+  <div class="tablewrap"><table class="idx"><tr><th>Problem</th><th>Pattern</th><th>The one trick</th></tr><tr><td><a href="#leaves">Find Leaves of Binary Tree</a><div class="muted small">Recursion Revision · Q1</div></td><td>Tree postorder / height</td><td>group by height-from-bottom</td></tr><tr><td><a href="#hanoi">Tower of Hanoi</a><div class="muted small">Recursion Revision · Q2</div></td><td>Recursion (divide into n-1)</td><td>n-1 to aux, n to dst, n-1 to dst</td></tr><tr><td><a href="#pal">Check Palindrome using Recursion</a><div class="muted small">Recursion Revision · Q3</div></td><td>Two-pointer recursion</td><td>indices, not substrings</td></tr><tr><td><a href="#q_order">Order of Execution</a><div class="muted small">Recursion Revision · Q4</div></td><td>Output tracing</td><td>answer = <b>3 2 1 1 2 3</b></td></tr><tr><td><a href="#q_nested">Nested Recursive Call</a><div class="muted small">Recursion Revision · Q5</div></td><td>Output tracing</td><td>answer = <b>3</b></td></tr><tr><td><a href="#q_short">Short-Circuit Recursion</a><div class="muted small">Recursion Revision · Q6</div></td><td>Output tracing</td><td>answer = <b>4</b></td></tr><tr><td><a href="#consec">Consecutive Numbers Sum</a><div class="muted small">LAB 1 · Q1</div></td><td>Math / ad-hoc</td><td>x = (A − k(k−1)/2)/k must be an integer</td></tr><tr><td><a href="#rank">Sorted Permutation Rank (distinct chars)</a><div class="muted small">LAB 1 · Q2</div></td><td>Combinatorics / counting</td><td>Σ smaller-on-right × (n−1−i)!, then +1</td></tr><tr><td><a href="#combine">Combinations</a><div class="muted small">LAB 1 · Q3</div></td><td>Backtracking</td><td>recurse with i+1, copy on save</td></tr><tr><td><a href="#q_exp">Exponential Call Tree</a><div class="muted small">LAB 1 · Q4</div></td><td>Output tracing</td><td>answer = <b>31</b></td></tr><tr><td><a href="#q_acc">Accumulator Pattern</a><div class="muted small">LAB 1 · Q5</div></td><td>Output tracing</td><td>answer = <b>4321</b></td></tr><tr><td><a href="#q_twist">Nested Recursion Twist</a><div class="muted small">LAB 1 · Q6</div></td><td>Output tracing</td><td>answer = <b>9</b></td></tr><tr><td><a href="#good">Count Good Subsequences</a><div class="muted small">Combinatorics · Q1</div></td><td>Counting · product of (1 + choices)</td><td>Σₖ [Π(1 + C(f,k)) − 1]</td></tr><tr><td><a href="#ncrm">Compute nCr % m (m NOT prime)</a><div class="muted small">Combinatorics · Q2</div></td><td>Pascal DP</td><td>non-prime mod → no inverse → Pascal</td></tr><tr><td><a href="#grid">Grid Unique Paths</a><div class="muted small">Combinatorics · Q3</div></td><td>Combinatorics</td><td>C(A+B−2, A−1)</td></tr><tr><td><a href="#pascal">Pascal Triangle</a><div class="muted small">Combinatorics · Q4</div></td><td>Pascal</td><td>square matrix padded with 0</td></tr><tr><td><a href="#colnum">Excel Column Number</a><div class="muted small">LAB 2 · Q1</div></td><td>Base conversion</td><td>res·26 + (c−'A'+1)</td></tr><tr><td><a href="#rankrep">Sorted Permutation Rank with Repeats</a><div class="muted small">LAB 2 · Q2</div></td><td>Counting + modular inverse</td><td>(n−1−i)!·invProd·Σ freq[smaller]</td></tr><tr><td><a href="#matrix">Yet another MATRIX question</a><div class="muted small">LAB 2 · Q4</div></td><td>Rule of product</td><td>C(A,A/2)^B, 0 if A odd</td></tr><tr><td><a href="#coltitle">Excel Column Title</a><div class="muted small">Fermat · Q1</div></td><td>Base conversion</td><td>A-- before % 26</td></tr><tr><td><a href="#bigpow">Very Large Power: A^(B!) mod 1e9+7</a><div class="muted small">Fermat · Q2</div></td><td>Fermat (exponent mod p−1)</td><td>reduce exponent mod p−1</td></tr><tr><td><a href="#ncrp">Compute nCr % p (p prime ≥ n)</a><div class="muted small">Fermat · Q3</div></td><td>Factorials + Fermat inverse</td><td>n!·(r!)^(p−2)·((n−r)!)^(p−2)</td></tr><tr><td><a href="#modinv">Prime Modulo Inverse</a><div class="muted small">Fermat · Q4</div></td><td>Fermat inverse</td><td>A^(B−2) mod B</td></tr><tr><td><a href="#magic">Ath Magical Number</a><div class="muted small">LAB 2 · Q3</div></td><td>Binary search on answer + inclusion–exclusion</td><td>count = x/B + x/C − x/lcm</td></tr><tr><td><a href="#sorted2bst">Sorted Array To Balanced BST</a><div class="muted small">BST 1 · Q1</div></td><td>Divide & conquer</td><td>middle = root</td></tr><tr><td><a href="#onechild">Check for BST with One Child</a><div class="muted small">BST 1 · Q2</div></td><td>BST bounds</td><td>shrink (lo,hi) window</td></tr><tr><td><a href="#search">Search in BST</a><div class="muted small">BST 1 · Q3</div></td><td>BST walk</td><td>go left / right</td></tr><tr><td><a href="#bst_ins">Insert, Min &amp; Max in a BST</a><div class="muted small">BST 1 · lecture</div></td><td>BST basics</td><td>insert at first null; min = leftmost</td></tr><tr><td><a href="#valid">Valid Binary Search Tree</a><div class="muted small">BST 2 · Q1</div></td><td>Range DFS</td><td>pass (lo, hi), long bounds</td></tr><tr><td><a href="#valid_bu">Valid BST: bottom-up method</a><div class="muted small">BST 2 · lecture</div></td><td>Postorder min/max</td><td>left.max < node < right.min</td></tr><tr><td><a href="#largest">Largest BST Subtree</a><div class="muted small">BST 2 · Q2</div></td><td>Postorder tuple</td><td>{isBST,size,min,max}</td></tr><tr><td><a href="#delete">Delete a node in BST</a><div class="muted small">BST 2 · Q3</div></td><td>BST delete (3 cases)</td><td>two children → in-order predecessor</td></tr><tr><td><a href="#kth">Kth Smallest Element In BST</a><div class="muted small">BST 3 · Q1</div></td><td>Inorder</td><td>count during inorder</td></tr><tr><td><a href="#kth_morris">Kth smallest with Morris (O(1) space)</a><div class="muted small">BST 3 · lecture</div></td><td>Morris + counter</td><td>count at both visit points</td></tr><tr><td><a href="#path">Path to Given Node</a><div class="muted small">BST 3 · Q2</div></td><td>DFS + backtracking</td><td>add, recurse, remove</td></tr><tr><td><a href="#morris">Morris Inorder Traversal</a><div class="muted small">BST 3 · Q3</div></td><td>Morris</td><td>thread predecessor → cur</td></tr><tr><td><a href="#twosum">Two Sum BST</a><div class="muted small">LAB 3 · Q1</div></td><td>BST iterators / two pointers</td><td>forward + reverse inorder</td></tr><tr><td><a href="#common">Common Nodes in Two BST</a><div class="muted small">LAB 3 · Q2</div></td><td>Merge two inorders</td><td>merge like sorted arrays</td></tr><tr><td><a href="#range">BST nodes in a range</a><div class="muted small">LAB 3 · Q3</div></td><td>Range pruning</td><td>prune with BST property</td></tr><tr><td><a href="#dist">Distance between Nodes of BST</a><div class="muted small">LAB 3 · Q4</div></td><td>BST split point</td><td>split point, then two depths</td></tr></table></div>
+  </section>
+
+  
+<section id="recursion">
+<h2>1 · Recursion &amp; Backtracking</h2>
+<p class="from">Classes: ADSA 1: Recursion Revision · LAB 1: Recursion &amp; Ad-Hoc</p>
+
+<div class="concept">
+<h3>Concepts you need</h3>
+<ul><li><b>The 3 steps</b>: (1) define what <code>f(args)</code> returns, in words; (2) <b>trust</b> it for smaller input and build the answer for the current input from it; (3) write the base case that stops the recursion.</li><li><b>Call stack</b>: every call gets its own frame (own copies of parameters and locals). Statements <i>before</i> the recursive call run on the way down; statements <i>after</i> it run on the way back up, in reverse order.</li><li><b>Draw the call tree</b> for any output question. Count nodes for the number of calls, and read the leaves left to right for the order of work.</li><li><b>Time</b> = (number of calls) × (work per call). <b>Space</b> = maximum depth of the stack.</li><li><b>Common recurrences</b>: T(n)=T(n-1)+1 → O(n); T(n)=T(n/2)+1 → O(log n); T(n)=2T(n-1)+1 → 2<sup>n</sup>−1 calls; T(n)=2T(n/2)+n → O(n log n); Fibonacci-style f(n-1)+f(n-2) → O(φ<sup>n</sup>) ≈ O(2<sup>n</sup>).</li><li><b>Short-circuit</b>: in <code>a &amp;&amp; f()</code>, f() is <i>not called</i> when a is false; in <code>a || f()</code> it is not called when a is true. That ends the recursion early.</li><li><b>Nested call</b> <code>f(f(x))</code>: evaluate the inner call fully first, then call f on that result.</li><li><b>Accumulator (tail) recursion</b>: pass the partial answer down as a parameter and return it at the base case. Example: reversing digits with <code>acc*10 + n%10</code>.</li><li><b>Backtracking template</b>: choose → recurse → un-choose (remove the last element). Copy the list when you save an answer: <code>res.add(new ArrayList&lt;&gt;(cur))</code>.</li><li><b>Tree recursion</b> = postorder: get the answers from the left and right subtrees, then combine them at the node. Height counted from the bottom gives "leaf layers".</li><li><b>Java stack limit</b>: about 10<sup>4</sup>–10<sup>5</sup> frames. For a skewed tree with 10<sup>5</sup> nodes, prefer an iterative version or keep frames small.</li></ul>
+</div>
+
+<h3 class="sub">Backtracking template</h3>
+<pre class="code"><code>void backtrack(int start, List&lt;Integer&gt; cur, List&lt;List&lt;Integer&gt;&gt; res) {
+    if (/* cur is a complete answer */) { res.add(new ArrayList&lt;&gt;(cur)); return; }
+    for (int choice = start; choice &lt;= LIMIT; choice++) {
+        cur.add(choice);                 // choose
+        backtrack(choice + 1, cur, res); // explore (choice+1 =&gt; combinations, no reuse)
+        cur.remove(cur.size() - 1);      // un-choose
+    }
+}</code></pre>
+
+
+<article class="prob" id="leaves">
+  <header>
+    <label class="done"><input type="checkbox" data-id="leaves"> done</label>
+    <span class="tag">Recursion Revision · Q1</span>
+    <h3>Find Leaves of Binary Tree</h3>
+    <a class="ext" href="https://www.scaler.com/academy/mentee-dashboard/class/593722/assignment/problems/302963" target="_blank" rel="noopener">open on Scaler ↗</a>
+  </header>
+  <p class="stmt">Repeatedly peel off all leaves. Return the groups (deepest first, root last), with each group sorted ascending.</p>
+  <div class="grid2">
+    <div><h4>Idea</h4><p>The pass in which a node gets removed is its <b>height from the bottom</b> (leaf = 0, parent = 1 + max(child heights)). So one postorder DFS that puts each node in <code>res[height]</code> gives the answer. No actual removal is needed.</p></div>
+    <div><h4>Pointers / traps</h4><ul><li>Sort every group at the end. Values can repeat, so keep duplicates.</li><li>Return −1 for null so a leaf gets 1 + max(−1,−1) = 0.</li><li>Add a new list when <code>h == res.size()</code>. Heights come up in increasing order during postorder, so this always works.</li></ul></div>
+  </div>
+  <details open><summary>Java solution <span class="cx">O(n log n) time · O(h) stack</span></summary><pre class="code"><code>List&lt;List&lt;Integer&gt;&gt; res = new ArrayList&lt;&gt;();
+int height(TreeNode n) {
+    if (n == null) return -1;
+    int h = 1 + Math.max(height(n.left), height(n.right));
+    if (h == res.size()) res.add(new ArrayList&lt;&gt;());
+    res.get(h).add(n.val);
+    return h;
+}
+public ArrayList&lt;ArrayList&lt;Integer&gt;&gt; solve(TreeNode A) {
+    height(A);
+    ArrayList&lt;ArrayList&lt;Integer&gt;&gt; ans = new ArrayList&lt;&gt;();
+    for (List&lt;Integer&gt; g : res) { Collections.sort(g); ans.add(new ArrayList&lt;&gt;(g)); }
+    return ans;
+}</code></pre></details>
+</article>
+
+
+<article class="prob" id="hanoi">
+  <header>
+    <label class="done"><input type="checkbox" data-id="hanoi"> done</label>
+    <span class="tag">Recursion Revision · Q2</span>
+    <h3>Tower of Hanoi</h3>
+    <a class="ext" href="https://www.scaler.com/academy/mentee-dashboard/class/593722/assignment/problems/15010" target="_blank" rel="noopener">open on Scaler ↗</a>
+  </header>
+  <p class="stmt">Move A disks from tower 1 to tower 3. Return every move as [disk, from, to].</p>
+  <div class="grid2">
+    <div><h4>Idea</h4><p>To move n disks from <code>src</code> to <code>dst</code>: move n−1 disks from <code>src</code> to <code>aux</code>, move disk n from <code>src</code> to <code>dst</code>, then move n−1 disks from <code>aux</code> to <code>dst</code>.</p></div>
+    <div><h4>Pointers / traps</h4><ul><li>Number of moves = 2<sup>A</sup> − 1 (A ≤ 18 → 262143 rows).</li><li>The disk number in a row is <b>n</b>, the parameter of the current call.</li><li>Argument order matters. The first recursive call is (src → aux using dst) and the second is (aux → dst using src). Check your output against the A = 3 example.</li></ul></div>
+  </div>
+  <details open><summary>Java solution <span class="cx">O(2^n) time · O(n) stack</span></summary><pre class="code"><code>public int[][] towerOfHanoi(int A) {
+    List&lt;int[]&gt; moves = new ArrayList&lt;&gt;();
+    hanoi(A, 1, 3, 2, moves);
+    return moves.toArray(new int[0][]);
+}
+void hanoi(int n, int src, int dst, int aux, List&lt;int[]&gt; moves) {
+    if (n == 0) return;
+    hanoi(n - 1, src, aux, dst, moves);
+    moves.add(new int[]{n, src, dst});
+    hanoi(n - 1, aux, dst, src, moves);
+}</code></pre></details>
+</article>
+
+
+<article class="prob" id="pal">
+  <header>
+    <label class="done"><input type="checkbox" data-id="pal"> done</label>
+    <span class="tag">Recursion Revision · Q3</span>
+    <h3>Check Palindrome using Recursion</h3>
+    <a class="ext" href="https://www.scaler.com/academy/mentee-dashboard/class/593722/assignment/problems/10764" target="_blank" rel="noopener">open on Scaler ↗</a>
+  </header>
+  <p class="stmt">Return 1 if string A is a palindrome, else 0, using recursion.</p>
+  <div class="grid2">
+    <div><h4>Idea</h4><p><code>pal(l, r)</code>: if l ≥ r return 1; if the characters differ return 0; otherwise return <code>pal(l+1, r−1)</code>.</p></div>
+    <div><h4>Pointers / traps</h4><ul><li>Pass <b>indices</b>, not substrings. <code>substring</code> copies the string every call, which makes it O(n²) and fails the time-complexity tests.</li><li>Depth is |A|/2 ≤ 25000, which Java handles.</li><li>Base case <code>l &gt;= r</code> covers both odd and even lengths.</li></ul></div>
+  </div>
+  <details open><summary>Java solution <span class="cx">O(n) time · O(n) stack</span></summary><pre class="code"><code>public int solve(String A) { return pal(A, 0, A.length() - 1); }
+int pal(String s, int l, int r) {
+    if (l &gt;= r) return 1;
+    if (s.charAt(l) != s.charAt(r)) return 0;
+    return pal(s, l + 1, r - 1);
+}</code></pre></details>
+</article>
+
+
+<article class="prob" id="q_order">
+  <header>
+    <label class="done"><input type="checkbox" data-id="q_order"> done</label>
+    <span class="tag">Recursion Revision · Q4</span>
+    <h3>Order of Execution</h3>
+    <a class="ext" href="https://www.scaler.com/academy/mentee-dashboard/class/593722/assignment/problems/289442" target="_blank" rel="noopener">open on Scaler ↗</a>
+  </header>
+  <pre class="code"><code>static void fun(int n) {
+    if (n == 0) return;
+    System.out.print(n + &quot; &quot;);
+    fun(n - 1);
+    System.out.print(n + &quot; &quot;);
+}
+fun(3);</code></pre>
+  <details><summary>Answer (try it first, objective Qs allow only 2 attempts)</summary>
+    <p class="answer">Output: <code>3 2 1 1 2 3</code></p><p>The print before the call runs on the way down (3 2 1). The print after the call runs on the way back up (1 2 3).</p>
+  </details>
+</article>
+
+
+<article class="prob" id="q_nested">
+  <header>
+    <label class="done"><input type="checkbox" data-id="q_nested"> done</label>
+    <span class="tag">Recursion Revision · Q5</span>
+    <h3>Nested Recursive Call</h3>
+    <a class="ext" href="https://www.scaler.com/academy/mentee-dashboard/class/593722/assignment/problems/289438" target="_blank" rel="noopener">open on Scaler ↗</a>
+  </header>
+  <pre class="code"><code>static int f(int n) {
+    if (n &lt;= 0) return 0;
+    return 1 + f(n / 2);
+}
+System.out.println(f(f(100)));</code></pre>
+  <details><summary>Answer (try it first, objective Qs allow only 2 attempts)</summary>
+    <p class="answer">Output: <code>3</code></p><p>f(n) counts how many times n can be halved before reaching 0, which is the number of bits in n. f(100): 100→50→25→12→6→3→1→0 = 7. Then f(7): 7→3→1→0 = 3.</p>
+  </details>
+</article>
+
+
+<article class="prob" id="q_short">
+  <header>
+    <label class="done"><input type="checkbox" data-id="q_short"> done</label>
+    <span class="tag">Recursion Revision · Q6</span>
+    <h3>Short-Circuit Recursion</h3>
+    <a class="ext" href="https://www.scaler.com/academy/mentee-dashboard/class/593722/assignment/problems/289437" target="_blank" rel="noopener">open on Scaler ↗</a>
+  </header>
+  <pre class="code"><code>static int count = 0;
+static boolean check(int n) {
+    count++;
+    if (n == 0) return false;
+    return n &gt; 5 &amp;&amp; check(n - 1);
+}
+check(8); System.out.println(count);</code></pre>
+  <details><summary>Answer (try it first, objective Qs allow only 2 attempts)</summary>
+    <p class="answer">Output: <code>4</code></p><p>The calls are check(8), check(7), check(6) and check(5). In check(5), <code>5 &gt; 5</code> is false, so <code>&amp;&amp;</code> stops and check(4) is never called. count = 4.</p>
+  </details>
+</article>
+
+
+<article class="prob" id="consec">
+  <header>
+    <label class="done"><input type="checkbox" data-id="consec"> done</label>
+    <span class="tag">LAB 1 · Q1</span>
+    <h3>Consecutive Numbers Sum</h3>
+    <a class="ext" href="https://www.scaler.com/academy/mentee-dashboard/class/593723/assignment/problems/6707" target="_blank" rel="noopener">open on Scaler ↗</a>
+  </header>
+  <p class="stmt">Count the ways A (≤ 10<sup>9</sup>) can be written as a sum of consecutive positive integers.</p>
+  <div class="grid2">
+    <div><h4>Idea</h4><p>A sum of k consecutive numbers starting at x is <code>kx + k(k−1)/2 = A</code>. So x = (A − k(k−1)/2) / k must be a positive integer. Try every k while <code>k(k−1)/2 &lt; A</code>, which is about √(2A) ≈ 45000 iterations.</p></div>
+    <div><h4>Pointers / traps</h4><ul><li>Use <b>long</b> for k(k−1)/2.</li><li>k = 1 (A by itself) always counts.</li><li>Equivalent fact: the answer is the number of <b>odd divisors</b> of A.</li></ul></div>
+  </div>
+  <details open><summary>Java solution <span class="cx">O(√A)</span></summary><pre class="code"><code>public int solve(int A) {
+    int count = 0;
+    for (long k = 1; k * (k - 1) / 2 &lt; A; k++)
+        if ((A - k * (k - 1) / 2) % k == 0) count++;
+    return count;
+}</code></pre></details>
+</article>
+
+
+<article class="prob" id="rank">
+  <header>
+    <label class="done"><input type="checkbox" data-id="rank"> done</label>
+    <span class="tag">LAB 1 · Q2</span>
+    <h3>Sorted Permutation Rank (distinct chars)</h3>
+    <a class="ext" href="https://www.scaler.com/academy/mentee-dashboard/class/593723/assignment/problems/317" target="_blank" rel="noopener">open on Scaler ↗</a>
+  </header>
+  <p class="stmt">Find the 1-based rank of string A among all its permutations in sorted order, mod 1000003.</p>
+  <div class="grid2">
+    <div><h4>Idea</h4><p>At position i, every character to the right that is <b>smaller</b> than A[i] could have been placed here instead. Each such choice is followed by <code>(n−1−i)!</code> arrangements, all of which come before A. So rank = 1 + Σ smaller<sub>right</sub>(i) · (n−1−i)!.</p></div>
+    <div><h4>Pointers / traps</h4><ul><li>Precompute factorials mod 1000003 in a <code>long</code> array.</li><li>Remember the <b>+1</b> (the rank is 1-based).</li><li>O(n²) is fine for n ≤ 1000. For larger n, count with a frequency array (see the version with repeats).</li></ul></div>
+  </div>
+  <details open><summary>Java solution <span class="cx">O(n²)</span></summary><pre class="code"><code>public int findRank(String A) {
+    final int M = 1000003;
+    int n = A.length();
+    long[] fact = new long[n + 1];
+    fact[0] = 1;
+    for (int i = 1; i &lt;= n; i++) fact[i] = fact[i - 1] * i % M;
+    long rank = 0;
+    for (int i = 0; i &lt; n; i++) {
+        int smaller = 0;
+        for (int j = i + 1; j &lt; n; j++) if (A.charAt(j) &lt; A.charAt(i)) smaller++;
+        rank = (rank + smaller * fact[n - 1 - i]) % M;
+    }
+    return (int) ((rank + 1) % M);
+}</code></pre></details>
+</article>
+
+
+<article class="prob" id="combine">
+  <header>
+    <label class="done"><input type="checkbox" data-id="combine"> done</label>
+    <span class="tag">LAB 1 · Q3</span>
+    <h3>Combinations</h3>
+    <a class="ext" href="https://www.scaler.com/academy/mentee-dashboard/class/593723/assignment/problems/142" target="_blank" rel="noopener">open on Scaler ↗</a>
+  </header>
+  <p class="stmt">Return all combinations of B numbers chosen from 1..A, in sorted order.</p>
+  <div class="grid2">
+    <div><h4>Idea</h4><p>Backtracking where each call picks the next number from <code>start..A</code>. Recursing with <code>i+1</code> keeps every entry increasing, and looping in increasing order makes the list of entries sorted.</p></div>
+    <div><h4>Pointers / traps</h4><ul><li>Copy the list when saving: <code>new ArrayList&lt;&gt;(cur)</code>.</li><li>Optional pruning: stop the loop when <code>A − i + 1 &lt; B − cur.size()</code>.</li><li>Do not use library functions (the statement forbids it).</li></ul></div>
+  </div>
+  <details open><summary>Java solution <span class="cx">O(C(A,B)·B)</span></summary><pre class="code"><code>public ArrayList&lt;ArrayList&lt;Integer&gt;&gt; combine(int A, int B) {
+    ArrayList&lt;ArrayList&lt;Integer&gt;&gt; res = new ArrayList&lt;&gt;();
+    go(1, A, B, new ArrayList&lt;&gt;(), res);
+    return res;
+}
+void go(int start, int A, int B, ArrayList&lt;Integer&gt; cur, ArrayList&lt;ArrayList&lt;Integer&gt;&gt; res) {
+    if (cur.size() == B) { res.add(new ArrayList&lt;&gt;(cur)); return; }
+    for (int i = start; i &lt;= A; i++) {
+        cur.add(i);
+        go(i + 1, A, B, cur, res);
+        cur.remove(cur.size() - 1);
+    }
+}</code></pre></details>
+</article>
+
+
+<article class="prob" id="q_exp">
+  <header>
+    <label class="done"><input type="checkbox" data-id="q_exp"> done</label>
+    <span class="tag">LAB 1 · Q4</span>
+    <h3>Exponential Call Tree</h3>
+    <a class="ext" href="https://www.scaler.com/academy/mentee-dashboard/class/593723/assignment/problems/289439" target="_blank" rel="noopener">open on Scaler ↗</a>
+  </header>
+  <pre class="code"><code>static int count = 0;
+static int fun(int n) {
+    count++;
+    if (n == 1) return 1;
+    int a = fun(n - 1);
+    int b = fun(n - 1);
+    return a + b;
+}
+fun(5); System.out.println(count);</code></pre>
+  <details><summary>Answer (try it first, objective Qs allow only 2 attempts)</summary>
+    <p class="answer">Output: <code>31</code></p><p>Calls C(n) = 1 + 2·C(n−1), C(1) = 1, so C(n) = 2<sup>n</sup> − 1 and C(5) = 31.</p>
+  </details>
+</article>
+
+
+<article class="prob" id="q_acc">
+  <header>
+    <label class="done"><input type="checkbox" data-id="q_acc"> done</label>
+    <span class="tag">LAB 1 · Q5</span>
+    <h3>Accumulator Pattern</h3>
+    <a class="ext" href="https://www.scaler.com/academy/mentee-dashboard/class/593723/assignment/problems/289440" target="_blank" rel="noopener">open on Scaler ↗</a>
+  </header>
+  <pre class="code"><code>static int mystery(int n, int acc) {
+    if (n == 0) return acc;
+    return mystery(n / 10, acc * 10 + n % 10);
+}
+System.out.println(mystery(1234, 0));</code></pre>
+  <details><summary>Answer (try it first, objective Qs allow only 2 attempts)</summary>
+    <p class="answer">Output: <code>4321</code></p><p>Each call moves the last digit of n onto acc: (123, 4) → (12, 43) → (1, 432) → (0, 4321). The function reverses the digits.</p>
+  </details>
+</article>
+
+
+<article class="prob" id="q_twist">
+  <header>
+    <label class="done"><input type="checkbox" data-id="q_twist"> done</label>
+    <span class="tag">LAB 1 · Q6</span>
+    <h3>Nested Recursion Twist</h3>
+    <a class="ext" href="https://www.scaler.com/academy/mentee-dashboard/class/593723/assignment/problems/289441" target="_blank" rel="noopener">open on Scaler ↗</a>
+  </header>
+  <pre class="code"><code>static int fun(int n) {
+    if (n &lt;= 1) return 1;
+    return fun(n - 1) + fun(n - 2) + 1;
+}
+System.out.println(fun(4));</code></pre>
+  <details><summary>Answer (try it first, objective Qs allow only 2 attempts)</summary>
+    <p class="answer">Output: <code>9</code></p><p>Build it bottom-up: f(0) = f(1) = 1, f(2) = 1+1+1 = 3, f(3) = 3+1+1 = 5, f(4) = 5+3+1 = 9.</p>
+  </details>
+</article>
+<div class="vars"><h3 class="sub">Likely variations</h3><p class="muted">Not in your assignment, but taught in the lectures or a one-step change from an assignment problem. Exam questions are often like this.</p><div class="var"><b>Print 1..n vs n..1:</b> print <i>after</i> the recursive call → 1..n (the lecture example <code>check(n-1); print(n)</code>); print <i>before</i> it → n..1.</div><div class="var"><b>Power a<sup>n</sup> recursively in O(log n):</b> compute half = pow(a, n/2), square it, and multiply by a once more if n is odd. Calls only <code>pow(n/2)</code> <b>once</b>. Calling it twice makes it O(n) again.<details><summary>code</summary><pre class="code"><code>long pow(long a, long n, long m) {
+    if (n == 0) return 1 % m;
+    long half = pow(a, n / 2, m);
+    long res = half * half % m;
+    return n % 2 == 1 ? res * (a % m) % m : res;
+}</code></pre></details></div><div class="var"><b>All subsets (power set):</b> for each element, either take it or skip it. That gives 2<sup>n</sup> leaves.<details><summary>code</summary><pre class="code"><code>void subsets(int[] a, int i, List&lt;Integer&gt; cur, List&lt;List&lt;Integer&gt;&gt; res) {
+    if (i == a.length) { res.add(new ArrayList&lt;&gt;(cur)); return; }
+    cur.add(a[i]);
+    subsets(a, i + 1, cur, res);          // take
+    cur.remove(cur.size() - 1);
+    subsets(a, i + 1, cur, res);          // skip
+}</code></pre></details></div><div class="var"><b>All permutations (distinct):</b> use a <code>used[]</code> array, try every unused element at each position, and backtrack. That gives n! leaves.<details><summary>code</summary><pre class="code"><code>void permute(int[] a, boolean[] used, List&lt;Integer&gt; cur, List&lt;List&lt;Integer&gt;&gt; res) {
+    if (cur.size() == a.length) { res.add(new ArrayList&lt;&gt;(cur)); return; }
+    for (int i = 0; i &lt; a.length; i++) {
+        if (used[i]) continue;
+        used[i] = true; cur.add(a[i]);
+        permute(a, used, cur, res);
+        used[i] = false; cur.remove(cur.size() - 1);
+    }
+}</code></pre></details></div><div class="var"><b>Sum of digits / count digits / reverse:</b> use <code>n % 10</code> for the last digit and recurse on <code>n / 10</code>. Base case n == 0.</div><div class="var"><b>Height of a binary tree:</b> <code>h(null) = -1</code> (edges) or 0 (nodes); <code>h(n) = 1 + max(h(l), h(r))</code>. This is the same recursion as Find Leaves.</div></div>
+</section>
+<section id="combi">
+<h2>2 · Combinatorics</h2>
+<p class="from">Classes: ADSA 1: Combinatorics Basics · LAB 2: Maths Ad-Hoc</p>
+<div class="concept">
+<h3>Concepts you need</h3>
+<ul><li><b>Rule of sum</b>: when you do one task OR another, add the counts. <b>Rule of product</b>: when you do one AND then another, multiply the counts.</li><li><b>Permutations</b> <code>nPr = n!/(n−r)!</code> (order matters). <b>Combinations</b> <code>nCr = n!/(r!(n−r)!)</code> (order does not matter).</li><li><b>Pascal's identity</b>: <code>nCr = (n−1)C(r−1) + (n−1)Cr</code> (either element n is chosen or it is not). Base cases: <code>nC0 = nCn = 1</code>. This needs only addition, so it works with <b>any</b> modulus m.</li><li><b>Symmetry</b>: nCr = nC(n−r). <b>Row sum</b>: Σ nCr = 2<sup>n</sup>, which is the number of subsets.</li><li><b>Arrangements with repeats</b>: <code>n! / (f₁! · f₂! · …)</code>.</li><li><b>Grid paths</b> (moving only right/down): you make (A−1) downs and (B−1) rights in some order, so paths = <code>C(A+B−2, A−1)</code>.</li><li><b>Independent choices per group</b>: if group g can be used in c<sub>g</sub> ways or skipped, the total is Π(1 + c<sub>g</sub>). Subtract 1 to drop the "skip everything" (empty) case.</li><li><b>Lexicographic rank</b>: for each position, count the strings that start with a smaller character at that position and match everything before it. Add 1 at the end.</li><li><b>Excel columns</b> are base 26 <i>without a zero digit</i> (A = 1 … Z = 26). Going number → title, do <code>A--</code> before each <code>% 26</code>.</li></ul>
+</div>
+
+
+<article class="prob" id="good">
+  <header>
+    <label class="done"><input type="checkbox" data-id="good"> done</label>
+    <span class="tag">Combinatorics · Q1</span>
+    <h3>Count Good Subsequences</h3>
+    <a class="ext" href="https://www.scaler.com/academy/mentee-dashboard/class/594057/assignment/problems/9881" target="_blank" rel="noopener">open on Scaler ↗</a>
+  </header>
+  <p class="stmt">Count the non-empty subsequences (as sets of indices) in which every distinct value appears the same number of times, mod 10<sup>9</sup>+7.</p>
+  <div class="grid2">
+    <div><h4>Idea</h4><p>Fix the common frequency k. Each distinct value v with frequency f<sub>v</sub> is either left out (1 way) or included exactly k times (C(f<sub>v</sub>, k) ways). So count<sub>k</sub> = Π<sub>v</sub>(1 + C(f<sub>v</sub>, k)) − 1, where the −1 removes the empty choice. The answer is Σ<sub>k=1..maxF</sub> count<sub>k</sub>.</p></div>
+    <div><h4>Pointers / traps</h4><ul><li>For a given k, only values with f<sub>v</sub> ≥ k contribute a factor other than 1. Sort the frequencies in descending order and break early. The total work is Σ f<sub>v</sub> = n, so this is O(n).</li><li>Precompute <code>fact</code> and <code>invFact</code> up to n (Fermat inverse, see section 3).</li><li>Use <code>(prod − 1 + MOD) % MOD</code> to avoid a negative result.</li><li>Check: [1,2,1] → k=1: (1+2)(1+1)−1 = 5; k=2: (1+1)(1+0)−1 = 1; total 6 ✓</li></ul></div>
+  </div>
+  <details open><summary>Java solution <span class="cx">O(n log n)</span></summary><pre class="code"><code>static final long MOD = 1_000_000_007L;
+public int solve(int[] A) {
+    int n = A.length;
+    long[] fact = new long[n + 1], invFact = new long[n + 1];
+    fact[0] = 1;
+    for (int i = 1; i &lt;= n; i++) fact[i] = fact[i - 1] * i % MOD;
+    invFact[n] = power(fact[n], MOD - 2, MOD);
+    for (int i = n; i &gt; 0; i--) invFact[i - 1] = invFact[i] * i % MOD;
+
+    HashMap&lt;Integer, Integer&gt; freq = new HashMap&lt;&gt;();
+    for (int x : A) freq.merge(x, 1, Integer::sum);
+    List&lt;Integer&gt; fs = new ArrayList&lt;&gt;(freq.values());
+    fs.sort(Collections.reverseOrder());
+
+    long ans = 0;
+    for (int k = 1; k &lt;= fs.get(0); k++) {
+        long prod = 1;
+        for (int f : fs) {
+            if (f &lt; k) break;
+            long c = fact[f] * invFact[k] % MOD * invFact[f - k] % MOD;
+            prod = prod * (1 + c) % MOD;
+        }
+        ans = (ans + prod - 1 + MOD) % MOD;
+    }
+    return (int) ans;
+}</code></pre></details>
+</article>
+
+
+<article class="prob" id="ncrm">
+  <header>
+    <label class="done"><input type="checkbox" data-id="ncrm"> done</label>
+    <span class="tag">Combinatorics · Q2</span>
+    <h3>Compute nCr % m (m NOT prime)</h3>
+    <a class="ext" href="https://www.scaler.com/academy/mentee-dashboard/class/594057/assignment/problems/4111" target="_blank" rel="noopener">open on Scaler ↗</a>
+  </header>
+  <p class="stmt">Return nCr % m, with A·B ≤ 10<sup>6</sup> and m ≤ 10<sup>6</sup> (any m, not necessarily prime).</p>
+  <div class="grid2">
+    <div><h4>Idea</h4><p>m might not be prime, so <b>modular inverses may not exist</b> and the factorial formula cannot be used. Use Pascal's identity (only additions) with a 1-D row of size r+1, updated right-to-left. Cost O(n·r) ≤ 10<sup>6</sup>.</p></div>
+    <div><h4>Pointers / traps</h4><ul><li>Update j from <b>high to low</b> so <code>C[j-1]</code> still holds the previous row's value.</li><li>Start with <code>C[0] = 1 % m</code> (gives 0 when m = 1).</li><li>The constraint A·B ≤ 10<sup>6</sup> is the hint that O(n·r) is intended.</li></ul></div>
+  </div>
+  <details open><summary>Java solution <span class="cx">O(n·r) time · O(r) space</span></summary><pre class="code"><code>public int solve(int A, int B, int C) {
+    long[] dp = new long[B + 1];
+    dp[0] = 1 % C;
+    for (int i = 1; i &lt;= A; i++)
+        for (int j = Math.min(i, B); j &gt; 0; j--)
+            dp[j] = (dp[j] + dp[j - 1]) % C;
+    return (int) dp[B];
+}</code></pre></details>
+</article>
+
+
+<article class="prob" id="grid">
+  <header>
+    <label class="done"><input type="checkbox" data-id="grid"> done</label>
+    <span class="tag">Combinatorics · Q3</span>
+    <h3>Grid Unique Paths</h3>
+    <a class="ext" href="https://www.scaler.com/academy/mentee-dashboard/class/594057/assignment/problems/78" target="_blank" rel="noopener">open on Scaler ↗</a>
+  </header>
+  <p class="stmt">Count the paths from the top-left to the bottom-right of an A × B grid, moving only right or down.</p>
+  <div class="grid2">
+    <div><h4>Idea</h4><p>Every path is some ordering of (A−1) D's and (B−1) R's, so the answer is <code>C(A+B−2, A−1)</code>. Compute it as a running product <code>res = res · (n−r+i) / i</code>. Each intermediate value is itself a binomial coefficient, so the division is always exact.</p></div>
+    <div><h4>Pointers / traps</h4><ul><li>Use <b>long</b> for <code>res</code> and take r = min(A,B) − 1.</li><li>Multiply <b>before</b> dividing.</li><li>DP alternative: <code>dp[i][j] = dp[i−1][j] + dp[i][j−1]</code>.</li></ul></div>
+  </div>
+  <details open><summary>Java solution <span class="cx">O(min(A,B))</span></summary><pre class="code"><code>public int uniquePaths(int A, int B) {
+    long res = 1;
+    int n = A + B - 2, r = Math.min(A, B) - 1;
+    for (int i = 1; i &lt;= r; i++) res = res * (n - r + i) / i;
+    return (int) res;
+}</code></pre></details>
+</article>
+
+
+<article class="prob" id="pascal">
+  <header>
+    <label class="done"><input type="checkbox" data-id="pascal"> done</label>
+    <span class="tag">Combinatorics · Q4</span>
+    <h3>Pascal Triangle</h3>
+    <a class="ext" href="https://www.scaler.com/academy/mentee-dashboard/class/594057/assignment/problems/68" target="_blank" rel="noopener">open on Scaler ↗</a>
+  </header>
+  <p class="stmt">Return an A × A matrix whose row i holds iC0 … iCi, padded with 0s.</p>
+  <div class="grid2">
+    <div><h4>Idea</h4><p><code>t[i][0] = 1</code> and <code>t[i][j] = t[i−1][j−1] + t[i−1][j]</code>. Java zero-fills new arrays, so the padding is already there.</p></div>
+    <div><h4>Pointers / traps</h4><ul><li>The output is A × A including the zeros, not a jagged array.</li><li>A ≤ 25, so the values fit in an int (24C12 = 2704156).</li></ul></div>
+  </div>
+  <details open><summary>Java solution <span class="cx">O(A²)</span></summary><pre class="code"><code>public int[][] solve(int A) {
+    int[][] t = new int[A][A];
+    for (int i = 0; i &lt; A; i++) {
+        t[i][0] = 1;
+        for (int j = 1; j &lt;= i; j++) t[i][j] = t[i - 1][j - 1] + t[i - 1][j];
+    }
+    return t;
+}</code></pre></details>
+</article>
+
+
+<article class="prob" id="colnum">
+  <header>
+    <label class="done"><input type="checkbox" data-id="colnum"> done</label>
+    <span class="tag">LAB 2 · Q1</span>
+    <h3>Excel Column Number</h3>
+    <a class="ext" href="https://www.scaler.com/academy/mentee-dashboard/class/594054/assignment/problems/74" target="_blank" rel="noopener">open on Scaler ↗</a>
+  </header>
+  <p class="stmt">Convert a column title (e.g. "AB") to its number (28).</p>
+  <div class="grid2">
+    <div><h4>Idea</h4><p>Read it like base-26 digits with values 1..26: <code>res = res·26 + (c − 'A' + 1)</code>.</p></div>
+    <div><h4>Pointers / traps</h4><ul><li>Use +1 because A = 1, not 0.</li><li>Length ≤ 5, so the result fits in an int.</li></ul></div>
+  </div>
+  <details open><summary>Java solution <span class="cx">O(len)</span></summary><pre class="code"><code>public int titleToNumber(String A) {
+    int res = 0;
+    for (char c : A.toCharArray()) res = res * 26 + (c - &#x27;A&#x27; + 1);
+    return res;
+}</code></pre></details>
+</article>
+
+
+<article class="prob" id="rankrep">
+  <header>
+    <label class="done"><input type="checkbox" data-id="rankrep"> done</label>
+    <span class="tag">LAB 2 · Q2</span>
+    <h3>Sorted Permutation Rank with Repeats</h3>
+    <a class="ext" href="https://www.scaler.com/academy/mentee-dashboard/class/594054/assignment/problems/318" target="_blank" rel="noopener">open on Scaler ↗</a>
+  </header>
+  <p class="stmt">Find the rank among the <b>unique</b> permutations, with |A| ≤ 10<sup>6</sup>, mod 1000003 (prime). Compare characters by ASCII value (uppercase sorts before lowercase).</p>
+  <div class="grid2">
+    <div><h4>Idea</h4><p>At position i, placing a smaller character c there leaves <code>(n−1−i)! / Π freq!</code> arrangements, where c's count is reduced by 1. Since <code>1/(f−1)! = f · 1/f!</code>, the contribution of all smaller characters together is <code>(n−1−i)! · invProd · Σ<sub>c&lt;A[i]</sub> freq[c]</code>, where invProd = 1/Π freq[c]! over the remaining characters. After processing position i, remove A[i]: <code>invProd *= freq[A[i]]; freq[A[i]]--</code>.</p></div>
+    <div><h4>Pointers / traps</h4><ul><li>Here 1000003 is prime and n &lt; 1000003, so every factorial is invertible and Fermat works.</li><li>Use a 256-size frequency array (ASCII order handles upper/lower case).</li><li>Do <b>not</b> recompute the denominator from scratch at each position (O(n·256·log) is too slow). Update invProd as you go.</li><li>Remember the final <b>+1</b>.</li></ul></div>
+  </div>
+  <details open><summary>Java solution <span class="cx">O(256·n)</span></summary><pre class="code"><code>public int findRank(String A) {
+    final long M = 1000003;
+    int n = A.length();
+    long[] fact = new long[n + 1];
+    fact[0] = 1;
+    for (int i = 1; i &lt;= n; i++) fact[i] = fact[i - 1] * i % M;
+    int[] freq = new int[256];
+    for (char c : A.toCharArray()) freq[c]++;
+    long invProd = 1;                                   // 1 / Π freq[c]!
+    for (int c = 0; c &lt; 256; c++) invProd = invProd * power(fact[freq[c]], M - 2, M) % M;
+    long rank = 0;
+    for (int i = 0; i &lt; n; i++) {
+        char ch = A.charAt(i);
+        long smaller = 0;
+        for (int c = 0; c &lt; ch; c++) smaller += freq[c];
+        rank = (rank + fact[n - 1 - i] * invProd % M * (smaller % M)) % M;
+        invProd = invProd * freq[ch] % M;               // drop one ch: 1/(f-1)! = f/f!
+        freq[ch]--;
+    }
+    return (int) ((rank + 1) % M);
+}</code></pre></details>
+</article>
+
+
+<article class="prob" id="matrix">
+  <header>
+    <label class="done"><input type="checkbox" data-id="matrix"> done</label>
+    <span class="tag">LAB 2 · Q4</span>
+    <h3>Yet another MATRIX question</h3>
+    <a class="ext" href="https://www.scaler.com/academy/mentee-dashboard/class/594054/assignment/problems/12945" target="_blank" rel="noopener">open on Scaler ↗</a>
+  </header>
+  <p class="stmt">An A × B matrix of 1s. Count the ways to flip cells to −1 so that every column sums to 0, mod 10<sup>9</sup>+7.</p>
+  <div class="grid2">
+    <div><h4>Idea</h4><p>Columns are independent of each other. A column sums to 0 only when exactly A/2 of its cells are flipped, so each column has C(A, A/2) choices if A is even and 0 if A is odd. The answer is <code>C(A, A/2)<sup>B</sup> mod p</code>.</p></div>
+    <div><h4>Pointers / traps</h4><ul><li>If A is odd, return 0.</li><li>Compute C(A, A/2) mod p with factorials and Fermat (or Pascal, since A ≤ 1000), then use fast power for ^B.</li><li>Rows do not matter. The constraint is only on columns.</li></ul></div>
+  </div>
+  <details open><summary>Java solution <span class="cx">O(A + log B)</span></summary><pre class="code"><code>public int solve(int A, int B) {
+    if (A % 2 == 1) return 0;
+    long num = 1, den = 1;
+    for (int i = 1; i &lt;= A; i++) num = num * i % MOD;
+    for (int i = 1; i &lt;= A / 2; i++) den = den * i % MOD;
+    long c = num * power(den * den % MOD, MOD - 2, MOD) % MOD;   // C(A, A/2)
+    return (int) power(c, B, MOD);
+}</code></pre></details>
+</article>
+<div class="vars"><h3 class="sub">Worked examples from the lecture + likely variations</h3><p class="muted">Not in your assignment, but taught in the lectures or a one-step change from an assignment problem. Exam questions are often like this.</p><div class="var"><b>Arrange 3 distinct (A,B,C):</b> 3! = 6. <b>Arrange 2 of 4:</b> 4P2 = 4!/2! = 12 (AB and BA both count). <b>Select 2 of 4:</b> 4C2 = 6 (AB = BA). <b>2×3 grid:</b> C(3,1) = 3 paths (RRD, RDR, DRR).</div><div class="var"><b>nPr mod p:</b> multiply n·(n−1)·…·(n−r+1). It needs no division, so it works for any modulus.<details><summary>code</summary><pre class="code"><code>long nPr(int n, int r, long p) {
+    long res = 1;
+    for (int i = n - r + 1; i &lt;= n; i++) res = res * i % p;
+    return res;
+}</code></pre></details></div><div class="var"><b>Arrangements of a word with repeats:</b> "AABBC" → 5!/(2!·2!·1!) = 30. Under a prime modulus, multiply by the inverse factorials.</div><div class="var"><b>One Pascal row / single nCr without a table:</b> <code>C(n,r) = C(n,r−1)·(n−r+1)/r</code>. Exact in long for small values. Under a prime modulus, multiply by <code>inv(r)</code> instead of dividing.</div><div class="var"><b>Sum of a Pascal row:</b> Σ nCr = 2<sup>n</sup>. Number of non-empty subsets = 2<sup>n</sup> − 1.</div></div>
+</section>
+<section id="modular">
+<h2>3 · Modular arithmetic &amp; Fermat's theorem</h2>
+<p class="from">Classes: ADSA 1: Fermat Theorem · LAB 2: Maths Ad-Hoc</p>
+<div class="concept">
+<h3>Concepts you need</h3>
+<ul><li><b>Congruence</b>: <code>a ≡ b (mod m)</code> means a and b leave the same remainder mod m, i.e. m divides (a − b). Example: 10 ≡ 15 (mod 5).</li><li><b>Modular inverse</b> of a (mod m) is the x with <code>a·x ≡ 1 (mod m)</code>.</li><li><b>Mod rules</b>: <code>(a+b)%m</code>, <code>(a·b)%m = ((a%m)·(b%m))%m</code>, <code>(a−b)%m = ((a−b)%m + m)%m</code>. <b>Division does not work this way</b>: multiply by the modular inverse instead.</li><li><b>Overflow</b>: two values below 10<sup>9</sup>+7 multiply to about 10<sup>18</sup>, which fits in a long (max ≈ 9.2·10<sup>18</sup>) but not an int. Cast to long <i>before</i> multiplying: <code>(long) a * b % MOD</code>.</li><li><b>Fast exponentiation</b>: a<sup>b</sup> in O(log b) by squaring a and multiplying it into the result whenever the current bit of b is 1.</li><li><b>Fermat's little theorem</b>: if p is prime and p ∤ a, then <code>a<sup>p−1</sup> ≡ 1 (mod p)</code>. Two consequences:</li><li>&nbsp;&nbsp;→ <b>Inverse</b>: <code>a<sup>−1</sup> ≡ a<sup>p−2</sup> (mod p)</code>.</li><li>&nbsp;&nbsp;→ <b>Reducing a huge exponent</b>: <code>a<sup>e</sup> ≡ a<sup>e mod (p−1)</sup> (mod p)</code>. The exponent is reduced mod <b>p−1</b>, not p.</li><li><b>An inverse exists only when gcd(a, m) = 1.</b> If m is not prime, Fermat does not apply: use Pascal DP or the extended Euclid algorithm.</li><li><b>Choosing an nCr method</b>: small n·r with any m → Pascal DP · n ≤ 10<sup>6</sup> with a prime p &gt; n → factorials + Fermat · many queries → precompute <code>fact[]</code> and <code>invFact[]</code> · p prime but small (p ≤ n) → Lucas' theorem.</li><li><b>gcd / lcm</b>: <code>gcd(a,b) = gcd(b, a%b)</code>; <code>lcm = a / gcd · b</code> (divide first to avoid overflow).</li><li><b>Inclusion–exclusion</b>: the count of numbers ≤ x divisible by B or C is <code>x/B + x/C − x/lcm(B,C)</code>.</li><li><b>Binary search on the answer</b>: when count(x) is monotonic, find the smallest x with count(x) ≥ A.</li></ul>
+</div>
+
+<h3 class="sub">Templates to know by heart</h3>
+<pre class="code"><code>static final long MOD = 1_000_000_007L;
+
+static long power(long a, long b, long m) {          // a^b % m, O(log b)
+    long res = 1 % m; a %= m;
+    while (b &gt; 0) {
+        if ((b &amp; 1) == 1) res = res * a % m;
+        a = a * a % m;
+        b &gt;&gt;= 1;
+    }
+    return res;
+}
+static long inv(long a, long p) { return power(a, p - 2, p); }   // p prime, gcd(a,p)=1
+
+// nCr for many queries, p prime &gt; N
+long[] fact = new long[N + 1], invFact = new long[N + 1];
+fact[0] = 1;
+for (int i = 1; i &lt;= N; i++) fact[i] = fact[i - 1] * i % MOD;
+invFact[N] = inv(fact[N], MOD);
+for (int i = N; i &gt; 0; i--) invFact[i - 1] = invFact[i] * i % MOD;   // only ONE power() call
+long nCr(int n, int r) { return r &lt; 0 || r &gt; n ? 0 : fact[n] * invFact[r] % MOD * invFact[n - r] % MOD; }
+
+static long gcd(long a, long b) { return b == 0 ? a : gcd(b, a % b); }</code></pre>
+
+
+<article class="prob" id="coltitle">
+  <header>
+    <label class="done"><input type="checkbox" data-id="coltitle"> done</label>
+    <span class="tag">Fermat · Q1</span>
+    <h3>Excel Column Title</h3>
+    <a class="ext" href="https://www.scaler.com/academy/mentee-dashboard/class/594055/assignment/problems/76" target="_blank" rel="noopener">open on Scaler ↗</a>
+  </header>
+  <p class="stmt">Convert a number (≤ 10<sup>9</sup>) to its Excel column title: 27 → "AA".</p>
+  <div class="grid2">
+    <div><h4>Idea</h4><p>This is base 26 with digits 1..26 instead of 0..25. Decrement <b>before</b> each step: <code>A--; digit = A % 26; A /= 26;</code>. Build the string and reverse it.</p></div>
+    <div><h4>Pointers / traps</h4><ul><li>Without <code>A--</code>, 26 would come out as "A@" and 52 as "B@" instead of "Z" and "AZ".</li><li>Use StringBuilder and reverse it at the end.</li></ul></div>
+  </div>
+  <details open><summary>Java solution <span class="cx">O(log₂₆ A)</span></summary><pre class="code"><code>public String convertToTitle(int A) {
+    StringBuilder sb = new StringBuilder();
+    while (A &gt; 0) {
+        A--;
+        sb.append((char) (&#x27;A&#x27; + A % 26));
+        A /= 26;
+    }
+    return sb.reverse().toString();
+}</code></pre></details>
+</article>
+
+
+<article class="prob" id="bigpow">
+  <header>
+    <label class="done"><input type="checkbox" data-id="bigpow"> done</label>
+    <span class="tag">Fermat · Q2</span>
+    <h3>Very Large Power: A^(B!) mod 1e9+7</h3>
+    <a class="ext" href="https://www.scaler.com/academy/mentee-dashboard/class/594055/assignment/problems/1072" target="_blank" rel="noopener">open on Scaler ↗</a>
+  </header>
+  <p class="stmt">Compute A<sup>B!</sup> mod (10<sup>9</sup>+7) for A, B ≤ 5·10<sup>5</sup>.</p>
+  <div class="grid2">
+    <div><h4>Idea</h4><p>B! is far too large to compute directly. By Fermat, the exponent can be reduced <b>mod (p−1)</b>: <code>e = B! mod (10<sup>9</sup>+6)</code>, then the answer is <code>power(A, e, p)</code>.</p></div>
+    <div><h4>Pointers / traps</h4><ul><li>The exponent is taken mod <b>p−1 = 1000000006</b>, not p. This is the most common mistake on this problem.</li><li>It works because A ≤ 5·10<sup>5</sup> is never a multiple of p.</li><li>Edge case from the lecture: if B! ≡ 0 (mod p−1), the answer is A<sup>0</sup> = 1. Example: A = 3, B = 5, p = 11 → 120 mod 10 = 0 → 1. This is correct, not a bug.</li><li>Alternative that avoids Fermat: <code>ans = A; for i in 2..B: ans = power(ans, i)</code>, since A<sup>B!</sup> = (((A<sup>2</sup>)<sup>3</sup>)<sup>4</sup>…). It is O(B log B) and also passes.</li></ul></div>
+  </div>
+  <details open><summary>Java solution <span class="cx">O(B + log p)</span></summary><pre class="code"><code>public int solve(int A, int B) {
+    long e = 1;
+    for (int i = 2; i &lt;= B; i++) e = e * i % (MOD - 1);   // B! mod (p-1)
+    return (int) power(A, e, MOD);
+}</code></pre></details>
+</article>
+
+
+<article class="prob" id="ncrp">
+  <header>
+    <label class="done"><input type="checkbox" data-id="ncrp"> done</label>
+    <span class="tag">Fermat · Q3</span>
+    <h3>Compute nCr % p (p prime ≥ n)</h3>
+    <a class="ext" href="https://www.scaler.com/academy/mentee-dashboard/class/594055/assignment/problems/4112" target="_blank" rel="noopener">open on Scaler ↗</a>
+  </header>
+  <p class="stmt">Return nCr mod p, where n ≤ 10<sup>6</sup> and p is prime with p ≥ n ("1 counts as prime" here).</p>
+  <div class="grid2">
+    <div><h4>Idea</h4><p><code>n! · inv(r!) · inv((n−r)!) mod p</code>, with inverses from Fermat (<code>x<sup>p−2</sup></code>). Valid because r! and (n−r)! contain no factor of p when r and n−r are below p.</p></div>
+    <div><h4>Pointers / traps</h4><ul><li><b>p = 1</b>: return 0 (anything mod 1 is 0).</li><li><b>r = n</b> (and possibly p = n): return 1 directly. Otherwise, with p = n, n! ≡ 0 and the formula would wrongly give 0.</li><li>Use long throughout. Computing the product incrementally avoids building an array of size 10<sup>6</sup>.</li></ul></div>
+  </div>
+  <details open><summary>Java solution <span class="cx">O(n + log p)</span></summary><pre class="code"><code>public int solve(int A, int B, int C) {          // A = n, B = r, C = p
+    if (C == 1) return 0;
+    if (B == A) return 1;
+    long num = 1, den = 1;
+    for (int i = 1; i &lt;= A; i++) num = num * i % C;
+    for (int i = 1; i &lt;= B; i++) den = den * i % C;
+    for (int i = 1; i &lt;= A - B; i++) den = den * i % C;
+    return (int) (num * power(den, C - 2, C) % C);
+}</code></pre></details>
+</article>
+
+
+<article class="prob" id="modinv">
+  <header>
+    <label class="done"><input type="checkbox" data-id="modinv"> done</label>
+    <span class="tag">Fermat · Q4</span>
+    <h3>Prime Modulo Inverse</h3>
+    <a class="ext" href="https://www.scaler.com/academy/mentee-dashboard/class/594055/assignment/problems/9314" target="_blank" rel="noopener">open on Scaler ↗</a>
+  </header>
+  <p class="stmt">Return A<sup>−1</sup> mod B, where B is prime and gcd(A, B) = 1.</p>
+  <div class="grid2">
+    <div><h4>Idea</h4><p>By Fermat, <code>A<sup>−1</sup> ≡ A<sup>B−2</sup> (mod B)</code>. Use fast power.</p></div>
+    <div><h4>Pointers / traps</h4><ul><li>B can be up to 10<sup>9</sup>, so use long inside power (squares reach about 10<sup>18</sup>).</li><li>Reduce A first with <code>a %= m</code>, since A can be larger than B.</li><li>Check your answer: (A · ans) % B should be 1.</li></ul></div>
+  </div>
+  <details open><summary>Java solution <span class="cx">O(log B)</span></summary><pre class="code"><code>public int solve(int A, int B) {
+    return (int) power(A, B - 2, B);
+}</code></pre></details>
+</article>
+
+
+<article class="prob" id="magic">
+  <header>
+    <label class="done"><input type="checkbox" data-id="magic"> done</label>
+    <span class="tag">LAB 2 · Q3</span>
+    <h3>Ath Magical Number</h3>
+    <a class="ext" href="https://www.scaler.com/academy/mentee-dashboard/class/594054/assignment/problems/5697" target="_blank" rel="noopener">open on Scaler ↗</a>
+  </header>
+  <p class="stmt">A number is magical if B or C divides it. Return the A-th smallest magical number (A ≤ 10<sup>9</sup>), mod 10<sup>9</sup>+7.</p>
+  <div class="grid2">
+    <div><h4>Idea</h4><p>count(x) = x/B + x/C − x/lcm(B,C) is non-decreasing in x. Binary search for the smallest x with count(x) ≥ A, in the range [min(B,C), A·min(B,C)].</p></div>
+    <div><h4>Pointers / traps</h4><ul><li>The answer can reach about 4·10<sup>13</sup>, so <b>everything must be long</b> (lo, hi, mid, lcm).</li><li>Apply the mod <b>only to the final answer</b>. Taking mod inside the search breaks the ordering the search relies on.</li><li>Compute lcm as <code>B / gcd · C</code>. Forgetting to subtract the lcm term double-counts multiples of both.</li></ul></div>
+  </div>
+  <details open><summary>Java solution <span class="cx">O(log(A·min(B,C)))</span></summary><pre class="code"><code>public int solve(int A, int B, int C) {
+    long lcm = (long) B / gcd(B, C) * C;
+    long lo = Math.min(B, C), hi = (long) A * Math.min(B, C), ans = hi;
+    while (lo &lt;= hi) {
+        long mid = lo + (hi - lo) / 2;
+        long cnt = mid / B + mid / C - mid / lcm;
+        if (cnt &gt;= A) { ans = mid; hi = mid - 1; }
+        else lo = mid + 1;
+    }
+    return (int) (ans % 1_000_000_007L);
+}</code></pre></details>
+</article>
+<div class="vars"><h3 class="sub">Worked examples from the lecture + likely variations</h3><p class="muted">Not in your assignment, but taught in the lectures or a one-step change from an assignment problem. Exam questions are often like this.</p><div class="var"><b>5<sup>−1</sup> mod 7:</b> 5<sup>7−2</sup> = 5<sup>5</sup> = 3125, and 3125 mod 7 = <b>3</b>. Check: 5·3 = 15 ≡ 1 (mod 7) ✓</div><div class="var"><b>5C2 mod 11:</b> numerator 5·4 = 20; inverse of 2! = 2<sup>9</sup> mod 11 = 6; 20·6 = 120, and 120 mod 11 = <b>10</b>.</div><div class="var"><b>Excel title of 1000:</b> 999 % 26 = 11 → L, 999/26 = 38 → 37 % 26 = 11 → L, 37/26 = 1 → 0 % 26 = 0 → A. Reversed: <b>"ALL"</b>.</div><div class="var"><b>(a / b) mod p:</b> <code>a · b<sup>p−2</sup> mod p</code>. Never compute <code>(a % p) / (b % p)</code>.</div><div class="var"><b>A<sup>B<sup>C</sup></sup> mod p:</b> compute the exponent as <code>power(B, C, p−1)</code>, then <code>power(A, that, p)</code>. This is the same idea as Very Large Power.</div><div class="var"><b>Inverses of all 1..n in O(n):</b> <code>inv[i] = −(p/i) · inv[p % i] mod p</code>. Useful when you need many inverses.<details><summary>code</summary><pre class="code"><code>long[] inv = new long[n + 1];
+inv[1] = 1;
+for (int i = 2; i &lt;= n; i++) inv[i] = (p - (p / i) * inv[(int) (p % i)] % p) % p;</code></pre></details></div><div class="var"><b>Many nCr queries:</b> precompute <code>fact[]</code> and <code>invFact[]</code> once (see the template above), then each query is O(1).</div></div>
+</section>
+<section id="bst">
+<h2>4 · Binary Search Trees</h2>
+<p class="from">Classes: ADSA 1: BST 1 · BST 2 · BST 3 · LAB 3: BST</p>
+<div class="concept">
+<h3>Concepts you need</h3>
+<ul><li><b>Terms</b>: root (topmost node), leaf (no children), parent/child, siblings (same parent), height (longest root-to-leaf path).</li><li><b>Where BSTs are used</b> (from BST 1): <b>AVL tree</b> = strictly balanced BST, always O(log n) height · <b>Red-Black tree</b> = slightly relaxed self-balancing BST, used by Java's TreeMap/TreeSet · <b>B+ tree</b> = multi-way search tree used in databases and file systems for disk indexing.</li><li><b>Insert</b>: follow the search path and attach the new node at the first null child. <b>Duplicates</b>: decide up front whether they go left or right. <b>Min</b> = keep going left, <b>max</b> = keep going right.</li><li><b>Height decides speed</b>: inserting already-sorted data makes a skewed tree (a linked list), so h = n and every operation is O(n). Building from the middle of a sorted array keeps h = log n.</li><li><b>BST property</b>: <i>every</i> node in the left subtree is less than the node, and <i>every</i> node in the right subtree is greater. Comparing only with direct children is not enough.</li><li><b>Inorder traversal of a BST is sorted.</b> Most BST problems reduce to "process the sorted sequence" (k-th smallest, two-sum, merging two BSTs, validation).</li><li><b>Search / insert / delete</b> take O(h): h = log n when balanced and n when skewed. Go left if the key is smaller than the node, otherwise go right. These loops can be iterative, so they need no stack.</li><li><b>Validate with a range</b>: pass (lo, hi) down the tree. The left child gets (lo, node), the right child gets (node, hi). Use long bounds.</li><li><b>Delete has 3 cases</b>: leaf → return null; one child → return that child; two children → copy in the <i>in-order predecessor</i> (max of the left subtree, as this assignment asks) or successor (min of the right), then delete that node from its subtree.</li><li><b>Predecessor</b> = rightmost node of the left subtree. <b>Successor</b> = leftmost node of the right subtree.</li><li><b>Balanced BST from sorted data</b>: the middle element becomes the root; recurse on both halves.</li><li><b>Range pruning</b>: if node &lt; low, only the right subtree can contain answers; if node &gt; high, only the left.</li><li><b>BST iterator</b> (a stack of left-spine nodes) gives the next inorder value in amortised O(1) with O(h) memory. Running one forward and one reverse iterator gives two pointers on a BST.</li><li><b>Morris traversal</b> does an inorder walk with O(1) extra space by temporarily linking each predecessor's right pointer back to the current node.</li><li><b>Bottom-up info</b> (postorder): return a tuple such as {{isBST, size, min, max}} from each subtree and combine at the parent. This is O(n) instead of O(n²).</li></ul>
+</div>
+
+<h3 class="sub">Iterative inorder (memorise this)</h3>
+<pre class="code"><code>Deque&lt;TreeNode&gt; st = new ArrayDeque&lt;&gt;();
+TreeNode cur = root;
+while (cur != null || !st.isEmpty()) {
+    while (cur != null) { st.push(cur); cur = cur.left; }   // go all the way left
+    cur = st.pop();
+    visit(cur);                                            // inorder position
+    cur = cur.right;
+}</code></pre>
+
+
+<article class="prob" id="sorted2bst">
+  <header>
+    <label class="done"><input type="checkbox" data-id="sorted2bst"> done</label>
+    <span class="tag">BST 1 · Q1</span>
+    <h3>Sorted Array To Balanced BST</h3>
+    <a class="ext" href="https://www.scaler.com/academy/mentee-dashboard/class/594056/assignment/problems/226" target="_blank" rel="noopener">open on Scaler ↗</a>
+  </header>
+  <p class="stmt">Build a height-balanced BST from a sorted array.</p>
+  <div class="grid2">
+    <div><h4>Idea</h4><p>Root = <code>a[mid]</code>. Build the left subtree from <code>a[l..mid−1]</code> and the right subtree from <code>a[mid+1..r]</code>.</p></div>
+    <div><h4>Pointers / traps</h4><ul><li><code>mid = l + (r−l)/2</code>. Any balanced answer should be accepted: the sample output itself is not consistent about lower vs upper middle.</li><li>Recursion depth is log n, so it is safe.</li><li>Pass indices instead of copying subarrays.</li></ul></div>
+  </div>
+  <details open><summary>Java solution <span class="cx">O(n)</span></summary><pre class="code"><code>public TreeNode sortedArrayToBST(final int[] A) { return build(A, 0, A.length - 1); }
+TreeNode build(int[] a, int l, int r) {
+    if (l &gt; r) return null;
+    int mid = l + (r - l) / 2;
+    TreeNode root = new TreeNode(a[mid]);
+    root.left = build(a, l, mid - 1);
+    root.right = build(a, mid + 1, r);
+    return root;
+}</code></pre></details>
+</article>
+
+
+<article class="prob" id="onechild">
+  <header>
+    <label class="done"><input type="checkbox" data-id="onechild"> done</label>
+    <span class="tag">BST 1 · Q2</span>
+    <h3>Check for BST with One Child</h3>
+    <a class="ext" href="https://www.scaler.com/academy/mentee-dashboard/class/594056/assignment/problems/4258" target="_blank" rel="noopener">open on Scaler ↗</a>
+  </header>
+  <p class="stmt">Given a preorder sequence, could it come from a BST in which every internal node has exactly one child? Answer YES or NO.</p>
+  <div class="grid2">
+    <div><h4>Idea</h4><p>With one child per node, the tree is a single path, so each next element must go left or right of the current one and stay inside every bound set so far. Keep a window (lo, hi). If the next element is greater than the current, the path turns right, so set lo = current; otherwise hi = current. Every next element must lie strictly inside (lo, hi).</p></div>
+    <div><h4>Pointers / traps</h4><ul><li>Equivalent check: for every i, all later elements are either all greater or all smaller than A[i]. You can test this with suffix min/max.</li><li>Use long sentinels for the initial lo and hi.</li><li>Check: [1,5,6,4] → after 5→6, lo = 5, but 4 &lt; 5, so NO.</li></ul></div>
+  </div>
+  <details open><summary>Java solution <span class="cx">O(n) · O(1)</span></summary><pre class="code"><code>public String solve(int[] A) {
+    long lo = Long.MIN_VALUE, hi = Long.MAX_VALUE;
+    for (int i = 0; i + 1 &lt; A.length; i++) {
+        if (A[i + 1] &gt; A[i]) lo = A[i]; else hi = A[i];
+        if (A[i + 1] &lt;= lo || A[i + 1] &gt;= hi) return &quot;NO&quot;;
+    }
+    return &quot;YES&quot;;
+}</code></pre></details>
+</article>
+
+
+<article class="prob" id="search">
+  <header>
+    <label class="done"><input type="checkbox" data-id="search"> done</label>
+    <span class="tag">BST 1 · Q3</span>
+    <h3>Search in BST</h3>
+    <a class="ext" href="https://www.scaler.com/academy/mentee-dashboard/class/594056/assignment/problems/35476" target="_blank" rel="noopener">open on Scaler ↗</a>
+  </header>
+  <p class="stmt">Return 1 if value B exists in the BST, else 0.</p>
+  <div class="grid2">
+    <div><h4>Idea</h4><p>Walk down from the root: equal → found; smaller → go left; greater → go right.</p></div>
+    <div><h4>Pointers / traps</h4><ul><li>The iterative version cannot overflow the stack on a skewed tree.</li></ul></div>
+  </div>
+  <details open><summary>Java solution <span class="cx">O(h)</span></summary><pre class="code"><code>public int solve(TreeNode A, int B) {
+    while (A != null) {
+        if (A.val == B) return 1;
+        A = B &lt; A.val ? A.left : A.right;
+    }
+    return 0;
+}</code></pre></details>
+</article>
+
+
+<article class="prob" id="bst_ins">
+  <header>
+    <label class="done"><input type="checkbox" data-id="bst_ins"> done</label>
+    <span class="tag">BST 1 · lecture</span>
+    <h3>Insert, Min & Max in a BST</h3>
+    <span class="muted">taught in lecture (no assignment problem)</span>
+  </header>
+  <p class="stmt">Taught in BST 1 (no assignment problem). Insert value x, and find the minimum and maximum.</p>
+  <div class="grid2">
+    <div><h4>Idea</h4><p><b>Insert</b>: go left if x is smaller, otherwise right, and attach x where you reach null. Assign the returned subtree back to the parent's pointer. <b>Min</b>: the leftmost node. <b>Max</b>: the rightmost node.</p></div>
+    <div><h4>Pointers / traps</h4><ul><li>The duplicate rule here sends equal values to the right. Pick one rule and keep it.</li><li>Min/max on an empty tree: check root == null first.</li><li>Insert is O(h): O(log n) when balanced, O(n) when skewed (e.g. sorted input).</li></ul></div>
+  </div>
+  <details open><summary>Java solution <span class="cx">O(h)</span></summary><pre class="code"><code>TreeNode insert(TreeNode root, int x) {
+    if (root == null) return new TreeNode(x);
+    if (x &lt; root.val) root.left = insert(root.left, x);
+    else root.right = insert(root.right, x);
+    return root;
+}
+int min(TreeNode r) { while (r.left != null) r = r.left; return r.val; }
+int max(TreeNode r) { while (r.right != null) r = r.right; return r.val; }</code></pre></details>
+</article>
+
+
+<article class="prob" id="valid">
+  <header>
+    <label class="done"><input type="checkbox" data-id="valid"> done</label>
+    <span class="tag">BST 2 · Q1</span>
+    <h3>Valid Binary Search Tree</h3>
+    <a class="ext" href="https://www.scaler.com/academy/mentee-dashboard/class/599564/assignment/problems/221" target="_blank" rel="noopener">open on Scaler ↗</a>
+  </header>
+  <p class="stmt">Check whether a binary tree is a BST (strict: left &lt; node &lt; right).</p>
+  <div class="grid2">
+    <div><h4>Idea</h4><p>Recurse with an allowed range: <code>valid(n, lo, hi)</code> requires lo &lt; n.val &lt; hi. The left child gets (lo, n.val) and the right child gets (n.val, hi).</p></div>
+    <div><h4>Pointers / traps</h4><ul><li>The classic mistake is comparing a node only with its direct children. A deeper node can still break the rule for an ancestor.</li><li>Node values go up to 2<sup>32</sup>−1, so use <b>long</b> bounds.</li><li>Alternative: do an inorder traversal and check that it is strictly increasing.</li></ul></div>
+  </div>
+  <details open><summary>Java solution <span class="cx">O(n)</span></summary><pre class="code"><code>public int isValidBST(TreeNode A) { return valid(A, Long.MIN_VALUE, Long.MAX_VALUE) ? 1 : 0; }
+boolean valid(TreeNode n, long lo, long hi) {
+    if (n == null) return true;
+    if (n.val &lt;= lo || n.val &gt;= hi) return false;
+    return valid(n.left, lo, n.val) &amp;&amp; valid(n.right, n.val, hi);
+}</code></pre></details>
+</article>
+
+
+<article class="prob" id="valid_bu">
+  <header>
+    <label class="done"><input type="checkbox" data-id="valid_bu"> done</label>
+    <span class="tag">BST 2 · lecture</span>
+    <h3>Valid BST: bottom-up method</h3>
+    <span class="muted">taught in lecture (no assignment problem)</span>
+  </header>
+  <p class="stmt">The second correct method from the BST 2 lecture. The lecture also showed that checking only the immediate children is <b>wrong</b>.</p>
+  <div class="grid2">
+    <div><h4>Idea</h4><p>Postorder: each subtree reports its {min, max}. The node is valid when <code>left.max &lt; node &lt; right.min</code> and both subtrees are valid. Return null as soon as any subtree fails.</p></div>
+    <div><h4>Pointers / traps</h4><ul><li>Why the children-only check fails: in 10 → (5, 15 → (6, 20)), 6 &lt; 15 is fine locally, but 6 is in the right subtree of 10.</li><li>An empty subtree returns {+∞, −∞} so that any value passes.</li><li>Top-down (range) and bottom-up are both O(n). Use whichever you remember better.</li></ul></div>
+  </div>
+  <details open><summary>Java solution <span class="cx">O(n)</span></summary><pre class="code"><code>long[] check(TreeNode n) {                    // {min, max}, or null if not a BST
+    if (n == null) return new long[]{Long.MAX_VALUE, Long.MIN_VALUE};
+    long[] L = check(n.left);
+    if (L == null) return null;
+    long[] R = check(n.right);
+    if (R == null) return null;
+    if (L[1] &gt;= n.val || R[0] &lt;= n.val) return null;
+    return new long[]{Math.min(L[0], n.val), Math.max(R[1], n.val)};
+}
+public int isValidBST(TreeNode A) { return check(A) != null ? 1 : 0; }</code></pre></details>
+</article>
+
+
+<article class="prob" id="largest">
+  <header>
+    <label class="done"><input type="checkbox" data-id="largest"> done</label>
+    <span class="tag">BST 2 · Q2</span>
+    <h3>Largest BST Subtree</h3>
+    <a class="ext" href="https://www.scaler.com/academy/mentee-dashboard/class/599564/assignment/problems/4857" target="_blank" rel="noopener">open on Scaler ↗</a>
+  </header>
+  <p class="stmt">Return the size of the largest subtree that is a BST.</p>
+  <div class="grid2">
+    <div><h4>Idea</h4><p>Postorder: each subtree returns {isBST, size, min, max}. A node forms a BST when both children are BSTs and <code>left.max &lt; node &lt; right.min</code>. Track the best size seen.</p></div>
+    <div><h4>Pointers / traps</h4><ul><li>An empty subtree returns {true, 0, +∞, −∞}, so a leaf passes the check automatically.</li><li>When a subtree is not a BST, its parent cannot be one either. Return isBST = false.</li><li>Checking validity separately at each node is O(n²). Returning the tuple makes it O(n).</li></ul></div>
+  </div>
+  <details open><summary>Java solution <span class="cx">O(n)</span></summary><pre class="code"><code>int best = 0;
+public int solve(TreeNode A) { best = 0; go(A); return best; }
+long[] go(TreeNode n) {                       // {isBST, size, min, max}
+    if (n == null) return new long[]{1, 0, Long.MAX_VALUE, Long.MIN_VALUE};
+    long[] L = go(n.left), R = go(n.right);
+    if (L[0] == 1 &amp;&amp; R[0] == 1 &amp;&amp; L[3] &lt; n.val &amp;&amp; n.val &lt; R[2]) {
+        long size = L[1] + R[1] + 1;
+        best = (int) Math.max(best, size);
+        return new long[]{1, size, Math.min(L[2], n.val), Math.max(R[3], n.val)};
+    }
+    return new long[]{0, 0, 0, 0};
+}</code></pre></details>
+</article>
+
+
+<article class="prob" id="delete">
+  <header>
+    <label class="done"><input type="checkbox" data-id="delete"> done</label>
+    <span class="tag">BST 2 · Q3</span>
+    <h3>Delete a node in BST</h3>
+    <a class="ext" href="https://www.scaler.com/academy/mentee-dashboard/class/599564/assignment/problems/18384" target="_blank" rel="noopener">open on Scaler ↗</a>
+  </header>
+  <p class="stmt">Delete value B. When the node has two children, replace it with its <b>in-order predecessor</b>.</p>
+  <div class="grid2">
+    <div><h4>Idea</h4><p>Search recursively, re-attaching the returned child at each step. At the target: no left child → return the right; no right child → return the left; two children → copy the predecessor's value (max of the left subtree) and delete that value from the left subtree.</p></div>
+    <div><h4>Pointers / traps</h4><ul><li>The problem says <b>predecessor</b> (max of the left subtree), not successor. Using the successor gives a different tree and a wrong answer.</li><li>Always assign the result back: <code>root.left = delete(root.left, …)</code>.</li><li>If B is not in the tree, return the tree unchanged.</li></ul></div>
+  </div>
+  <details open><summary>Java solution <span class="cx">O(h)</span></summary><pre class="code"><code>public TreeNode solve(TreeNode root, int B) {
+    if (root == null) return null;
+    if (B &lt; root.val) root.left = solve(root.left, B);
+    else if (B &gt; root.val) root.right = solve(root.right, B);
+    else {
+        if (root.left == null) return root.right;
+        if (root.right == null) return root.left;
+        TreeNode pred = root.left;
+        while (pred.right != null) pred = pred.right;
+        root.val = pred.val;
+        root.left = solve(root.left, pred.val);
+    }
+    return root;
+}</code></pre></details>
+</article>
+
+
+<article class="prob" id="kth">
+  <header>
+    <label class="done"><input type="checkbox" data-id="kth"> done</label>
+    <span class="tag">BST 3 · Q1</span>
+    <h3>Kth Smallest Element In BST</h3>
+    <a class="ext" href="https://www.scaler.com/academy/mentee-dashboard/class/599579/assignment/problems/335" target="_blank" rel="noopener">open on Scaler ↗</a>
+  </header>
+  <p class="stmt">Return the B-th smallest value.</p>
+  <div class="grid2">
+    <div><h4>Idea</h4><p>Do an iterative inorder traversal and count the nodes visited. Stop at the B-th one.</p></div>
+    <div><h4>Pointers / traps</h4><ul><li>Stopping early makes it O(h + B), not O(n).</li><li>Morris traversal also works if you need O(1) space.</li></ul></div>
+  </div>
+  <details open><summary>Java solution <span class="cx">O(h + B)</span></summary><pre class="code"><code>public int kthsmallest(TreeNode A, int B) {
+    Deque&lt;TreeNode&gt; st = new ArrayDeque&lt;&gt;();
+    TreeNode cur = A;
+    while (cur != null || !st.isEmpty()) {
+        while (cur != null) { st.push(cur); cur = cur.left; }
+        cur = st.pop();
+        if (--B == 0) return cur.val;
+        cur = cur.right;
+    }
+    return -1;
+}</code></pre></details>
+</article>
+
+
+<article class="prob" id="kth_morris">
+  <header>
+    <label class="done"><input type="checkbox" data-id="kth_morris"> done</label>
+    <span class="tag">BST 3 · lecture</span>
+    <h3>Kth smallest with Morris (O(1) space)</h3>
+    <span class="muted">taught in lecture (no assignment problem)</span>
+  </header>
+  <p class="stmt">The BST 3 lecture combined both ideas: count nodes during a Morris inorder traversal.</p>
+  <div class="grid2">
+    <div><h4>Idea</h4><p>Use the same Morris loop as below. Increase the count at the two places where a node is visited; the k-th visited node is the answer.</p></div>
+    <div><h4>Pointers / traps</h4><ul><li>Let the loop <b>finish</b> instead of returning early. Otherwise some threads stay in the tree and it remains modified.</li><li>O(n) time, O(1) extra space.</li></ul></div>
+  </div>
+  <details open><summary>Java solution <span class="cx">O(n) · O(1)</span></summary><pre class="code"><code>public int kthsmallest(TreeNode root, int k) {
+    TreeNode cur = root;
+    int count = 0, ans = -1;
+    while (cur != null) {
+        if (cur.left == null) {
+            if (++count == k) ans = cur.val;
+            cur = cur.right;
+        } else {
+            TreeNode pre = cur.left;
+            while (pre.right != null &amp;&amp; pre.right != cur) pre = pre.right;
+            if (pre.right == null) { pre.right = cur; cur = cur.left; }
+            else {
+                pre.right = null;
+                if (++count == k) ans = cur.val;
+                cur = cur.right;
+            }
+        }
+    }
+    return ans;
+}</code></pre></details>
+</article>
+
+
+<article class="prob" id="path">
+  <header>
+    <label class="done"><input type="checkbox" data-id="path"> done</label>
+    <span class="tag">BST 3 · Q2</span>
+    <h3>Path to Given Node</h3>
+    <a class="ext" href="https://www.scaler.com/academy/mentee-dashboard/class/599579/assignment/problems/11837" target="_blank" rel="noopener">open on Scaler ↗</a>
+  </header>
+  <p class="stmt">Binary tree (<b>not</b> a BST) with unique values: return the path from the root to node B.</p>
+  <div class="grid2">
+    <div><h4>Idea</h4><p>DFS with a path list: add the node, return true if it is B or if B is found in either subtree, otherwise remove the node (backtrack) and return false.</p></div>
+    <div><h4>Pointers / traps</h4><ul><li>This is not a BST, so you cannot choose a direction. Search both sides.</li><li>Use short-circuit <code>||</code> so the search stops as soon as B is found.</li><li>Variation: the path between two nodes = the common prefix of their two root paths, then the two remaining tails.</li></ul></div>
+  </div>
+  <details open><summary>Java solution <span class="cx">O(n)</span></summary><pre class="code"><code>public int[] solve(TreeNode A, int B) {
+    List&lt;Integer&gt; p = new ArrayList&lt;&gt;();
+    find(A, B, p);
+    return p.stream().mapToInt(i -&gt; i).toArray();
+}
+boolean find(TreeNode n, int B, List&lt;Integer&gt; p) {
+    if (n == null) return false;
+    p.add(n.val);
+    if (n.val == B || find(n.left, B, p) || find(n.right, B, p)) return true;
+    p.remove(p.size() - 1);
+    return false;
+}</code></pre></details>
+</article>
+
+
+<article class="prob" id="morris">
+  <header>
+    <label class="done"><input type="checkbox" data-id="morris"> done</label>
+    <span class="tag">BST 3 · Q3</span>
+    <h3>Morris Inorder Traversal</h3>
+    <a class="ext" href="https://www.scaler.com/academy/mentee-dashboard/class/599579/assignment/problems/35988" target="_blank" rel="noopener">open on Scaler ↗</a>
+  </header>
+  <p class="stmt">Return the inorder traversal without using recursion or a stack.</p>
+  <div class="grid2">
+    <div><h4>Idea</h4><p>At <code>cur</code>: if there is no left child, visit cur and go right. Otherwise find the predecessor (the rightmost node of the left subtree). If its right pointer is null, set it to cur (a <i>thread</i>) and go left. If it already points to cur, the left subtree is done: remove the thread, visit cur, and go right.</p></div>
+    <div><h4>Pointers / traps</h4><ul><li>The inner loop must check <code>pre.right != cur</code>, or it will follow the thread forever.</li><li>Remove every thread so the tree is restored afterwards.</li><li>For preorder Morris, visit cur when you <i>create</i> the thread instead.</li></ul></div>
+  </div>
+  <details open><summary>Java solution <span class="cx">O(n) time · O(1) space</span></summary><pre class="code"><code>public int[] solve(TreeNode A) {
+    List&lt;Integer&gt; res = new ArrayList&lt;&gt;();
+    TreeNode cur = A;
+    while (cur != null) {
+        if (cur.left == null) { res.add(cur.val); cur = cur.right; }
+        else {
+            TreeNode pre = cur.left;
+            while (pre.right != null &amp;&amp; pre.right != cur) pre = pre.right;
+            if (pre.right == null) { pre.right = cur; cur = cur.left; }          // thread + go left
+            else { pre.right = null; res.add(cur.val); cur = cur.right; }        // unthread + visit
+        }
+    }
+    return res.stream().mapToInt(i -&gt; i).toArray();
+}</code></pre></details>
+</article>
+
+
+<article class="prob" id="twosum">
+  <header>
+    <label class="done"><input type="checkbox" data-id="twosum"> done</label>
+    <span class="tag">LAB 3 · Q1</span>
+    <h3>Two Sum BST</h3>
+    <a class="ext" href="https://www.scaler.com/academy/mentee-dashboard/class/599578/assignment/problems/336" target="_blank" rel="noopener">open on Scaler ↗</a>
+  </header>
+  <p class="stmt">Do two <b>different</b> nodes have values that add up to B?</p>
+  <div class="grid2">
+    <div><h4>Idea</h4><p>Two pointers over the sorted order: a forward inorder iterator (smallest first) and a reverse one (largest first). If the sum is less than B, advance the forward iterator; if greater, advance the reverse one; stop when they reach the same node.</p></div>
+    <div><h4>Pointers / traps</h4><ul><li>The loop condition <code>lo.peek() != hi.peek()</code> prevents using the same node twice.</li><li>Simpler O(n)-space option: a HashSet during a traversal, checking <code>set.contains(B − v)</code> <b>before</b> adding v.</li><li>Use long for the sum to be safe.</li></ul></div>
+  </div>
+  <details open><summary>Java solution <span class="cx">O(n) time · O(h) space</span></summary><pre class="code"><code>public int t2Sum(TreeNode A, int B) {
+    Deque&lt;TreeNode&gt; lo = new ArrayDeque&lt;&gt;(), hi = new ArrayDeque&lt;&gt;();
+    for (TreeNode c = A; c != null; c = c.left) lo.push(c);
+    for (TreeNode c = A; c != null; c = c.right) hi.push(c);
+    while (!lo.isEmpty() &amp;&amp; !hi.isEmpty() &amp;&amp; lo.peek() != hi.peek()) {
+        long s = (long) lo.peek().val + hi.peek().val;
+        if (s == B) return 1;
+        if (s &lt; B) { TreeNode c = lo.pop().right; for (; c != null; c = c.left) lo.push(c); }
+        else       { TreeNode c = hi.pop().left;  for (; c != null; c = c.right) hi.push(c); }
+    }
+    return 0;
+}</code></pre></details>
+</article>
+
+
+<article class="prob" id="common">
+  <header>
+    <label class="done"><input type="checkbox" data-id="common"> done</label>
+    <span class="tag">LAB 3 · Q2</span>
+    <h3>Common Nodes in Two BST</h3>
+    <a class="ext" href="https://www.scaler.com/academy/mentee-dashboard/class/599578/assignment/problems/4465" target="_blank" rel="noopener">open on Scaler ↗</a>
+  </header>
+  <p class="stmt">Return the sum of values present in both BSTs, mod 10<sup>9</sup>+7, ideally in one pass.</p>
+  <div class="grid2">
+    <div><h4>Idea</h4><p>Run two iterative inorder traversals at the same time (like merging two sorted arrays). Equal values → add to the sum and advance both; otherwise advance the side with the smaller value.</p></div>
+    <div><h4>Pointers / traps</h4><ul><li>Advance only by popping and then moving to <code>.right</code> (the standard inorder step).</li><li>The HashSet approach (store tree A, look up tree B's values) also passes, at O(n) extra space.</li><li>Take the sum mod 10<sup>9</sup>+7.</li></ul></div>
+  </div>
+  <details open><summary>Java solution <span class="cx">O(n + m) · O(h₁ + h₂)</span></summary><pre class="code"><code>public int solve(TreeNode A, TreeNode B) {
+    Deque&lt;TreeNode&gt; s1 = new ArrayDeque&lt;&gt;(), s2 = new ArrayDeque&lt;&gt;();
+    long sum = 0;
+    TreeNode a = A, b = B;
+    while ((a != null || !s1.isEmpty()) &amp;&amp; (b != null || !s2.isEmpty())) {
+        while (a != null) { s1.push(a); a = a.left; }
+        while (b != null) { s2.push(b); b = b.left; }
+        if (s1.peek().val == s2.peek().val) {
+            sum = (sum + s1.peek().val) % 1_000_000_007L;
+            a = s1.pop().right; b = s2.pop().right;
+        } else if (s1.peek().val &lt; s2.peek().val) a = s1.pop().right;
+        else b = s2.pop().right;
+    }
+    return (int) sum;
+}</code></pre></details>
+</article>
+
+
+<article class="prob" id="range">
+  <header>
+    <label class="done"><input type="checkbox" data-id="range"> done</label>
+    <span class="tag">LAB 3 · Q3</span>
+    <h3>BST nodes in a range</h3>
+    <a class="ext" href="https://www.scaler.com/academy/mentee-dashboard/class/599578/assignment/problems/4679" target="_blank" rel="noopener">open on Scaler ↗</a>
+  </header>
+  <p class="stmt">Count the nodes with B ≤ value ≤ C.</p>
+  <div class="grid2">
+    <div><h4>Idea</h4><p>Prune using the BST property: node &lt; B → search only the right subtree; node &gt; C → search only the left; otherwise count the node and search both sides.</p></div>
+    <div><h4>Pointers / traps</h4><ul><li>The range is <b>inclusive</b>.</li><li>Visiting every node is O(n). Pruning is O(h + k).</li></ul></div>
+  </div>
+  <details open><summary>Java solution <span class="cx">O(h + k)</span></summary><pre class="code"><code>public int solve(TreeNode A, int B, int C) {
+    if (A == null) return 0;
+    if (A.val &lt; B) return solve(A.right, B, C);
+    if (A.val &gt; C) return solve(A.left, B, C);
+    return 1 + solve(A.left, B, C) + solve(A.right, B, C);
+}</code></pre></details>
+</article>
+
+
+<article class="prob" id="dist">
+  <header>
+    <label class="done"><input type="checkbox" data-id="dist"> done</label>
+    <span class="tag">LAB 3 · Q4</span>
+    <h3>Distance between Nodes of BST</h3>
+    <a class="ext" href="https://www.scaler.com/academy/mentee-dashboard/class/599578/assignment/problems/6562" target="_blank" rel="noopener">open on Scaler ↗</a>
+  </header>
+  <p class="stmt">Return the number of edges between keys B and C in a BST (up to 10<sup>6</sup> nodes).</p>
+  <div class="grid2">
+    <div><h4>Idea</h4><p>Find the meeting node (the lowest common ancestor) as the <b>split point</b>: walk down from the root while both keys are on the same side. Then distance = depth(B below the LCA) + depth(C below the LCA).</p></div>
+    <div><h4>Pointers / traps</h4><ul><li>Write everything iteratively. With 10<sup>6</sup> nodes, a skewed tree would overflow the Java stack.</li><li>If one key is the LCA itself, its depth below the LCA is 0 (the B = 2, C = 6 example).</li><li>General binary tree version: <code>dist = depth(a) + depth(b) − 2·depth(lca)</code>.</li></ul></div>
+  </div>
+  <details open><summary>Java solution <span class="cx">O(h)</span></summary><pre class="code"><code>public int solve(TreeNode A, int B, int C) {
+    TreeNode lca = A;
+    while (true) {
+        if (B &lt; lca.val &amp;&amp; C &lt; lca.val) lca = lca.left;
+        else if (B &gt; lca.val &amp;&amp; C &gt; lca.val) lca = lca.right;
+        else break;                                   // split point
+    }
+    return depth(lca, B) + depth(lca, C);
+}
+int depth(TreeNode from, int key) {
+    int d = 0;
+    while (from.val != key) { from = key &lt; from.val ? from.left : from.right; d++; }
+    return d;
+}</code></pre></details>
+</article>
+<div class="vars"><h3 class="sub">Likely variations</h3><p class="muted">Not in your assignment, but taught in the lectures or a one-step change from an assignment problem. Exam questions are often like this.</p><div class="var"><b>Floor / ceil in BST</b> (largest ≤ x / smallest ≥ x): walk down the tree, remembering the best candidate seen so far.<details><summary>code</summary><pre class="code"><code>int floor(TreeNode r, int x) {
+    int ans = -1;
+    while (r != null) {
+        if (r.val == x) return x;
+        if (r.val &lt; x) { ans = r.val; r = r.right; }   // candidate, try bigger
+        else r = r.left;
+    }
+    return ans;
+}
+int ceil(TreeNode r, int x) {
+    int ans = -1;
+    while (r != null) {
+        if (r.val == x) return x;
+        if (r.val &gt; x) { ans = r.val; r = r.left; }    // candidate, try smaller
+        else r = r.right;
+    }
+    return ans;
+}</code></pre></details></div><div class="var"><b>Inorder successor of x</b> (smallest value &gt; x): the same walk as ceil, with a strict comparison. The predecessor mirrors it.<details><summary>code</summary><pre class="code"><code>int successor(TreeNode r, int x) {
+    int ans = -1;
+    while (r != null) {
+        if (r.val &gt; x) { ans = r.val; r = r.left; }
+        else r = r.right;
+    }
+    return ans;
+}</code></pre></details></div><div class="var"><b>K-th largest</b> : reverse inorder (right → node → left) with a counter.<details><summary>code</summary><pre class="code"><code>int cnt = 0;
+int kthLargest(TreeNode n, int k) {
+    if (n == null) return -1;
+    int r = kthLargest(n.right, k);
+    if (r != -1) return r;
+    if (++cnt == k) return n.val;
+    return kthLargest(n.left, k);
+}</code></pre></details></div><div class="var"><b>Sum of the k smallest / count of nodes &lt; x</b> : an inorder traversal that stops early, or range pruning as in "BST nodes in a range".</div><div class="var"><b>Do two BSTs contain the same values?</b> Compare their inorder sequences, or merge them as in "Common Nodes in Two BST".</div><div class="var"><b>Build a BST from a preorder sequence</b> : insert the values one by one (O(n·h)), or recurse with a (lo, hi) bound for O(n). This uses the same bound idea as "BST with One Child".</div></div>
+</section>
+</main>
+</div>
+<script>
+(function () {
+  const KEY = "adsa1-done";
+  let done = {};
+  try { done = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) {}
+  const boxes = [...document.querySelectorAll('.done input')];
+  const total = boxes.length;
+  document.getElementById('ptotal').textContent = total;
+  function render() {
+    let n = 0;
+    boxes.forEach(b => {
+      b.checked = !!done[b.dataset.id];
+      b.closest('.prob').classList.toggle('is-done', b.checked);
+      if (b.checked) n++;
+    });
+    document.getElementById('pcount').textContent = n;
+    document.getElementById('pbar').style.width = (100 * n / total) + '%';
+  }
+  boxes.forEach(b => b.addEventListener('change', () => {
+    done[b.dataset.id] = b.checked;
+    try { localStorage.setItem(KEY, JSON.stringify(done)); } catch (e) {}
+    render();
+  }));
+  render();
+  const root = document.documentElement;
+  try { const t = localStorage.getItem('adsa1-theme'); if (t) root.dataset.theme = t; } catch (e) {}
+  document.getElementById('theme').addEventListener('click', () => {
+    const dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    root.dataset.theme = dark ? 'light' : 'dark';
+    try { localStorage.setItem('adsa1-theme', root.dataset.theme); } catch (e) {}
+  });
+})();
+</script>
+</body>
+</html>
